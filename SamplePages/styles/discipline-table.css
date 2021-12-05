@@ -1,0 +1,24 @@
+.DisciplineTable {
+    background-color: white;
+    border-radius: 20px;
+    padding: 38px;
+    width: 800px; /*потом убрать*/
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+} 
+.DisciplineTable_header {
+    margin-bottom: 16px;
+} 
+.DisciplineTable_title {
+    margin: 0;
+    font-family: Arial;
+    font-size: 38px;
+    font-weight: bold;
+} 
+.DisciplineTable_scrollable {
+    overflow-y: scroll;
+} 
+.DisciplineTable_table {
+    width: 100%;
+} 

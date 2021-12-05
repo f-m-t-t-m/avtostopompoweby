@@ -1,0 +1,57 @@
+.GroupList {
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    padding: 38px;
+    width: 800px; /*потом убрать*/
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+}
+.GroupList_header {
+    margin-bottom: 16px;
+} 
+.GroupList_title {
+    margin: 0;
+    font-family: Arial;
+    font-size: 38px;
+    font-weight: bold;
+} 
+.GroupList_scrollable {
+    overflow-y: scroll;
+} 
+.GroupList_list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+} 
+.GroupList_item {
+    background-color: #6995D0;
+    margin-bottom: 2px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+.GroupList_itemName {
+    margin: 0;
+    padding-left: 12px;
+    font-family: Arial;
+}
+.GroupList_itemButton {
+    background-color: #3B63AB;
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+}
+.GroupList_itemButton:hover {
+    background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
+}
+.GroupList_itemButton:active {
+    background-color: #224A92; /* #3B63AB но на ~25% темнее */ 
+}

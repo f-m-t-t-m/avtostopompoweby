@@ -12,6 +12,7 @@ body {
     padding: 5px 5px;
 }   
 .Layout__main {
+    background-color: #F0F0F0;
     flex: 1;
     display: flex;
 } 
@@ -21,7 +22,27 @@ body {
 }
 
 .CenteredBlock {
-    background-color: #6995D0;
     margin: auto;
-    border-radius: 20px;
+}
+.MiddleBlock {
+    margin: 24px auto;
+}
+
+tr {
+    background-color: #6995D0;
+}
+tr:nth-child(1) {
+    background-color: #3B63AB;
+}
+th {
+    padding: 8px 16px;
+    color: white;
+    font-family: Arial;
+    font-size: 16px;
+    text-align: left;
+}
+td {
+    padding: 8px 16px;
+    font-family: Arial;
+    font-size: 16px;
 }

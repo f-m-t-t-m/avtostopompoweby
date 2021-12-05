@@ -1,6 +1,8 @@
 .Form {
-    width: 340px;
+    background-color: #6995D0;
+    border-radius: 20px;
     padding: 38px;
+    width: 340px;
     display: flex;
     flex-direction: column;
 }
