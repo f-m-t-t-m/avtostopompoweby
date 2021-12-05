@@ -10,6 +10,8 @@
 }
 .GroupList_header {
     margin-bottom: 16px;
+    display: flex;
+    align-items: center;
 } 
 .GroupList_title {
     margin: 0;
@@ -17,6 +19,23 @@
     font-size: 38px;
     font-weight: bold;
 } 
+.GroupList_button {
+    background-color: #3B63AB;
+    margin-left: auto;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+}
+.GroupList_button:hover {
+    background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
+}
+.GroupList_button:active {
+    background-color: #224A92; /* #3B63AB но на ~25% темнее */ 
+}
 .GroupList_scrollable {
     overflow-y: scroll;
 } 
