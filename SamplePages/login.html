@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Наш сайт</title>
+
+        <!-- Styles -->
+        <link href="styles/layout.css" rel="stylesheet">
+        <link href="styles/header.css" rel="stylesheet">
+        <link href="styles/footer.css" rel="stylesheet">
+        <link href="styles/form.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="Layout">
+            <header class="Layout__header">
+                
+                <div class="Header">
+                    <div class="Header_logo">
+                        Логотип
+                    </div>
+                    <div class="Header_LogoutButton">
+                        <a class="Button">
+                            Выйти
+                        </a>
+                    </div>
+                </div>
+                
+            </header>
+            
+            <main class="Layout__main">
+                
+                <div class="CenteredBlock">
+                    <div class="Form">
+                        <div class="Form_header">
+                            Вход в систему
+                        </div>
+                        
+                        <label class="Form_label" for="email">Email:</label>
+                        <input class="Form_field" type="text" id="email">
+                        
+                        <label class="Form_label" for="password">Пароль:</label>
+                        <input class="Form_field" type="password" id="password">
+                        
+                        <input class="Form_button" type="submit" id="submit" value="Войти">
+                        <div class="Form_hint">
+                            Нет аккаунта? <a href="register.html">Зарегестрироваться</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </main>
+            
+            <footer class="Layout__footer">
+                Футер
+            </footer>
+        </div>
+    </body>
+</html>

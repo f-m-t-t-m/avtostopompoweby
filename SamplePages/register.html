@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Наш сайт</title>
+
+        <!-- Styles -->
+        <link href="styles/layout.css" rel="stylesheet">
+        <link href="styles/header.css" rel="stylesheet">
+        <link href="styles/footer.css" rel="stylesheet">
+        <link href="styles/form.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="Layout">
+            <header class="Layout__header">
+                
+                <div class="Header">
+                    <div class="Header_logo">
+                        Логотип
+                    </div>
+                    <div class="Header_LogoutButton">
+                        <a class="Button">
+                            Выйти
+                        </a>
+                    </div>
+                </div>
+                
+            </header>
+            
+            <main class="Layout__main">
+                
+                <div class="CenteredBlock">
+                    <div class="Form">
+                        <div class="Form_header">
+                            Регистрация
+                        </div>
+                        
+                        <label class="Form_label" for="name">Имя:</label>
+                        <input class="Form_field" type="text" id="name">
+                        
+                        <label class="Form_label" for="surname">Фамилия:</label>
+                        <input class="Form_field" type="text" id="surname">
+                        
+                        <label class="Form_label" for="role">Роль в системе:</label>
+                        <select class="Form_field" id="role">
+                            <option value="none">--выберите роль--</option>
+                            <option value="student">Студент</option>
+                            <option value="teacher">Преподаватель</option>
+                            <option value="head">Зав. кафедрой</option>
+                        </select>
+                        
+                        <label class="Form_label" for="group">Учебная группа:</label>
+                        <select class="Form_field" id="group">
+                            <option value="none">--выберите группу--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        
+                        <label class="Form_label" for="email">Email:</label>
+                        <input class="Form_field" type="text" id="email">
+                        
+                        <label class="Form_label" for="password">Пароль:</label>
+                        <input class="Form_field" type="password" id="password">
+                        
+                        <label class="Form_label" for="image">Фото:</label>
+                        <input class="Form_fileChooser" type="file" id="image" accept="image/*">
+                        
+                        <input class="Form_button" type="submit" id="submit" value="Зарегистрироваться">
+                        <div class="Form_hint">
+                            Уже есть аккаунт? <a href="login.html">Войти</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </main>
+            
+            <footer class="Layout__footer">
+                Футер
+            </footer>
+        </div>
+    </body>
+</html>
