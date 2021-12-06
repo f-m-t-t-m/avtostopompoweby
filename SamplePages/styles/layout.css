@@ -14,6 +14,7 @@ body {
 .Layout__main {
     background-color: #F0F0F0;
     flex: 1;
+    padding: 24px 0px;
     display: flex;
 } 
 .Layout__footer {
@@ -25,7 +26,13 @@ body {
     margin: auto;
 }
 .MiddleBlock {
-    margin: 24px auto;
+    margin: 0 auto;
+    width: 1400px;
+}
+@media (max-width: 1200px) {
+    .DividerBlock {
+        width: 100%;
+    }
 }
 .DividerBlock {
     display: grid;
