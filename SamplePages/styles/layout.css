@@ -27,6 +27,23 @@ body {
 .MiddleBlock {
     margin: 24px auto;
 }
+.DividerBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 1400px;
+    height: 800px;
+}
+.DividerBlock > div {
+    overflow: hidden;
+}
+@media (max-width: 1200px) {
+    .DividerBlock {
+        width: 100%;
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 1fr;
+    }
+}
 
 tr {
     background-color: #6995D0;

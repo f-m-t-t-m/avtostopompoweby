@@ -1,12 +1,10 @@
 .GroupList {
     background-color: white;
     border-radius: 20px;
-    margin-bottom: 16px;
+    margin: 0 16px 16px;
     padding: 38px;
-    width: 800px; /*потом убрать*/
     display: flex;
     flex-direction: column;
-    max-height: 300px;
 }
 .GroupList_header {
     margin-bottom: 16px;

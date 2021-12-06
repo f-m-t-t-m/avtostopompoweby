@@ -1,11 +1,10 @@
 .DisciplineTable {
     background-color: white;
     border-radius: 20px;
+    margin: 0 16px 16px;
     padding: 38px;
-    width: 800px; /*потом убрать*/
     display: flex;
     flex-direction: column;
-    max-height: 300px;
 } 
 .DisciplineTable_header {
     margin-bottom: 16px;
