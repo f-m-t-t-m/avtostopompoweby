@@ -1,0 +1,23 @@
+.DisciplineTable {
+    background-color: white;
+    border-radius: 20px;
+    margin: 0 16px 16px;
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+} 
+.DisciplineTable_header {
+    margin-bottom: 16px;
+} 
+.DisciplineTable_title {
+    margin: 0;
+    font-family: Arial;
+    font-size: 38px;
+    font-weight: bold;
+} 
+.DisciplineTable_scrollable {
+    overflow-y: scroll;
+} 
+.DisciplineTable_table {
+    width: 100%;
+} 

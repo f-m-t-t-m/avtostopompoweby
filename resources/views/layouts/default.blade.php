@@ -15,7 +15,7 @@
     <body class="antialiased">
         <div class="Layout">
             <header class="Layout__header">
-                @yeild('header')
+                @include('includes.header')
             </header>
             
             <main class="Layout__main">
