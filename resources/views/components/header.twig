@@ -13,9 +13,11 @@
                 Регистрация<br>студентов
             </a>
         </div>
-        <a class="Header__logoutButton">
-            Выйти из системы
-        </a>
+        {% if (auth_check()) %}
+            <a class="Header__logoutButton" href="{{ route('logout') }}">
+                Выйти из системы
+            </a>
+        {% endif %}
     </div>
 {% endmacro %}
 

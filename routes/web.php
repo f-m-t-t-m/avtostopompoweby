@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
-});
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/register', function () {
-    return view('register');
+})->name('main_page');
+
+
+Route::match(['get', 'post'], '/login', LoginController::class)->name('login');
+Route::match(['get', 'post'], '/register', RegisterController::class)->name('register');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', LogoutController::class)->name('logout');
 });
