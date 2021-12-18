@@ -1,0 +1,50 @@
+{% import _self as macros %}
+
+{% set scope = {
+    items: items ?? [],
+    showGroup: showGroup ?? true,
+    showTeacher: showTeacher ?? true,
+} %}
+
+{% macro content(scope) %}
+    <div class="SubjectTable">
+        <div class="SubjectTable__header">
+            <h2 class="SubjectTable__title">
+                Дисциплины
+            </h2>
+        </div>
+        <div class="SubjectTable__scrollable">
+            <table class="SubjectTable__table">
+                <tr>
+                    <th>Название</th>
+                    {% if scope.showGroup == true %} <th>Группа</th> {% endif %}
+                    {% if scope.showTeacher == true %} <th>Преподаватель</th> {% endif %}
+                </tr>
+                
+                {% for item in scope.items %}
+                    {% set item = {
+                        url: item.url ?? '',
+                        name: item.name ?? '',
+                        group: item.group ?? '',
+                        teacher: item.teacher ?? '',
+                    } %}
+                    
+                    <tr>
+                        <td>
+                            <a href="{{ item.url }}">{{ item.name }}</a>
+                        </td>
+                        {% if scope.showGroup == true %}
+                            <td>{{ item.group }}</td>
+                        {% endif %}
+                        {% if scope.showTeacher == true %}
+                            <td>{{ item.teacher }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}   
+                    
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

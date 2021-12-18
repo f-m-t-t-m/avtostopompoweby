@@ -1,17 +1,36 @@
 {% import _self as macros %}
 
+{% set scope = {
+    menu: [
+        {
+            url: '/',
+            name: 'Группы и<br>дисциплины',
+        },
+        {
+            url: '/',
+            name: 'Регистрация<br>студентов',
+        },
+    ],
+} %}
+
 {% macro content(scope) %}
     <div class="Header">
         <div class="Header__logo">
             Логотип
         </div>
         <div class="Header__menu">
-            <a href="" class="Header__menuItem">
-                Группы и<br>дисциплины
-            </a>
-            <a href="" class="Header__menuItem">
-                Регистрация<br>студентов
-            </a>
+        
+            {% for item in scope.menu %}
+                {% set item = {
+                    url: item.url ?? '',
+                    name: item.name ?? '',
+                } %}
+                
+                <a href="{{ item.url }}" class="Header__menuItem">
+                    {{ item.name|raw }}
+                </a>
+            {% endfor %}
+            
         </div>
         {% if (auth_check()) %}
             <a class="Header__logoutButton" href="{{ route('logout') }}">

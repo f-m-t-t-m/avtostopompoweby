@@ -1,0 +1,35 @@
+{% extends 'layouts/base.twig' %}
+
+{% set scope = {
+    subjects: [
+        {
+            url: "/",
+            name: "Дисциплина 1",
+            group: "Группа 1",
+            teacher: "Преподаватель 1",
+        },
+        {
+            url: "/",
+            name: "Дисциплина 2",
+            group: "Группа 2",
+            teacher: "Преподаватель 2",
+        },
+        {
+            url: "/",
+            name: "Дисциплина 3",
+            group: "Группа 3",
+            teacher: "Преподаватель 3",
+        },
+    ],
+} %}
+
+{% block main %}
+    <div class="MiddleBlock">
+        {% include 'components/subject-table.twig' with{
+            items: scope.subjects,
+            showGroup: false,
+            showTeacher: true,
+        } %}
+    </div>
+{% endblock %}
+

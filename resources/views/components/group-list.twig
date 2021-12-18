@@ -1,0 +1,40 @@
+{% import _self as macros %}
+
+{% set scope = {
+    items: items ?? [],
+} %}
+
+{% macro content(scope) %}
+    <div class="GroupList">
+        <div class="GroupList__header">
+            <h2 class="GroupList__title">
+                Группы
+            </h2>
+            <a class="GroupList__button">
+                Добавить группу
+            </a>
+        </div>
+        <div class="GroupList__scrollable">
+            <ul class="GroupList__list">
+            
+                {% for item in scope.items %}
+                    {% set item = {
+                        name: item.name ?? '',
+                    } %}
+                    
+                    <li class="GroupList__item">
+                        <p class="GroupList__itemName">
+                            {{ item.name }}
+                        </p>
+                        <a class="GroupList__itemButton">
+                            Добавить дисциплину
+                        </a>
+                    </li>
+                {% endfor %}  
+                
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}
