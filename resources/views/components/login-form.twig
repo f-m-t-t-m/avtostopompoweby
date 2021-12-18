@@ -1,0 +1,24 @@
+{% import _self as macros %}
+
+{% macro content() %}
+    <div class="CenteredBlock">
+        <div class="Form">
+            <div class="Form__header">
+                Вход в систему
+            </div>
+            
+            <label class="Form__label" for="email">Email:</label>
+            <input class="Form__field" type="text" id="email" name="email">
+            
+            <label class="Form__label" for="password">Пароль:</label>
+            <input class="Form__field" type="password" id="password" name="password">
+            
+            <input class="Form__button" type="submit" id="submit" name="submit" value="Войти">
+            <div class="Form__hint">
+                Нет аккаунта? <a href="register">Зарегестрироваться</a>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content() }}

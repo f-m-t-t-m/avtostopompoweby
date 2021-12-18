@@ -6,26 +6,26 @@
     display: flex;
     flex-direction: column;
 }
-.Form_header {
+.Form__header {
     margin-bottom: 16px;
     text-align: center;
     font-family: Arial;
     font-size: 38px;
     font-weight: bold;
 }
-.Form_label {
+.Form__label {
     font-family: Arial;
     font-size: 12px;
     font-weight: bold;
 }
-.Form_field {
+.Form__field {
     padding: 12px 20px;
     margin-bottom: 8px;
     border: 1px solid grey;
     border-radius: 4px;
     font-family: Arial;
 }
-.Form_fileChooser::file-selector-button {
+.Form__fileChooser::file-selector-button {
     background-color: #3B63AB;
     padding: 12px 20px;
     margin-top: 0px;
@@ -37,13 +37,13 @@
     font-family: Arial;
     font-weight: bold;
 }
-.Form_fileChooser::file-selector-button:hover {
+.Form__fileChooser::file-selector-button:hover {
     background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
 }
-.Form_fileChooser::file-selector-button:active {
+.Form__fileChooser::file-selector-button:active {
     background-color: #224A92; /* #3B63AB но на ~25% темнее */ 
 }
-.Form_button {
+.Form__button {
     background-color: #3B63AB;
     padding: 12px 20px;
     margin-top: 12px;
@@ -55,13 +55,13 @@
     font-family: Arial;
     font-weight: bold;
 }
-.Form_button:hover {
+.Form__button:hover {
     background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
 }
-.Form_button:active {
+.Form__button:active {
     background-color: #224A92; /* #3B63AB но на ~25% темнее */ 
 }
-.Form_hint {
+.Form__hint {
     text-align: center;
     font-family: Arial;
 }

@@ -1,0 +1,59 @@
+.Layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    &__main {
+        flex: 1;
+    }
+    
+    &__footer {
+        background-color: $color-green--dark;
+        padding-y: 32px 33px;
+        
+        @include vw-sm-down {
+            padding-y: 40px 41px;
+        }
+    }
+    
+    &__section {
+        padding-y: 80px;
+        
+        &--slider {
+            padding-y: 40px 60px;
+            
+            @include vw-sm-down {
+                padding-y: 0px 40px;
+            }
+        }
+        
+        &--featured {
+            padding-y: 60px 140px;
+            
+            @include vw-sm-down {
+                padding-y: 40px 80px;
+            }
+        }
+        
+        &--projects {
+            background-color: $color-green--light;
+            padding-y: 80px 83px;
+            
+            @include vw-sm-down {
+                padding-y: 80px 80px;
+            }
+        }
+        
+        &--news {
+            padding-y: 80px 41px;
+            
+            @include vw-sm-down {
+                padding-y: 58px 54px;
+            }
+        }
+    }
+}
+
+.Container {
+    @extend .uk-container;
+}

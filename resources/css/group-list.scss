@@ -6,18 +6,18 @@
     display: flex;
     flex-direction: column;
 }
-.GroupList_header {
+.GroupList__header {
     margin-bottom: 16px;
     display: flex;
     align-items: center;
 } 
-.GroupList_title {
+.GroupList__title {
     margin: 0;
     font-family: Arial;
     font-size: 38px;
     font-weight: bold;
 } 
-.GroupList_button {
+.GroupList__button {
     background-color: #3B63AB;
     margin-left: auto;
     padding: 12px 20px;
@@ -28,21 +28,21 @@
     font-family: Arial;
     font-weight: bold;
 }
-.GroupList_button:hover {
+.GroupList__button:hover {
     background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
 }
-.GroupList_button:active {
+.GroupList__button:active {
     background-color: #224A92; /* #3B63AB но на ~25% темнее */ 
 }
-.GroupList_scrollable {
+.GroupList__scrollable {
     overflow-y: scroll;
 } 
-.GroupList_list {
+.GroupList__list {
     margin: 0;
     padding: 0;
     list-style-type: none;
 } 
-.GroupList_item {
+.GroupList__item {
     background-color: #6995D0;
     margin-bottom: 2px;
     padding: 4px;
@@ -50,12 +50,12 @@
     align-items: center;
     border-radius: 4px;
 }
-.GroupList_itemName {
+.GroupList__itemName {
     margin: 0;
     padding-left: 12px;
     font-family: Arial;
 }
-.GroupList_itemButton {
+.GroupList__itemButton {
     background-color: #3B63AB;
     margin-left: auto;
     padding: 8px 16px;
@@ -66,9 +66,9 @@
     font-family: Arial;
     font-weight: bold;
 }
-.GroupList_itemButton:hover {
+.GroupList__itemButton:hover {
     background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
 }
-.GroupList_itemButton:active {
+.GroupList__itemButton:active {
     background-color: #224A92; /* #3B63AB но на ~25% темнее */ 
 }

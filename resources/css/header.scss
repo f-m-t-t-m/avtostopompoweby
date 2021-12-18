@@ -2,24 +2,24 @@
     display: flex;
     padding: 8px 16px;
 }
-.Header_logo {
+.Header__logo {
     color: white;
     font-family: Arial;
     font-size: 38px;
     font-weight: bold;
 }
-.Header_menu {
+.Header__menu {
     margin-left: 36px;
     display: flex;
     align-items: center;
 }
-.Header_menuItem {
+.Header__menuItem {
     margin-right: 16px;
     display: flex;
     color: white;
     font-family: Arial;
 }
-.Header_logoutButton {
+.Header__logoutButton {
     background-color: #3B63AB;
     margin-left: auto;
     padding: 12px 20px;
@@ -30,9 +30,9 @@
     font-family: Arial;
     font-weight: bold;
 }
-.Header_logoutButton:hover {
+.Header__logoutButton:hover {
     background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
 }
-.Header_logoutButton:active {
+.Header__logoutButton:active {
     background-color: #224A92; /* #3B63AB но на ~25% темнее */ 
 }

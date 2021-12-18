@@ -1,0 +1,22 @@
+{% import _self as macros %}
+
+{% macro content(scope) %}
+    <div class="Header">
+        <div class="Header__logo">
+            Логотип
+        </div>
+        <div class="Header__menu">
+            <a href="" class="Header__menuItem">
+                Группы и<br>дисциплины
+            </a>
+            <a href="" class="Header__menuItem">
+                Регистрация<br>студентов
+            </a>
+        </div>
+        <a class="Header__logoutButton">
+            Выйти из системы
+        </a>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}
