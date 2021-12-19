@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\ApiCommentController;
+use App\Http\Controllers\ApiSectionController;
+use App\Http\Controllers\ApiSubjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +24,30 @@ Route::post('/login', [ApiAuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [ApiAuthController::class, 'logout']);
 });
+
+Route::apiResource('subjects', ApiSubjectController::class)
+    ->scoped([
+        'subject' => 'id'
+    ])
+    ->missing(function () {
+        return response()->json(['message' => 'Subject not found'], 404);
+    });
+
+Route::apiResource('subjects.sections', ApiSectionController::class)
+    ->scoped([
+        'section' => 'id'
+    ])
+    ->missing(function () {
+        return response()->json(['message' => 'Section not found'], 404);
+    });
+
+Route::apiResource('subjects.sections.comments', ApiCommentController::class)
+    ->scoped([
+        'comment' => 'id'
+    ])
+    ->missing(function () {
+        return response()->json(['message' => 'Comment not found'], 404);
+    });
+
 
 

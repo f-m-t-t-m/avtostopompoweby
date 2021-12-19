@@ -17,6 +17,8 @@ class SubjectResource extends JsonResource
         return [
             'name' => $this->name,
             'teacher' => new UserResource($this->user),
+            'sections' => SectionResource::collection($this->sections),
+
         ];
     }
 }
