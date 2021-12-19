@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Models\Student;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\View;
+use Illuminate\Validation\ValidationException;
 use TwigBridge\Facade\Twig;
 
 class RegisterController extends Controller
@@ -18,10 +20,12 @@ class RegisterController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\View|RedirectResponse
+     * @throws ValidationException
      */
-    public function __invoke(Request $request) {
+    public function __invoke(Request $request)
+    {
         if (Auth::check()) {
             return redirect()
                 ->route('main_page');
