@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\View;
+use TwigBridge\Facade\Twig;
 
 class RegisterController extends Controller
 {
@@ -44,7 +46,6 @@ class RegisterController extends Controller
                 'surname.required' => 'Необходимо заполнить фамилию',
                 'password.required' => 'Необходимо заполнить пароль'
             ]);
-
             $validated = $validator->validated();
             $user = new User();
             $user->email = $validated['email'];
@@ -62,13 +63,14 @@ class RegisterController extends Controller
             if ($user->role === 'student') {
                 $student = new Student();
                 $student->user_id = $user->id;
-                $student->group_id = Group::query()->where('name', $validated['group'])->first()->id;
+                $student->group_id = $validated['group'];
                 $student->save();
             }
             Auth::login($user);
             return redirect()
                 ->route('main_page');
         }
-        return view('register');
+        $groups = Group::all();
+        return View::make('register', ['groups' => $groups]);
     }
 }

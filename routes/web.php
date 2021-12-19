@@ -27,12 +27,15 @@ Route::match(['get', 'post'], '/register', RegisterController::class)->name('reg
 Route::middleware('auth')->group(function () {
     Route::get('/logout', LogoutController::class)->name('logout');
 });
+
 Route::get('/test/home-student', function () {
     return view('home-student');
 });
+
 Route::get('/test/home-teacher', function () {
     return view('home-teacher');
 });
+
 Route::get('/test/home-head', function () {
     return view('home-head');
 });

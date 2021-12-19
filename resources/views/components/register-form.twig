@@ -1,6 +1,10 @@
 {% import _self as macros %}
 
-{% macro content() %}
+{% set scope = {
+    groups: groups ?? [],
+} %}
+
+{% macro content(scope) %}
     <div class="CenteredBlock">
         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -22,6 +26,7 @@
 
                     <label class="Form__label" for="role">Роль в системе:</label>
                     <select class="Form__field" id="role" name="role">
+                        <option value="">--выберите группу--</option>
                         <option value="student" {{ old('role') == 'student' ? 'selected="selected"' : ''}}>Студент</option>
                         <option value="teacher" {{ old('role') == 'teacher' ? 'selected="selected"' : ''}}>Преподаватель</option>
                         <option value="head" {{ old('role') == 'head' ? 'selected="selected"' : ''}}>Зав. кафедрой</option>
@@ -29,10 +34,10 @@
 
                     <label class="Form__label" for="group">Учебная группа:</label>
                     <select class="Form__field" id="group" name="group">
-                        <option value="">--выберите группу--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                            <option value="">--выберите группу--</option>
+                        {% for group in scope.groups %}
+                            <option value={{ group.id }}>{{ group.short_name }}</option>
+                        {% endfor %}
                     </select>
                     {% if errors.first('group') %}
                         <p>{{ errors.first('group') }}</p>
@@ -66,4 +71,4 @@
     </div>
 {% endmacro %}
 
-{{ macros.content() }}
+{{ macros.content(scope) }}

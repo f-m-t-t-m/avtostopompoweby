@@ -1,6 +1,8 @@
 {% extends 'layouts/base.twig' %}
 
 {% block main %}
-    {% include 'components/register-form.twig' %}
+    {% include 'components/register-form.twig' with {
+        'groups': groups,
+    } %}
 {% endblock %}
 

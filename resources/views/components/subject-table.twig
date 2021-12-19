@@ -1,5 +1,4 @@
 {% import _self as macros %}
-
 {% set scope = {
     items: items ?? [],
     showGroup: showGroup ?? true,
@@ -20,7 +19,7 @@
                     {% if scope.showGroup == true %} <th>Группа</th> {% endif %}
                     {% if scope.showTeacher == true %} <th>Преподаватель</th> {% endif %}
                 </tr>
-                
+
                 {% for item in scope.items %}
                     {% set item = {
                         url: item.url ?? '',
@@ -28,7 +27,7 @@
                         group: item.group ?? '',
                         teacher: item.teacher ?? '',
                     } %}
-                    
+
                     <tr>
                         <td>
                             <a href="{{ item.url }}">{{ item.name }}</a>
@@ -40,8 +39,8 @@
                             <td>{{ item.teacher }}</td>
                         {% endif %}
                     </tr>
-                {% endfor %}   
-                    
+                {% endfor %}
+
             </table>
         </div>
     </div>
