@@ -1,46 +1,21 @@
 {% extends 'layouts/base.twig' %}
 
 {% set scope = {
-    groups: [
-        {
-            name: "Группа 1",
-        },
-        {
-            name: "Группа 2",
-        },
-        {
-            name: "Группа 3",
-        },
-    ],
-    subjects: [
-        {
-            url: "/",
-            name: "Дисциплина 1",
-            group: "Группа 1",
-            teacher: "Преподаватель 1",
-        },
-        {
-            url: "/",
-            name: "Дисциплина 2",
-            group: "Группа 2",
-            teacher: "Преподаватель 2",
-        },
-        {
-            url: "/",
-            name: "Дисциплина 3",
-            group: "Группа 3",
-            teacher: "Преподаватель 3",
-        },
-    ],
+    department_groups: department_groups,
+    subjects: subjects,
+    teachers: teachers,
+    groups: groups
 } %}
 
 {% block main %}
     <div class="MiddleBlock DividerBlock">
         {% include 'components/group-list.twig' with{
-            items: scope.groups,
+            items: scope.department_groups,
         } %}
         {% include 'components/subject-table.twig' with{
-            items: scope.subjects,
+            subjects: scope.subjects,
+            teachers: scope.teachers,
+            groups: scope.groups,
             showGroup: true,
             showTeacher: true,
         } %}

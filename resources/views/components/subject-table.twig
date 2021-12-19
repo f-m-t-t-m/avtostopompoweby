@@ -1,6 +1,8 @@
 {% import _self as macros %}
 {% set scope = {
-    items: items ?? [],
+    subjects: subjects ?? [],
+    teachers: teachers ?? [],
+    groups: groups ?? [],
     showGroup: showGroup ?? true,
     showTeacher: showTeacher ?? true,
 } %}
@@ -19,18 +21,17 @@
                     {% if scope.showGroup == true %} <th>Группа</th> {% endif %}
                     {% if scope.showTeacher == true %} <th>Преподаватель</th> {% endif %}
                 </tr>
-
-                {% for item in scope.items %}
+                {% set count = 0 %}
+                {% for item in scope.subjects %}
                     {% set item = {
-                        url: item.url ?? '',
                         name: item.name ?? '',
-                        group: item.group ?? '',
-                        teacher: item.teacher ?? '',
+                        group: scope.groups[count].short_name ?? '',
+                        teacher: scope.teachers[count].name ~ ' ' ~ scope.teachers[count].surname?? '',
                     } %}
-
+                    {% set count = count + 1 %}
                     <tr>
                         <td>
-                            <a href="{{ item.url }}">{{ item.name }}</a>
+                            <a href="{{ route('main_page') }}">{{ item.name }}</a>
                         </td>
                         {% if scope.showGroup == true %}
                             <td>{{ item.group }}</td>

@@ -49,11 +49,15 @@ class User extends Authenticatable
         return $this->hasOne(Department::class);
     }
 
-    public function subject(): HasOne {
-        return $this->hasOne(Subject::class);
+    public function subjects(): HasMany {
+        return $this->HasMany(Subject::class);
     }
 
     public function comments(): HasMany {
         return $this->hasMany(Comment::class);
+    }
+
+    public function student(): HasOne {
+        return $this->hasOne(Student::class);
     }
 }
