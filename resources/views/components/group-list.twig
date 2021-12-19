@@ -10,28 +10,28 @@
             <h2 class="GroupList__title">
                 Группы
             </h2>
-            <a class="GroupList__button">
+            <a href="{{ route('create-group') }}" class="GroupList__button">
                 Добавить группу
             </a>
         </div>
         <div class="GroupList__scrollable">
             <ul class="GroupList__list">
-            
+
                 {% for item in scope.items %}
                     {% set item = {
                         name: item.name ?? '',
                     } %}
-                    
+
                     <li class="GroupList__item">
                         <p class="GroupList__itemName">
                             {{ item.name }}
                         </p>
-                        <a class="GroupList__itemButton">
+                        <a href="{{ route('create-disciplines') }}" class="GroupList__itemButton">
                             Добавить дисциплину
                         </a>
                     </li>
-                {% endfor %}  
-                
+                {% endfor %}
+
             </ul>
         </div>
     </div>

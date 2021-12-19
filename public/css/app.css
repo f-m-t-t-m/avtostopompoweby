@@ -324,7 +324,7 @@ td {
   /* #3B63AB но на ~25% темнее */
 }
 
-.DisciplineTable {
+.SubjectTable {
   background-color: white;
   border-radius: 20px;
   margin: 0 16px 16px;
@@ -333,21 +333,21 @@ td {
   flex-direction: column;
 }
 
-.DisciplineTable_header {
+.SubjectTable__header {
   margin-bottom: 16px;
 }
 
-.DisciplineTable_title {
+.SubjectTable__title {
   margin: 0;
   font-family: Arial;
   font-size: 38px;
   font-weight: bold;
 }
 
-.DisciplineTable_scrollable {
+.SubjectTable__scrollable {
   overflow-y: scroll;
 }
 
-.DisciplineTable_table {
+.SubjectTable__table {
   width: 100%;
 }

@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'show'])->name('main_page');
 
+Route::get('/create-disciplines', function () {
+    return view('create-disciplines');
+})->name('create-disciplines');
+
+Route::get('/create-group', function () {
+    return view('create-group');
+})->name('create-group');
 
 Route::match(['get', 'post'], '/login', LoginController::class)->name('login');
 Route::match(['get', 'post'], '/register', RegisterController::class)->name('register');
