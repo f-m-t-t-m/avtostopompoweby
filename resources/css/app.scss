@@ -1,9 +1,31 @@
-@import "header.scss";
-@import "footer.scss";
-@import "layout.scss";
-@import "form.scss";
-@import "group-list.scss";
-@import "subject-table.scss";
-@import "discipline.scss";
-@import "study-section-post.scss";
-@import "comment.scss";
+//Variables
+$color-black: black;
+$color-white: white;
+$color-lightgray: #F0F0F0;
+$color-darkblue: #3B63AB;
+$color-lightblue: #6995D0;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+//Functions
+@function toRem($size) {
+    @return $size/16px * 1rem
+}
+
+@import "./uikit.scss";
+@import "./layout.scss";
+
+//Elements
+@import "./elements.scss";
+
+//Components
+@import "./components/header.scss";
+@import "./components/footer.scss";
+@import "./components/form.scss";
+@import "./components/group-list.scss";
+@import "./components/subject-table.scss";
+@import "./components/discipline.scss";
+@import "./components/study-section-post.scss";
+@import "./components/comment.scss";

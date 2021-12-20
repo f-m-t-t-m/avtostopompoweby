@@ -26,14 +26,14 @@
                     name: item.name ?? '',
                 } %}
                 
-                <a href="{{ item.url }}" class="Header__menuItem">
+                <a class="Header__menuItem LinkWhite" href="{{ item.url }}">
                     {{ item.name|raw }}
                 </a>
             {% endfor %}
             
         </div>
-        {% if (auth_check()) %}
-            <a class="Header__logoutButton" href="{{ route('logout') }}">
+        {% if (auth_check() or true) %}
+            <a class="Button Button--primary Header__logoutButton LinkWhite" href="{{ route('logout') }}">
                 Выйти из системы
             </a>
         {% endif %}

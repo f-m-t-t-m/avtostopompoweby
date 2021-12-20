@@ -1,0 +1,54 @@
+.GroupList {
+    background-color: white;
+    border-radius: 20px;
+    margin: 0 16px 16px;
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+    
+    &__header {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+    } 
+    
+    &__title {
+        margin: 0;
+        font-family: Arial;
+        font-size: 38px;
+        font-weight: bold;
+    } 
+    
+    &__button {
+        margin-left: auto;
+    }
+    
+    &__scrollable {
+        overflow-y: scroll;
+    } 
+    
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    } 
+    
+    &__item {
+        background-color: $color-lightblue;
+        margin-bottom: 2px;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+    }
+    
+    &__itemName {
+        margin: 0;
+        padding-left: 12px;
+        font-family: Arial;
+    }
+    
+    &__itemButton {
+        margin-left: auto;
+    }
+}

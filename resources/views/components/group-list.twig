@@ -10,7 +10,7 @@
             <h2 class="GroupList__title">
                 Группы
             </h2>
-            <a href="{{ route('create-group') }}" class="GroupList__button">
+            <a href="{{ route('create-group') }}" class="Button Button--primary GroupList__button">
                 Добавить группу
             </a>
         </div>
@@ -26,7 +26,7 @@
                         <p class="GroupList__itemName">
                             {{ item.name }}
                         </p>
-                        <a href="{{ route('create-disciplines') }}" class="GroupList__itemButton">
+                        <a class="Button Button--primary LinkWhite" href="{{ route('create-disciplines') }}" class="GroupList__itemButton">
                             Добавить дисциплину
                         </a>
                     </li>

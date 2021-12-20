@@ -1,0 +1,43 @@
+tr {
+    background-color: $color-lightblue;
+}
+tr:nth-child(1) {
+    background-color: $color-darkblue;
+}
+th {
+    padding: 8px 16px;
+    color: white;
+    font-family: Arial;
+    font-size: 16px;
+    text-align: left;
+}
+td {
+    padding: 8px 16px;
+    font-family: Arial;
+    font-size: 16px;
+}
+
+.LinkWhite {
+    color: white;
+    &:hover {
+        color: white;
+    }
+}
+
+.Button {
+    @extend .uk-button;
+    
+    &--primary {
+        @extend .uk-button-primary;
+    }
+    border: none;
+    border-radius: 4px;
+    font-family: Arial;
+    font-weight: bold;
+    &:hover {
+        background-color: darken($color-darkblue, 5%); /* #3B63AB но на ~10% темнее */  
+    }
+    &:active {
+        background-color: darken($color-darkblue, 15%); /* #3B63AB но на ~25% темнее */ 
+    }
+}

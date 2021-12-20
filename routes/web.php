@@ -43,6 +43,6 @@ Route::get('/test/home-teacher', function () {
     return view('home-teacher');
 });
 
-//Route::get('/test/home-head', function () {
-//    return view('home-head');
-//});
+Route::get('/test/home-head', function () {
+    return view('home-head');
+});

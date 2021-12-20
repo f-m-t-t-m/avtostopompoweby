@@ -1,0 +1,27 @@
+.SubjectTable {
+    background-color: white;
+    border-radius: 20px;
+    margin: 0 16px 16px;
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+    
+    &__header {
+        margin-bottom: 16px;
+    } 
+    
+    &__title {
+        margin: 0;
+        font-family: Arial;
+        font-size: 38px;
+        font-weight: bold;
+    } 
+    
+    &__scrollable {
+        overflow-y: scroll;
+    } 
+    
+    &__table {
+        width: 100%;
+    } 
+}

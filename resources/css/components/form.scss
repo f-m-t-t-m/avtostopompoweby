@@ -1,0 +1,48 @@
+.Form {
+    background-color: $color-lightblue;
+    border-radius: 20px;
+    padding: 38px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    
+    &__header {
+        margin-bottom: 16px;
+        text-align: center;
+        font-family: Arial;
+        font-size: 38px;
+        font-weight: bold;
+    }
+    
+    &__label {
+        font-family: Arial;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    &__field {
+        padding: 12px 20px;
+        margin-bottom: 8px;
+        border: 1px solid grey;
+        border-radius: 4px;
+        font-family: Arial;
+    }
+    
+    &__fileChooser::file-selector-button {
+        margin-top: 0px;
+        margin-bottom: 8px;
+    }
+    
+    &__button {
+        margin-top: 0px;
+        margin-bottom: 8px;
+    }
+    
+    &__hint {
+        text-align: center;
+        font-family: Arial;
+        a {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,76 @@
+// 1. Your custom variables and variable overwrites.
+$base-margin-vertical: 0;
+$base-heading-margin-top: 0;
+$base-list-padding-left: 0;
+$base-body-font-size: 100%;
+$base-em-color: inherit;
+
+$global-color: $color-black;
+$global-link-color: -webkit-link;
+$global-link-hover-color: -webkit-link;
+
+$base-body-line-height: 1.35;
+$base-h1-line-height: $base-body-line-height;
+$base-h2-line-height: $base-body-line-height;
+$base-h3-line-height: $base-body-line-height;
+$base-h4-line-height: $base-body-line-height;
+$base-h5-line-height: $base-body-line-height;
+$base-h6-line-height: $base-body-line-height;
+
+$container-max-width: 1264px;
+$container-small-max-width: 780px;
+$container-xsmall-max-width: 720px;
+
+$container-padding-horizontal-m: 88px;
+$container-padding-horizontal-s: 32px;
+$container-padding-horizontal: 16px;
+
+$button-primary-background: $color-darkblue;
+$button-primary-color: white;
+$button-primary-hover-background: darken($button-primary-background, 10%);
+$button-primary-hover-color: white;
+$button-primary-active-background: darken($button-primary-background, 25%);
+$button-primary-active-color: white;
+
+$global-font-family: Arial;
+
+// 2. Import default variables and available mixins.
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// 3. Your custom mixin overwrites.
+@mixin hook-base-link {
+}
+@mixin hook-button {
+    padding-x: 40px;
+    border-radius: 10px;
+    font-family: $global-font-family;
+    font-weight: $font-weight-medium;
+    font-size: toRem(14px);
+    line-height: 49px;
+    transition: background-color 0.25s ease-in-out;
+}
+@mixin vw-sm-up {
+    @media (min-width: 781px) {
+        @content;
+    }
+}
+@mixin vw-sm-down {
+    @media (max-width: 780px) {
+        @content;
+    }
+}
+
+@mixin vw-lg-up {
+    @media (min-width: 1265px) {
+        @content;
+    }
+}
+@mixin vw-lg-down {
+    @media (max-width: 1264px) {
+        @content;
+    }
+}
+
+// 4. Import UIkit.
+@import "uikit/src/scss/uikit-theme.scss";

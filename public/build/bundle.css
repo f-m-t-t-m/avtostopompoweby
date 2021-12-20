@@ -1,0 +1,353 @@
+@charset "UTF-8";
+.Header {
+  display: flex;
+  padding: 8px 16px;
+}
+
+.Header_logo {
+  color: white;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.Header_menu {
+  margin-left: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.Header_menuItem {
+  margin-right: 16px;
+  display: flex;
+  color: white;
+  font-family: Arial;
+}
+
+.Header_logoutButton {
+  background-color: #3B63AB;
+  margin-left: auto;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.Header_logoutButton:hover {
+  background-color: #3159A1;
+  /* #3B63AB но на ~10% темнее */
+}
+
+.Header_logoutButton:active {
+  background-color: #224A92;
+  /* #3B63AB но на ~25% темнее */
+}
+
+body {
+  margin: 0px;
+}
+
+.Layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Layout__header {
+  background-color: #6995D0;
+  padding: 5px 5px;
+}
+
+.Layout__main {
+  background-color: #F0F0F0;
+  flex: 1;
+  padding: 24px 0px;
+  display: flex;
+}
+
+.Layout__footer {
+  background-color: #3B63AB;
+  padding: 5px 5px;
+}
+
+.CenteredBlock {
+  margin: auto;
+}
+
+.MiddleBlock {
+  margin: 0 auto;
+  width: 1400px;
+}
+
+@media (max-width: 1200px) {
+  .DividerBlock {
+    width: 100%;
+  }
+}
+.DividerBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  width: 1400px;
+  height: 800px;
+}
+
+.DividerBlock > div {
+  overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .DividerBlock {
+    width: 100%;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+tr {
+  background-color: #6995D0;
+}
+
+tr:nth-child(1) {
+  background-color: #3B63AB;
+}
+
+th {
+  padding: 8px 16px;
+  color: white;
+  font-family: Arial;
+  font-size: 16px;
+  text-align: left;
+}
+
+td {
+  padding: 8px 16px;
+  font-family: Arial;
+  font-size: 16px;
+}
+
+.Form {
+  background-color: #6995D0;
+  border-radius: 20px;
+  padding: 38px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Form_header {
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.Form_label {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.Form_field {
+  padding: 12px 20px;
+  margin-bottom: 8px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  font-family: Arial;
+}
+
+.Form_fileChooser::-webkit-file-upload-button {
+  background-color: #3B63AB;
+  padding: 12px 20px;
+  margin-top: 0px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.Form_fileChooser::file-selector-button {
+  background-color: #3B63AB;
+  padding: 12px 20px;
+  margin-top: 0px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.Form_fileChooser::-webkit-file-upload-button:hover {
+  background-color: #3159A1;
+  /* #3B63AB но на ~10% темнее */
+}
+
+.Form_fileChooser::file-selector-button:hover {
+  background-color: #3159A1;
+  /* #3B63AB но на ~10% темнее */
+}
+
+.Form_fileChooser::-webkit-file-upload-button:active {
+  background-color: #224A92;
+  /* #3B63AB но на ~25% темнее */
+}
+
+.Form_fileChooser::file-selector-button:active {
+  background-color: #224A92;
+  /* #3B63AB но на ~25% темнее */
+}
+
+.Form_button {
+  background-color: #3B63AB;
+  padding: 12px 20px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.Form_button:hover {
+  background-color: #3159A1;
+  /* #3B63AB но на ~10% темнее */
+}
+
+.Form_button:active {
+  background-color: #224A92;
+  /* #3B63AB но на ~25% темнее */
+}
+
+.Form_hint {
+  text-align: center;
+  font-family: Arial;
+}
+
+.GroupList {
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 16px 16px;
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+}
+
+.GroupList_header {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.GroupList_title {
+  margin: 0;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.GroupList_button {
+  background-color: #3B63AB;
+  margin-left: auto;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.GroupList_button:hover {
+  background-color: #3159A1;
+  /* #3B63AB но на ~10% темнее */
+}
+
+.GroupList_button:active {
+  background-color: #224A92;
+  /* #3B63AB но на ~25% темнее */
+}
+
+.GroupList_scrollable {
+  overflow-y: scroll;
+}
+
+.GroupList_list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.GroupList_item {
+  background-color: #6995D0;
+  margin-bottom: 2px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.GroupList_itemName {
+  margin: 0;
+  padding-left: 12px;
+  font-family: Arial;
+}
+
+.GroupList_itemButton {
+  background-color: #3B63AB;
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.GroupList_itemButton:hover {
+  background-color: #3159A1;
+  /* #3B63AB но на ~10% темнее */
+}
+
+.GroupList_itemButton:active {
+  background-color: #224A92;
+  /* #3B63AB но на ~25% темнее */
+}
+
+.DisciplineTable {
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 16px 16px;
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+}
+
+.DisciplineTable_header {
+  margin-bottom: 16px;
+}
+
+.DisciplineTable_title {
+  margin: 0;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.DisciplineTable_scrollable {
+  overflow-y: scroll;
+}
+
+.DisciplineTable_table {
+  width: 100%;
+}
