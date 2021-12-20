@@ -88,6 +88,6 @@ class ApiAuthController extends Controller
             'token' => $token,
         ];
 
-        return response()->json($response);
+        return response()->json($response, 201);
     }
 }
