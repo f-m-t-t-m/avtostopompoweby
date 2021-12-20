@@ -9,7 +9,6 @@
     image: image ?? ''
 } %}
 
-
 {% macro content(scope) %}
         <div class=" Section__block">
             <div class="PostSection">
@@ -54,6 +53,8 @@
                     <form action="" class="PostSection__addComments">
                         <label for="comment" class="PostSection__addComments--label">Оставить комментарий</label>
                         <textarea class="PostSection__addComments--textarea"></textarea>
+                        <p class="PostSection__addFile"><input type="file" name="f">
+                            <input type="submit" value="Добавить"></p>
                         <button class="PostSection__button">
                             Поделиться
                         </button>
