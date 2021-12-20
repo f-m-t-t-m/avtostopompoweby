@@ -1,0 +1,67 @@
+{% import _self as macros %}
+
+{% set scope = scope ?? {} %}
+
+{% set item = {
+    name: name ?? '',
+    text: text ?? '',
+    date: date ?? '',
+    image: image ?? ''
+} %}
+
+
+{% macro content(scope) %}
+        <div class=" Section__block">
+            <div class="PostSection">
+                <div class="PostSection__header">
+                    <h2 class="PostSection__title">
+                        {{ scope.section.name }}
+                    </h2>
+                </div>
+                <div class="PostSection__main">
+                    <p class="PostSection__text">
+                        {{ scope.section.text }}
+                    </p>
+                </div>
+                <div class="PostSection__comments">
+                    <p class="PostSection__titleComment">Комментарии:</p>
+                    {% for comment in scope.comments %}
+                        <div class="Comment">
+                            <div class="Comment__avatar">
+                                <img src="{{ comment.image }}" alt="Аватарка">
+                            </div>
+                            <div class="Comment__header">
+                                <div class="Comment__header--name">
+                                    {{ comment.name }}
+                                </div>
+                                <div class="Comment__header--date">
+                                    {{ comment.date }}
+                                </div>
+                            </div>
+                            <div class="Comment__text">
+                                <p>{{ comment.text }}</p>
+                            </div>
+                            <div class="Comment__footer">
+                                <a href="/" class="Comment__button">
+                                    Ответить
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="PostSection__newComments">
+                    <form action="" class="PostSection__addComments">
+                        <label for="comment" class="PostSection__addComments--label">Оставить комментарий</label>
+                        <textarea class="PostSection__addComments--textarea"></textarea>
+                        <button class="PostSection__button">
+                            Отправить
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

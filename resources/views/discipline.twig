@@ -1,0 +1,36 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}Страница выбранной дисциплины{% endblock %}
+
+{% set scope = {
+    discipline: {
+        name: 'Дисциплина 1',
+        teacher: 'Преподаватель 1',
+        group: 'Группа 1',
+        information: 'Здесь находится описание дисциплины, если оно понадобится'
+    },
+    sections: [
+        {
+            name: 'Раздел 1',
+            information: 'информация о разделе 1',
+        },
+        {
+            name: 'Раздел 2',
+            information: 'информация о разделе 2',
+        },
+    ]
+} %}
+
+{% block main %}
+    <div class="MiddleBlock DividerBlock">
+        {% include 'components/discipline-info.twig' with {
+            name: scope.discipline.name,
+            teacher: scope.discipline.teacher,
+            group: scope.discipline.group,
+            information: scope.discipline.information,
+        } %}
+        {% include 'components/section-table.twig' with {
+            scope: scope.sections,
+        } %}
+    </div>
+{% endblock %}

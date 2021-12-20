@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'show'])->name('main_page');
 
+
 Route::get('/create-disciplines', function () {
     return view('create-disciplines');
 })->name('create-disciplines');
@@ -42,6 +43,6 @@ Route::get('/test/home-teacher', function () {
     return view('home-teacher');
 });
 
-Route::get('/test/home-head', function () {
-    return view('home-head');
-});
+//Route::get('/test/home-head', function () {
+//    return view('home-head');
+//});

@@ -351,3 +351,186 @@ td {
 .SubjectTable__table {
   width: 100%;
 }
+
+.Section {
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 16px 16px;
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+}
+.Section__header {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+.Section__title {
+  margin: 0;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+.Section__button {
+  background-color: #3B63AB;
+  margin-left: auto;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+}
+.Section__button:hover {
+  background-color: #3159A1;
+}
+.Section__button:active {
+  background-color: #224A92;
+}
+
+.Discipline__teacher {
+  font-size: 25px;
+  font-weight: bold;
+}
+.Discipline__teacher--name {
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 20px;
+}
+.Discipline__group {
+  font-size: 25px;
+}
+.Discipline__group p {
+  font-weight: bold;
+}
+.Discipline__group--name {
+  font-size: 20px;
+  font-weight: normal;
+}
+.Discipline__information p {
+  font-size: 25px;
+  font-weight: bold;
+}
+.Discipline__information--text {
+  font-family: "Times New Roman", sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.SectionStudy__link {
+  color: black;
+  cursor: pointer;
+}
+.SectionStudy__link:hover {
+  color: white;
+}
+
+.ContainerSection {
+  padding: 40px 40px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.Section__block {
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 16px 16px;
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.PostSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+.PostSection__header {
+  margin-bottom: 16px;
+}
+.PostSection__title {
+  margin: 0;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+.PostSection__main {
+  display: block;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 20px;
+  font-size: 20px;
+}
+.PostSection__comments {
+  width: 100%;
+  margin: 20px;
+}
+.PostSection__titleComment {
+  font-size: 20px;
+  font-style: italic;
+}
+.PostSection__newComments {
+  width: 100%;
+}
+.PostSection__addComments {
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.PostSection__addComments--label {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.PostSection__addComments--textarea {
+  max-width: 650px;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+.PostSection__button {
+  margin: 10px;
+}
+
+.Comment {
+  display: block;
+  width: 100%;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+  margin: 10px 0;
+}
+.Comment__avatar img {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: 10px;
+}
+.Comment__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 0 10px;
+  font-family: Arial, sans-serif;
+}
+.Comment__header--date {
+  color: gray;
+}
+.Comment__text {
+  font-size: 18px;
+  font-style: normal;
+}
+.Comment__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.Comment__button {
+  font-size: 16px;
+  color: #224A92;
+  text-decoration: underline;
+}

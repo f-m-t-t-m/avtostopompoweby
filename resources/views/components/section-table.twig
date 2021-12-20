@@ -1,0 +1,33 @@
+{% import _self as macros %}
+
+{% set scope = scope ?? [] %}
+
+
+{% macro content(scope) %}
+    <div class="SectionStudy">
+        <div class="Section SectionStudy">
+            <div class="Section__header">
+                <h2 class="Section__title">
+                    Разделы
+                </h2>
+                <a  class="Section__button">
+                    Добавить раздел
+                </a>
+            </div>
+            <table class="SectionStudy__table">
+                <tr>
+                    <th>Название раздела</th>
+                    <th>Описание</th>
+                </tr>
+                {% for item in scope %}
+                    <tr>
+                        <td><a href="/" class="SectionStudy__link">{{ item.name }}</a></td>
+                        <td>{{ item.information }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

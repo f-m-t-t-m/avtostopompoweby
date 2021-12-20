@@ -1,0 +1,30 @@
+{% extends 'layouts/base.twig' %}
+
+{% set scope = {
+    section: {
+        name: 'Раздел',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam assumenda cum debitis dolor facere fuga incidunt inventore ipsa maiores maxime, obcaecati odit omnis quibusdam, quo quos recusandae rerum sint suscipit tempora tenetur totam voluptas! Accusamus ad alias atque deleniti dicta dolore eaque excepturi facere illo illum incidunt ipsa iste laborum magni omnis quaerat quasi recusandae, saepe vel voluptates! Dolor ex fuga in quod. Alias aliquid animi, consequatur dolor doloribus fugit ipsam iure magni minima modi nesciunt nisi odio officiis omnis optio, pariatur praesentium quae quam quidem quisquam reiciendis rem sequi sint suscipit tempore unde veniam vitae? Laudantium, necessitatibus?',
+    },
+    comments: [
+        {
+            name: 'Admin',
+            text: 'lorem jfnjsdgjkfn njf jsdnfkjn ndsjk faj k',
+            date: '10.12.2021',
+            image: 'images/foto.jpg',
+        },
+        {
+            name: 'Ksuha',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
+            date: '15.12.2021',
+            image: 'images/foto.jpg',
+        }
+    ]
+} %}
+
+{% block main %}
+    <div class="ContainerSection">
+        {% include 'components/study-section-post.twig' with {
+            scope: scope,
+        } %}
+    </div>
+{% endblock %}

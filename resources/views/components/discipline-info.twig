@@ -1,0 +1,31 @@
+{% import _self as macros %}
+
+{% set scope = {
+    name: name ?? '',
+    teacher: teacher ?? '',
+    group: group ?? '',
+    information: information ?? '',
+} %}
+
+{% macro content(scope) %}
+    <div class="Section Discipline">
+        <div class="Section__header">
+            <h2 class="Section__title">
+                {{ scope.name }}
+            </h2>
+        </div>
+        <div class="Discipline__info">
+            <div class="Discipline__teacher">
+                <p>Преподаватель: <span class="Discipline__teacher--name">{{ scope.teacher }}</span></p>
+            </div>
+            <div class="Discipline__group">
+                <p>Группа: <span class="Discipline__group--name">{{ scope.group }}</span> </p>
+            </div>
+            <div class="Discipline__information">
+                <p>Описание дисциплины: <span class="Discipline__information--text" >{{ scope.information }}</span> </p>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

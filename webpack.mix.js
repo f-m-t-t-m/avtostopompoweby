@@ -17,5 +17,11 @@ mix
     .sass('resources/css/app.scss', 'css/app.css')
     .browserSync({
         proxy: 'localhost',
-        files: ['resources/**/*']
+        files: [
+            'resources/views/layouts/**/*',
+            'resources/views/components/**/*',
+            'resources/views/**/*',
+            'resources/css/**/*',
+            'resources/js/**/*',
+        ]
     });

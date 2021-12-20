@@ -1,0 +1,51 @@
+.Comment {
+  display: block;
+  width: 100%;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+  margin: 10px 0;
+
+  &__avatar {
+    img {
+      width: 40px;
+      height: 40px;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 0 10px;
+    font-family: Arial, sans-serif;
+
+    &__name {
+
+    }
+
+    &--date {
+      color: gray;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    font-style: normal;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    font-size: 16px;
+    color: #224A92;
+    text-decoration: underline;
+  }
+}
