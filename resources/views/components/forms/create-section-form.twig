@@ -1,0 +1,16 @@
+{% import _self as macros %}
+
+{% macro content() %}
+    <form action="" class="SectionForm">
+        <label for="" class="SectionFrom__title ">
+            Название раздела:
+        </label>
+        <input type="text" class="SectionForm__input" required>
+        <label for="" class="SectionForm__text">
+            Текст
+        </label>
+        <textarea name="" id="" class="SectionForm__textarea"></textarea>
+    </form>
+{% endmacro %}
+
+{{ macros.content() }}

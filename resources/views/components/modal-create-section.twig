@@ -1,0 +1,25 @@
+{% import _self as macros %}
+
+{% macro content() %}
+    <div id="create_section" data-uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Создать раздел</h2>
+            <button type="button" class="uk-modal-close-default" data-uk-close></button>
+            <form action="" class="SectionForm">
+                <label for="" class="SectionFrom__title ">
+                    Название раздела:
+                </label>
+                <input type="text" class="SectionForm__input" required>
+                <label for="" class="SectionForm__title">
+                    Текст:
+                </label>
+                <textarea name="" id="" class="SectionForm__textarea"></textarea>
+                <button class="Button Button--primary Form__button">
+                    Создать раздел
+                </button>
+            </form>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content() }}

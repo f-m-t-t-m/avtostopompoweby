@@ -4,6 +4,10 @@
 
 {% block main %}
     <div class="CenteredBlock">
-        {% include 'components/create-disciplines-form.twig' %}
+        {% include 'components/forms/create-disciplines-form.twig' %}
     </div>
 {% endblock %}
+
+{% block modals %}
+    {% include 'components/modal-create-section.twig' %}
+{% endblok %}

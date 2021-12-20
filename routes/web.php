@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomePageController::class, 'show'])->name('main_page');
+//Route::get('/', [HomePageController::class, 'show'])->name('main_page');
 
+Route::get('/', function () {
+    return view('discipline');
+})->name('main_page');
 
 Route::get('/create-disciplines', function () {
     return view('create-disciplines');

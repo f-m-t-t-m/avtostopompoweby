@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const { resolve } = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ mix
         proxy: 'localhost',
         files: ['resources/**/*']
     });
+
+mix.alias({'uikit-util': resolve(__dirname, 'node_modules/uikit/src/js/util')});

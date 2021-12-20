@@ -12277,9 +12277,6 @@ td {
   min-height: 150px;
   margin-bottom: 10px;
 }
-.PostSection__button {
-  margin: 10px;
-}
 
 .Comment {
   display: block;
@@ -12319,4 +12316,28 @@ td {
   font-size: 16px;
   color: #224A92;
   text-decoration: underline;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.SectionForm {
+  display: flex;
+  flex-direction: column;
+}
+.SectionForm__title {
+  margin-top: 10px;
+}
+.SectionForm__input {
+  margin-top: 5px;
+}
+.SectionForm__textarea {
+  margin-top: 5px;
+  min-height: 150px;
+  margin-bottom: 16px;
+}
+.SectionForm__button {
+  margin: 10px 0;
 }

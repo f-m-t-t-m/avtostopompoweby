@@ -1,0 +1,28 @@
+h2 {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.SectionForm {
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-top: 10px;
+  }
+
+  &__input {
+    margin-top: 5px;
+  }
+
+  &__textarea {
+    margin-top: 5px;
+    min-height: 150px;
+    margin-bottom: 16px;
+  }
+
+  &__button {
+    margin: 10px 0;
+  }
+}

@@ -2,7 +2,6 @@
 
 {% set scope = scope ?? [] %}
 
-
 {% macro content(scope) %}
     <div class="SectionStudy">
         <div class="Section SectionStudy">
@@ -10,9 +9,9 @@
                 <h2 class="Section__title">
                     Разделы
                 </h2>
-                <a  class="Section__button">
+                <button type="button" class="Section__button" data-uk-toggle="#create_section">
                     Добавить раздел
-                </a>
+                </button>
             </div>
             <table class="SectionStudy__table">
                 <tr>

@@ -1,2 +1,2 @@
 require('./bootstrap');
-import 'uikit';
+import './uikit';
