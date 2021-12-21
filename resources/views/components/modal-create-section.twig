@@ -5,21 +5,28 @@
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">Создать раздел</h2>
             <button type="button" class="uk-modal-close-default" data-uk-close></button>
-            <form action="" class="SectionForm">
+            <form method="POST" action="{{ route('store_section') }}" class="SectionForm">
+                {{ csrf_field() }}
+                <input id="discipline_id" type="hidden" name="discipline_id" value=""/>
                 <label for="" class="SectionFrom__title ">
                     Название раздела:
                 </label>
-                <input type="text" class="SectionForm__input" required>
+                <input type="text" class="SectionForm__input" name="name" required>
                 <label for="" class="SectionForm__title">
                     Текст:
                 </label>
-                <textarea name="" id="" class="SectionForm__textarea"></textarea>
-                <button class="Button Button--primary Form__button">
+                <textarea name="text" id="" class="SectionForm__textarea"></textarea>
+                <button class="Button Button--primary Form__button" type="submit">
                     Создать раздел
                 </button>
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        discipline_id = document.getElementById("discipline_id")
+        discipline_id.value = id;
+        console.log(discipline_id)
+    </script>
 {% endmacro %}
 
 {{ macros.content() }}

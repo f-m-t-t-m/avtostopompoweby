@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GroupResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

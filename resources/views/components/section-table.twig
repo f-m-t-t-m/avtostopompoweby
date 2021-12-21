@@ -9,9 +9,11 @@
                 <h2 class="Section__title">
                     Разделы
                 </h2>
-                <button type="button" class="Section__button" data-uk-toggle="#create_section">
-                    Добавить раздел
-                </button>
+                {% if (auth_user().role == 'teacher' or auth_user().role == 'head')%}
+                    <button type="button" class="Section__button" data-uk-toggle="#create_section">
+                        Добавить раздел
+                    </button>
+                {% endif %}
             </div>
             <table class="SectionStudy__table">
                 <tr>
@@ -20,8 +22,8 @@
                 </tr>
                 {% for item in scope %}
                     <tr>
-                        <td><a href="/" class="SectionStudy__link">{{ item.name }}</a></td>
-                        <td>{{ item.information }}</td>
+                        <td><a href="{{ route('discipline', [item.id]) }}" class="SectionStudy__link">{{ item.name }}</a></td>
+                        <td>{{ item.description }}</td>
                     </tr>
                 {% endfor %}
             </table>

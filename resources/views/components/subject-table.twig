@@ -25,13 +25,14 @@
                 {% for item in scope.subjects %}
                     {% set item = {
                         name: item.name ?? '',
+                        id: item.id ?? '',
                         group: scope.groups[count].short_name ?? '',
                         teacher: scope.teachers[count].name ~ ' ' ~ scope.teachers[count].surname?? '',
                     } %}
                     {% set count = count + 1 %}
                     <tr>
                         <td>
-                            <a href="{{ route('main_page') }}">{{ item.name }}</a>
+                            <a href="{{ route('discipline', [item.id]) }}">{{ item.name }}</a>
                         </td>
                         {% if scope.showGroup == true %}
                             <td>{{ item.group }}</td>

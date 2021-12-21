@@ -4,6 +4,8 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +18,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomePageController::class, 'show'])->name('main_page');
 
 
 Route::get('/create-disciplines', function () {
@@ -33,16 +33,11 @@ Route::match(['get', 'post'], '/register', RegisterController::class)->name('reg
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', LogoutController::class)->name('logout');
+    Route::get('/', [HomePageController::class, 'show'])->name('main_page');
+    Route::get('/discipline/{id}', [SubjectController::class, 'show'])->name('discipline');
+    Route::post('/sections/store', [SectionController::class, 'store'])->name('store_section');
 });
 
-Route::get('/test/home-student', function () {
-    return view('home-student');
-});
-
-Route::get('/test/home-teacher', function () {
-    return view('home-teacher');
-});
-
-Route::get('/test/home-head', function () {
-    return view('home-head');
+Route::get('/discipline_test', function () {
+   return view('discipline');
 });
