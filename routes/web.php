@@ -35,9 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', LogoutController::class)->name('logout');
     Route::get('/', [HomePageController::class, 'show'])->name('main_page');
     Route::get('/discipline/{id}', [SubjectController::class, 'show'])->name('discipline');
+    Route::get('/section/{id}', [SectionController::class, 'show'])->name('section');
     Route::post('/sections/store', [SectionController::class, 'store'])->name('store_section');
 });
 
-Route::get('/discipline_test', function () {
-   return view('discipline');
+Route::get('/section', function () {
+    return view('study-section');
 });

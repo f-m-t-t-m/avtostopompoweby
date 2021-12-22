@@ -2,13 +2,6 @@
 
 {% set scope = scope ?? {} %}
 
-{% set item = {
-    name: name ?? '',
-    text: text ?? '',
-    date: date ?? '',
-    image: image ?? ''
-} %}
-
 {% macro content(scope) %}
         <div class=" Section__block">
             <div class="PostSection">
@@ -24,17 +17,18 @@
                 </div>
                 <div class="PostSection__comments">
                     <p class="PostSection__titleComment">Комментарии:</p>
+                    {% set count = 0 %}
                     {% for comment in scope.comments %}
                         <div class="Comment">
                             <div class="Comment__avatar">
-                                <img src="{{ comment.image }}" alt="Аватарка">
+                                <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
                             </div>
                             <div class="Comment__header">
                                 <div class="Comment__header--name">
-                                    {{ comment.name }}
+                                    {{ scope.users[count].name ~ ' ' ~ scope.users[count].surname}}
                                 </div>
                                 <div class="Comment__header--date">
-                                    {{ comment.date }}
+                                    {{ comment.created_at }}
                                 </div>
                             </div>
                             <div class="Comment__text">
@@ -46,6 +40,7 @@
                                 </a>
                             </div>
                         </div>
+                        {% set count = count+1 %}
                     {% endfor %}
 
                 </div>

@@ -22,7 +22,7 @@
                 </tr>
                 {% for item in scope %}
                     <tr>
-                        <td><a href="{{ route('discipline', [item.id]) }}" class="SectionStudy__link">{{ item.name }}</a></td>
+                        <td><a href="{{ route('section', [item.id]) }}" class="SectionStudy__link">{{ item.name }}</a></td>
                         <td>{{ item.description }}</td>
                     </tr>
                 {% endfor %}
