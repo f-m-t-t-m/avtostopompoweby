@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Section;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -39,9 +40,25 @@ class SectionPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
-    {
-        //
+    public function create(User $user, Subject $subject) {
+        if ($user->role === 'teacher') {
+            $subjects = $user->subjects;
+        }
+        if ($user->role === 'head') {
+            $subjects = array();
+            $department_groups = $user->department->groups;
+            foreach ($department_groups as $group) {
+                foreach ($group->subjects as $subj) {
+                    $subjects[] = $subj;
+                }
+            }
+        }
+
+        foreach ($subjects as $subj) {
+            if ($subj == $subject) {
+                return true;
+            }
+        }
     }
 
     /**
