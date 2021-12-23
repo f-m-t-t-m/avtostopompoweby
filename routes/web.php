@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/discipline/{id}', [SubjectController::class, 'show'])->name('discipline');
     Route::get('/section/{id}', [SectionController::class, 'show'])->name('section');
     Route::post('/sections/store', [SectionController::class, 'store'])->name('store_section');
+    Route::post('comments/store', [CommentController::class, 'store'])->name('store_comment');
 });
 
 Route::get('/section', function () {

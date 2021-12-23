@@ -45,10 +45,12 @@
 
                 </div>
                 <div class="PostSection__newComments">
-                    <form action="" class="PostSection__addComments">
+                    <form method="POST" action="{{ route('store_comment') }}" class="PostSection__addComments" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input id="section_id" type="hidden" name="section_id" value="{{ scope.section.id }}"/>
                         <label for="comment" class="PostSection__addComments--label">Оставить комментарий</label>
-                        <textarea class="PostSection__addComments--textarea"></textarea>
-                        <p class="PostSection__addFile"><input type="file" name="f">
+                        <textarea name="text" class="PostSection__addComments--textarea"></textarea>
+                        <p class="PostSection__addFile"><input type="file" name="file" id="file">
                             <input type="submit" value="Добавить"></p>
                         <button class="PostSection__button">
                             Поделиться

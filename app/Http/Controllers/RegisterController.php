@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\View;
@@ -60,8 +61,9 @@ class RegisterController extends Controller
             $user->status = 1;
             if (isset($validated['image'])) {
                 $fileName = time().'_'.$request->image->getClientOriginalName();
-                $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public');
-                $user->avatar = '/storage/' . $filePath;
+                $filePath = $request->file('image')->storeAs('avatars/', $fileName, 's3');
+                Storage::disk('s3')->setVisibility('avatars/'.$fileName, 'public');
+                $user->avatar = Storage::disk('s3')->url('avatars/'.$fileName);
             }
             $user->save();
             if ($user->role === 'student') {
