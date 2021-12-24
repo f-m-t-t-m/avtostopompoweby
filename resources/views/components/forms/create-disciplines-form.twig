@@ -1,26 +1,25 @@
 {% import _self as macros %}
 
-{% set scope = [
-    "Преподователь 1",
-    "Преподователь 2",
-    "Преподователь 3",
-    "Преподователь 4",
-    "Преподователь 5",
-] %}
+{% set scope = {
+    teachers: teachers ?? [],
+    group: group ?? '',
+} %}
 
 {% macro content(scope) %}
-    <form method="post" action="{{ route('create-disciplines') }}">
+    <form method="post" action="{{ route('save_subject') }}">
+        {{ csrf_field() }}
         <div class="Form">
             <div class="Form__header">
                 <p>Создание дисциплины</p>
             </div>
+            <input id="group_id" type="hidden" name="group_id" value="{{ scope.group.id }}"/>
             <label for="name" class="Form__label">Название дисциплины:</label>
-            <input type="text" id="name_discipline" class="Form__field" required>
+            <input name="name" type="text" id="name" class="Form__field" required>
             <label for="teacher" class="Form__label">Преподаватель</label>
             <div class="Form__list--teacher">
                 <select name="teacher" id="teacher-select" class="List__teacher Form__field" required>
-                    {% for item in scope %}
-                        <option value="{{ item }}">{{ item }}</option>
+                    {% for item in scope.teachers %}
+                        <option value="{{ item.id }}">{{ item.name }} {{ item.surname }}</option>
                     {% endfor %}
                 </select>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Group;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -42,13 +43,28 @@ class SubjectPolicy
         }
     }
 
+    public function view_create_form(User $user) {
+        if ($user->role === 'head') {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user) {
+    public function create(User $user, Group $group) {
+        if ($user->role === 'head') {
+            $deparment = $user->department;
+            $groups = $deparment;
+            foreach ($groups as $g) {
+                if ($g == $group) {
+                    return true;
+                }
+            }
+        }
     }
 
     /**

@@ -1,13 +1,24 @@
 {% extends 'layouts/base.twig' %}
 
+{% set scope = {
+    teachers: teachers,
+    group: group,
+} %}
+
+
+
 {% block title %}Страница создание учебных дисциплин{% endblock %}
 
 {% block main %}
     <div class="CenteredBlock">
-        {% include 'components/forms/create-disciplines-form.twig' %}
+        {% include 'components/forms/create-disciplines-form.twig' with {
+            teachers: scope.teachers,
+            group: scope.group,
+        } %}
     </div>
 {% endblock %}
 
 {% block modals %}
     {% include 'components/modal-create-section.twig' %}
-{% endblok %}
+{% endblock %}
+

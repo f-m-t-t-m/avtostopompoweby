@@ -19,6 +19,7 @@
 
                 {% for item in scope.items %}
                     {% set item = {
+                        id: item.id ?? '',
                         name: item.name ?? '',
                     } %}
 
@@ -26,7 +27,7 @@
                         <p class="GroupList__itemName">
                             {{ item.name }}
                         </p>
-                        <a class="Button Button--primary LinkWhite" href="{{ route('create-disciplines') }}" class="GroupList__itemButton">
+                        <a class="Button Button--primary LinkWhite" href="{{ route('create-disciplines', [item.id]) }}" class="GroupList__itemButton"">
                             Добавить дисциплину
                         </a>
                     </li>

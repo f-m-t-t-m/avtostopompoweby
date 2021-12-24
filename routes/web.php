@@ -20,11 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/create-disciplines', function () {
-    return view('create-disciplines');
-})->name('create-disciplines');
-
 Route::get('/create-group', function () {
     return view('create-group');
 })->name('create-group');
@@ -39,8 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/section/{id}', [SectionController::class, 'show'])->name('section');
     Route::post('/sections/store', [SectionController::class, 'store'])->name('store_section');
     Route::post('comments/store', [CommentController::class, 'store'])->name('store_comment');
-});
 
-Route::get('/section', function () {
-    return view('study-section');
+    Route::get('/create_disciplines/{id}', [SubjectController::class, 'show_create_form'])->name('create-disciplines');
+    Route::post('/create_disciplines/save', [SubjectController::class, 'create_subject'])->name('save_subject');
 });
