@@ -3,10 +3,11 @@
 namespace App\Policies;
 
 use App\Models\Comment;
+use App\Models\Section;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CommentsPolicy
+class CommentPolicy
 {
     use HandlesAuthorization;
 
@@ -39,9 +40,29 @@ class CommentsPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
-    {
-        //
+    public function create(User $user, Section $section) {
+        $subject = $section->subject;
+        if ($user->role === 'student') {
+            $group = $user->student->group;
+            $subjects = $group->subjects;
+        }
+        if ($user->role === 'teacher') {
+            $subjects = $user->subjects;
+        }
+        if ($user->role === 'head') {
+            $subjects = array();
+            $department_groups = $user->department->groups;
+            foreach ($department_groups as $group) {
+                foreach ($group->subjects as $subj) {
+                    $subjects[] = $subj;
+                }
+            }
+        }
+        foreach ($subjects as $subj) {
+            if ($subj == $subject) {
+                return true;
+            }
+        }
     }
 
     /**
