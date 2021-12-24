@@ -1,19 +1,23 @@
 {% import _self as macros %}
 
-{% macro content() %}
-    <form method="post" action="{{ route('create-group') }}">
+{% set scope = {
+    department: department ?? '',
+} %}
+
+{% macro content(scope) %}
+    <form method="post" action="{{ route('save_group') }}">
+        {{ csrf_field() }}
         <div class="Form">
             <div class="From__header">
                 <p>Создание группы</p>
             </div>
+            <input id="department_id" type="hidden" name="department_id" value="{{ scope.department.id }}"/>
             <label for="full_name" class="Form__label">Название группы (полное):</label>
-            <input type="text" id="name_full_group" class="Form__field" required>
+            <input type="text" id="full_name" name="full_name" class="Form__field" required>
             <label for="reduction_name" class="Form__label">Название группы (сокращенное):</label>
-            <input type="text" id="reduction_name_group" class="Form__field" required>
+            <input type="text" id="short_name" name="short_name" class="Form__field" required>
             <label for="code" class="Form__label">Шифр направления:</label>
-            <input type="text" class="Form__field" required>
-            <label for="date_of_formation" class="Form__label">Дата формирования:</label>
-            <input type="date" class="Form__field" required>
+            <input type="text" class="Form__field" name="code" required>
             <button class="Button Button--primary Form__button" type="submit" id="add_group" name="submit">
                 Добавить группу
             </button>
@@ -21,4 +25,4 @@
     </form>
 {% endmacro %}
 
-{{ macros.content() }}
+{{ macros.content(scope) }}

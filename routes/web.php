@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -20,9 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/create-group', function () {
-    return view('create-group');
-})->name('create-group');
+Route::get('/create-group/{id}', [GroupController::class, 'show_create_form'])->name('create-group');
+Route::post('/create-group/save', [GroupController::class, 'create_group'])->name('save_group');
 
 Route::match(['get', 'post'], '/login', LoginController::class)->name('login');
 Route::match(['get', 'post'], '/register', RegisterController::class)->name('register');

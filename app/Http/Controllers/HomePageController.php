@@ -48,10 +48,12 @@ class HomePageController extends Controller
                     $groups[] = $subject->group;
                 }
             }
+            $id = $user->department->id;
             return view('home-head', ['subjects' => $subjects,
                                             'teachers' => $teachers,
                                             'groups' => $groups,
-                                            'department_groups' => $department_groups]);
+                                            'department_groups' => $department_groups,
+                                            'department_id' => $id]);
         }
     }
 }

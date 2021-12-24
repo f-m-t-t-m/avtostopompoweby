@@ -4,13 +4,15 @@
     department_groups: department_groups,
     subjects: subjects,
     teachers: teachers,
-    groups: groups
+    groups: groups,
+    department_id: department_id,
 } %}
 
 {% block main %}
     <div class="MiddleBlock DividerBlock">
         {% include 'components/group-list.twig' with{
             items: scope.department_groups,
+            id: scope.department_id,
         } %}
         {% include 'components/subject-table.twig' with{
             subjects: scope.subjects,

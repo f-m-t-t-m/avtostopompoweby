@@ -2,6 +2,7 @@
 
 {% set scope = {
     items: items ?? [],
+    id: id ?? '',
 } %}
 
 {% macro content(scope) %}
@@ -10,7 +11,7 @@
             <h2 class="GroupList__title">
                 Группы
             </h2>
-            <a href="{{ route('create-group') }}" class="Button Button--primary GroupList__button">
+            <a href="{{ route('create-group', [scope.id]) }}" class="Button Button--primary GroupList__button">
                 Добавить группу
             </a>
         </div>

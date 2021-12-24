@@ -22,6 +22,7 @@ class SubjectController extends Controller {
             'group' => $group,
             'sections' => $sections]);
     }
+
     public function show_create_form(int $id) {
         $teachers = User::query()->where('role', 'teacher')->get();
         $group = Group::query()->where('id', $id)->first();
