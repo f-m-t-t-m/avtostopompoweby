@@ -23,7 +23,8 @@ class CommentController extends Controller {
         $comment->section_id = (int)$request->section_id;
         if (isset($validated['file'])) {
             $fileName = time().'_'.$request->file->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('files/', $fileName, 's3');
+            $filePath = $request->file('file')->storeAs('files/', $fileName, 's3');
+            Storage::disk('s3')->setVisibility('files/'.$fileName, 'public');
             $comment->file = Storage::disk('s3')->url('files/'.$fileName);
         }
         $comment->save();
