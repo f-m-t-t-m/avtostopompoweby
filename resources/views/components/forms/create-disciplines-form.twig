@@ -14,7 +14,10 @@
             </div>
             <input id="group_id" type="hidden" name="group_id" value="{{ scope.group.id }}"/>
             <label for="name" class="Form__label">Название дисциплины:</label>
-            <input name="name" type="text" id="name" class="Form__field" required>
+            <input name="name" type="text" id="name" class="Form__field">
+            {% if errors.first('name') %}
+                <p>{{ errors.first('name') }}</p>
+            {% endif %}
             <label for="teacher" class="Form__label">Преподаватель</label>
             <div class="Form__list--teacher">
                 <select name="teacher" id="teacher-select" class="List__teacher Form__field" required>

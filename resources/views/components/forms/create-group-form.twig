@@ -13,11 +13,20 @@
             </div>
             <input id="department_id" type="hidden" name="department_id" value="{{ scope.department.id }}"/>
             <label for="full_name" class="Form__label">Название группы (полное):</label>
-            <input type="text" id="full_name" name="full_name" class="Form__field" required>
+            <input type="text" id="full_name" name="full_name" class="Form__field">
+            {% if errors.first('full_name') %}
+                <p>{{ errors.first('full_name') }}</p>
+            {% endif %}
             <label for="reduction_name" class="Form__label">Название группы (сокращенное):</label>
-            <input type="text" id="short_name" name="short_name" class="Form__field" required>
+            <input type="text" id="short_name" name="short_name" class="Form__field">
+            {% if errors.first('short_name') %}
+                <p>{{ errors.first('short_name') }}</p>
+            {% endif %}
             <label for="code" class="Form__label">Шифр направления:</label>
-            <input type="text" class="Form__field" name="code" required>
+            <input type="text" class="Form__field" name="code">
+            {% if errors.first('code') %}
+                <p>{{ errors.first('code') }}</p>
+            {% endif %}
             <button class="Button Button--primary Form__button" type="submit" id="add_group" name="submit">
                 Добавить группу
             </button>

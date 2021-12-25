@@ -7,16 +7,25 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller {
     public function store(Request $request) {
         $section = Section::query()->where('id', (int)$request->section_id)->first();
         $this->authorize('create', [Comment::class, $section]);
 
-        $validated = $request->validate([
+        $validator =  Validator::make($request->all(), [
            'text' => 'required',
-           'file' => 'nullable|mimes:pdf|max:5000'
+           'file' => 'nullable|mimes:pdf|max:5120'
         ]);
+
+        if ($validator->fails()) {
+            return redirect(url()->previous() .'#form')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $validated = $validator->validated();
         $comment = new Comment();
         $comment->text = $validated['text'];
         $comment->user_id = Auth::user()->id;

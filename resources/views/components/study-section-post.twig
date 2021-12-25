@@ -34,6 +34,9 @@
                             <div class="Comment__text">
                                 <p>{{ comment.text }}</p>
                             </div>
+                            {% if comment.file %}
+                                <a href="{{ comment.file }}" target="_blank"> это файл</a>
+                            {% endif %}
                             <div class="Comment__footer">
                                 <a href="/" class="Comment__button">
                                     Ответить
@@ -44,13 +47,20 @@
                     {% endfor %}
 
                 </div>
+                <a id="form"></a>
                 <div class="PostSection__newComments">
                     <form method="POST" action="{{ route('store_comment') }}" class="PostSection__addComments" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input id="section_id" type="hidden" name="section_id" value="{{ scope.section.id }}"/>
                         <label for="comment" class="PostSection__addComments--label">Оставить комментарий</label>
-                        <textarea name="text" class="PostSection__addComments--textarea"></textarea>
-                        <p class="PostSection__addFile"><input type="file" name="file" id="file">
+                        <textarea name="text" class="PostSection__addComments--textarea">{{ old('text') }}</textarea>
+                        {% if errors.first('text') %}
+                            <p>{{ errors.first('text') }}</p>
+                        {% endif %}
+                        <p class="PostSection__addFile"><input type="file" name="file" id="file" value="{{ old('file') }}">
+                        {% if errors.first('file') %}
+                            <p>{{ errors.first('file') }}</p>
+                        {% endif %}
                             <input type="submit" value="Добавить"></p>
                         <button class="PostSection__button">
                             Поделиться
