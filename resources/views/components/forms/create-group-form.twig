@@ -13,17 +13,17 @@
             </div>
             <input id="department_id" type="hidden" name="department_id" value="{{ scope.department.id }}"/>
             <label for="full_name" class="Form__label">Название группы (полное):</label>
-            <input type="text" id="full_name" name="full_name" class="Form__field">
+            <input type="text" id="full_name" name="full_name" class="Form__field" value="{{ old('full_name') }}">
             {% if errors.first('full_name') %}
                 <p>{{ errors.first('full_name') }}</p>
             {% endif %}
             <label for="reduction_name" class="Form__label">Название группы (сокращенное):</label>
-            <input type="text" id="short_name" name="short_name" class="Form__field">
+            <input type="text" id="short_name" name="short_name" class="Form__field" value="{{ old('short_name') }}">
             {% if errors.first('short_name') %}
                 <p>{{ errors.first('short_name') }}</p>
             {% endif %}
             <label for="code" class="Form__label">Шифр направления:</label>
-            <input type="text" class="Form__field" name="code">
+            <input type="text" class="Form__field" name="code" value="{{ old('code') }}">
             {% if errors.first('code') %}
                 <p>{{ errors.first('code') }}</p>
             {% endif %}

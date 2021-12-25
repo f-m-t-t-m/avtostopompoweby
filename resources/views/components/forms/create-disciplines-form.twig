@@ -14,7 +14,7 @@
             </div>
             <input id="group_id" type="hidden" name="group_id" value="{{ scope.group.id }}"/>
             <label for="name" class="Form__label">Название дисциплины:</label>
-            <input name="name" type="text" id="name" class="Form__field">
+            <input name="name" type="text" id="name" class="Form__field" value="{{ old('name') }}">
             {% if errors.first('name') %}
                 <p>{{ errors.first('name') }}</p>
             {% endif %}
@@ -22,7 +22,7 @@
             <div class="Form__list--teacher">
                 <select name="teacher" id="teacher-select" class="List__teacher Form__field" required>
                     {% for item in scope.teachers %}
-                        <option value="{{ item.id }}">{{ item.name }} {{ item.surname }}</option>
+                        <option value="{{ item.id }}" {{ old('teacher') == item.id  ? "selected" : ""}}>{{ item.name }} {{ item.surname }}</option>
                     {% endfor %}
                 </select>
             </div>
