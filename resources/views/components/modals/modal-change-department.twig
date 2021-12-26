@@ -1,0 +1,46 @@
+{% import _self as macros %}
+
+{% set scope = {
+    list: list ?? [],
+    fullName: 'Кафедра',
+    miniName: 'кафе',
+    boss: 'Преподаватель',
+} %}
+
+{% macro content(scope) %}
+    <div id="change-department" data-uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Изменение кафедры</h2>
+            <button type="button" class="uk-modal-close-default" data-uk-close></button>
+            <form method="POST" action="" class="SectionForm">
+                <label for="fullName" class="SectionFrom__title ">
+                    Полное название кафедры:
+                </label>
+                <input type="text" class="SectionForm__input" name="name" value="{{ scope.fullName }}" required>
+                <label for="miniName" class="SectionForm__title">
+                    Сокращённое название кафедры:
+                </label>
+                <input name="text" id="" class="SectionForm__input" value="{{ scope.miniName }}">
+                <label for="boss" class="SectionForm__title">
+                    Заведующий кафедры:
+                </label>
+                <select name="head_of_department" id="" class="SectionForm__select">
+                    <option selected>{{ scope.boss }}</option>
+                    {% for item in scope.list %}
+                        <option>{{ item }}</option>
+                    {% endfor %}
+                </select>
+                <div class="SectionForm__footer">
+                    <button class="Button Button--primary Form__button" type="submit">
+                        Изменить
+                    </button>
+                    <button class="Button Button--primary Form__button" type="submit">
+                        Удалить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

@@ -3922,13 +3922,13 @@ select.uk-form-width-xsmall {
   height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  background: transparent;
+  background: white;
   border: 1px solid #e5e5e5;
 }
 
 /* Focus */
 .uk-search-default .uk-search-input:focus {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #f2f2f2;
   border-color: #1e87f0;
 }
 
@@ -12227,6 +12227,9 @@ td {
   flex-direction: column;
   min-height: 100vh;
 }
+.Section__search {
+  position: center;
+}
 
 .PostSection {
   display: flex;
@@ -12349,4 +12352,9 @@ h2 {
 .SectionForm__select {
   margin-top: 8px;
   margin-bottom: 16px;
+}
+.SectionForm__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

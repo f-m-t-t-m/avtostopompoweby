@@ -14,6 +14,10 @@
     flex-direction: column;
     min-height: 100vh;
   }
+
+  &__search {
+    position: center;
+  }
 }
 
 .PostSection {

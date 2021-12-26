@@ -1,52 +1,65 @@
 {% extends 'layouts/base.twig' %}
 
-{% set scope = [
-    {
-        fullName: 'кафедра',
-        miniName: 'кафе',
-        boss: 'Преподаватель'
-    },
-    {
-        fullName: 'кафедра',
-        miniName: 'кафе',
-        boss: 'Преподаватель'
-    },
-    {
-        fullName: 'кафедра',
-        miniName: 'кафе',
-        boss: 'Преподаватель'
-    },
-    {
-        fullName: 'кафедра',
-        miniName: 'кафе',
-        boss: 'Преподаватель'
-    },
-    {
-        fullName: 'кафедра',
-        miniName: 'кафе',
-        boss: 'Преподаватель'
-    },
-] %}
-
-{% set list = [
-    'Заведующий кафедры 1',
-    'Заведующий кафедры 2',
-    'Заведующий кафедры 3',
-    'Заведующий кафедры 4',
-    'Заведующий кафедры 5',
-] %}
+{% set scope = {
+    items: [
+        {
+            fullName: 'кафедра',
+            miniName: 'кафе',
+            boss: 'Преподаватель'
+        },
+        {
+            fullName: 'кафедра',
+            miniName: 'кафе',
+            boss: 'Преподаватель'
+        },
+        {
+            fullName: 'кафедра',
+            miniName: 'кафе',
+            boss: 'Преподаватель'
+        },
+        {
+            fullName: 'кафедра',
+            miniName: 'кафе',
+            boss: 'Преподаватель'
+        },
+        {
+            fullName: 'кафедра',
+            miniName: 'кафе',
+            boss: 'Преподаватель'
+        },
+    ],
+    list: [
+        'Заведующий кафедры 1',
+        'Заведующий кафедры 2',
+        'Заведующий кафедры 3',
+        'Заведующий кафедры 4',
+        'Заведующий кафедры 5',
+    ]
+}  %}
 
 {% block main %}
     <div class="ContainerSection">
+        <div class="uk-margin Section__search">
+            <form class="uk-search uk-search-default">
+                <span class="uk-search-icon-flip" uk-search-icon></span>
+                <input class="uk-search-input" type="search" placeholder="Search...">
+            </form>
+        </div>
         {% include 'components/admin-table.twig' with {
-            scope: scope,
+            scope: scope.items,
         } %}
     </div>
 {% endblock %}
 
 {% block modals %}
     {% include 'components/modals/modal-create-department.twig' with {
-        list: list,
+        list: scope.list,
+    } %}
+{% endblock %}
+
+{% block modalWindow %}
+    {% include 'components/modals/modal-change-department.twig' with {
+        list: scope.list,
     } %}
 {% endblock %}
 

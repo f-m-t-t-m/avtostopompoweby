@@ -29,4 +29,11 @@ h2 {
     margin-top: 8px;
     margin-bottom: 16px;
   }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
+
