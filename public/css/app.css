@@ -12346,3 +12346,7 @@ h2 {
 .SectionForm__button {
   margin: 10px 0;
 }
+.SectionForm__select {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}

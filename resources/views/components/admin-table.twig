@@ -1,0 +1,38 @@
+{% import _self as macros %}
+
+{% set scope = scope ?? [] %}
+
+{% macro content(scope) %}
+    <div class="Section">
+        <div class="Section__header">
+            <h2 class="Section__title">
+                Кафедры
+            </h2>
+            <button type="button" class="Section__button" data-uk-toggle="#create_department">
+                Создать кафедру
+            </button>
+        </div>
+        <table class="SectionStudy__table">
+            <tr>
+                <td>Полное название кафедры</td>
+                <td>Сокращённое название кафедры</td>
+                <td>Заведующий кафедры</td>
+                <td>Редактирование</td>
+            </tr>
+            {% for item in scope %}
+                <tr>
+                    <td>{{ item.fullName }}</td>
+                    <td>{{ item.miniName }}</td>
+                    <td>{{ item.boss }}</td>
+                    <td>
+                        <button type="button" class="Button Button--primary">
+                            Изменить
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

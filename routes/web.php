@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/create-group/{id}', [GroupController::class, 'show_create_form'])->name('create-group');
 Route::post('/create-group/save', [GroupController::class, 'create_group'])->name('save_group');
 
@@ -38,3 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/create_disciplines/{id}', [SubjectController::class, 'show_create_form'])->name('create-disciplines');
     Route::post('/create_disciplines/save', [SubjectController::class, 'create_subject'])->name('save_subject');
 });
+
+// rout от Ксюхи
+Route::get('/home-admin', function () {
+    return view('home-admin');
+})->name('home-admin');

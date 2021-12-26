@@ -1,6 +1,52 @@
 {% extends 'layouts/base.twig' %}
 
+{% set scope = [
+    {
+        fullName: 'кафедра',
+        miniName: 'кафе',
+        boss: 'Преподаватель'
+    },
+    {
+        fullName: 'кафедра',
+        miniName: 'кафе',
+        boss: 'Преподаватель'
+    },
+    {
+        fullName: 'кафедра',
+        miniName: 'кафе',
+        boss: 'Преподаватель'
+    },
+    {
+        fullName: 'кафедра',
+        miniName: 'кафе',
+        boss: 'Преподаватель'
+    },
+    {
+        fullName: 'кафедра',
+        miniName: 'кафе',
+        boss: 'Преподаватель'
+    },
+] %}
+
+{% set list = [
+    'Заведующий кафедры 1',
+    'Заведующий кафедры 2',
+    'Заведующий кафедры 3',
+    'Заведующий кафедры 4',
+    'Заведующий кафедры 5',
+] %}
+
 {% block main %}
-    
+    <div class="ContainerSection">
+        {% include 'components/admin-table.twig' with {
+            scope: scope,
+        } %}
+    </div>
+{% endblock %}
+
+{% block modals %}
+    {% include 'components/modals/modal-create-department.twig' with {
+        list: list,
+    } %}
 {% endblock %}
 

@@ -1,0 +1,35 @@
+{% import _self as macros %}
+
+{% set list = list ?? [] %}
+
+{% macro content(list) %}
+    <div id="create_department" data-uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Создать кафедру</h2>
+            <button type="button" class="uk-modal-close-default" data-uk-close></button>
+            <form method="POST" action="" class="SectionForm">
+                <label for="fullName" class="SectionFrom__title ">
+                    Полное название кафедры:
+                </label>
+                <input type="text" class="SectionForm__input" name="name" required>
+                <label for="miniName" class="SectionForm__title">
+                    Сокращённое название кафедры:
+                </label>
+                <input name="text" id="" class="SectionForm__input">
+                <label for="boss" class="SectionForm__title">
+                    Заведующий кафедры:
+                </label>
+                <select name="head_of_department" id="" class="SectionForm__select">
+                    {% for item in list %}
+                        <option>{{ item }}</option>
+                    {% endfor %}
+                </select>
+                <button class="Button Button--primary Form__button" type="submit">
+                    Создать
+                </button>
+            </form>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(list) }}

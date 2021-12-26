@@ -4,7 +4,6 @@ h2 {
 }
 
 .SectionForm {
-
   display: flex;
   flex-direction: column;
 
@@ -24,5 +23,10 @@ h2 {
 
   &__button {
     margin: 10px 0;
+  }
+
+  &__select {
+    margin-top: 8px;
+    margin-bottom: 16px;
   }
 }
