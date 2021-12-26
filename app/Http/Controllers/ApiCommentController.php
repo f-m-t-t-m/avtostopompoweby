@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CommentResource;
+use App\Models\Comment;
+use App\Models\Section;
+use App\Models\Subject;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ApiCommentController extends Controller
@@ -11,9 +16,10 @@ class ApiCommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Subject $subject, Section $section) : JsonResponse
     {
-        //
+        $comments = $section->comments;
+        return response()->json(CommentResource::collection($comments),200);
     }
 
     /**
@@ -33,9 +39,9 @@ class ApiCommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject, Section $section, Comment $comment) : JsonResponse
     {
-        //
+        return response()->json(new CommentResource($comment), 200);
     }
 
     /**

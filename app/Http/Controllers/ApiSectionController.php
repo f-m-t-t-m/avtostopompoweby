@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SectionResource;
+use App\Models\Section;
+use App\Models\Subject;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ApiSectionController extends Controller
@@ -11,9 +15,10 @@ class ApiSectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Subject $subject) : JsonResponse
     {
-        //
+        $sections = $subject->sections;
+        return response()->json(SectionResource::collection($sections), 200);
     }
 
     /**
@@ -33,9 +38,9 @@ class ApiSectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject, Section $section) : JsonResponse
     {
-        //
+        return response()->json(new SectionResource($section), 200);
     }
 
     /**

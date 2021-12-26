@@ -23,18 +23,19 @@ Route::post('/login', [ApiAuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [ApiAuthController::class, 'logout']);
-});
 
-Route::apiResource('subjects', ApiSubjectController::class)
-    ->scoped([
-        'subject' => 'id'
-    ])
-    ->missing(function () {
-        return response()->json(['message' => 'Subject not found'], 404);
-    });
+    Route::apiResource('subjects', ApiSubjectController::class)
+        ->scoped([
+            'subject' => 'id'
+        ])
+        ->missing(function () {
+            return response()->json(['message' => 'Subject not found'], 404);
+        });
+});
 
 Route::apiResource('subjects.sections', ApiSectionController::class)
     ->scoped([
+        'subject' => 'id',
         'section' => 'id'
     ])
     ->missing(function () {
@@ -43,6 +44,8 @@ Route::apiResource('subjects.sections', ApiSectionController::class)
 
 Route::apiResource('subjects.sections.comments', ApiCommentController::class)
     ->scoped([
+        'subject' => 'id',
+        'section' => 'id',
         'comment' => 'id'
     ])
     ->missing(function () {

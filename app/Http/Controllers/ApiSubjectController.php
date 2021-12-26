@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SubjectResource;
+use App\Models\Subject;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiSubjectController extends Controller
 {
@@ -11,9 +15,18 @@ class ApiSubjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() : JsonResponse {
+        $user = Auth::user();
+        if ($user->role === 'teacher') {
+            $subjects = $user->subjects;
+            return response()->json(SubjectResource::collection($subjects), 200);
+        }
+
+        if ($user->role === 'student') {
+            $subjects = $user->student->group->subjects;
+            return response()->json(SubjectResource::collection($subjects), 200);
+        }
+        return response()->json(['message' => 'no subjects for you'], 404);
     }
 
     /**
@@ -33,9 +46,9 @@ class ApiSubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject) : JsonResponse
     {
-        //
+        return response()->json(new SubjectResource($subject));
     }
 
     /**

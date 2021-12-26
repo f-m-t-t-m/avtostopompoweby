@@ -15,6 +15,7 @@ class SubjectResource extends JsonResource
     public function toArray($request) : array
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'teacher' => new UserResource($this->user),
             'sections' => SectionResource::collection($this->sections),
