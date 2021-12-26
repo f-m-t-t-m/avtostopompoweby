@@ -45,3 +45,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/home-admin', function () {
     return view('home-admin');
 })->name('home-admin');
+Route::get('/confirm-student-registration', function () {
+    return view('confirm-student-registration');
+})->name('confirm-student-registration');

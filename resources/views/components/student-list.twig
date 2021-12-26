@@ -1,0 +1,49 @@
+{% import _self as macros %}
+
+{% set scope = {
+    items: items ?? [],
+} %}
+
+{% macro content(scope) %}
+    <div class="StudentList">
+        <div class="StudentList__header">
+            <h2 class="StudentList__title">
+                Студенты ожидающие подтверждения
+            </h2>
+        </div>
+        <div class="StudentList__scrollable">
+            <ul class="StudentList__list">
+
+                {% for item in scope.items %}
+                    {% set item = {
+                        name: item.name ?? '',
+                        surname: item.surname ?? '',
+                        group: item.group ?? '',
+                        email: item.email ?? '',
+                        image: item.image ?? '',
+                    } %}
+
+                    <li class="StudentList__item">
+                        <img class="StudentList__itemImage" src="{{ item.image }}" alt="Фото">
+                        
+                        <p class="StudentList__itemName">
+                            {{ item.surname }} {{ item.name }}
+                        </p>
+                        <p class="StudentList__itemEmail">
+                            {{ item.email }}
+                        </p>
+                        <p class="StudentList__itemGroup">
+                            {{ item.group }}
+                        </p>
+                        <a class="Button Button--primary LinkWhite StudentList__itemButton">
+                            Подтвердить
+                        </a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}
