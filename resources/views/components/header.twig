@@ -4,40 +4,77 @@
     menu: [
         {
             url: '/',
-            name: 'Группы и<br>дисциплины',
+            name: 'Группы и дисциплины',
         },
         {
             url: '/',
-            name: 'Регистрация<br>студентов',
+            name: 'Регистрация студентов',
         },
     ],
 } %}
+
+{% macro logoutButton() %}
+    <a class="Button Button--primary LinkWhite" href="{{ route('logout') }}">
+        Выйти из системы
+    </a>
+{% endmacro %}
+
+{% macro offCanvasButton() %}
+    <button type="button" class="Button Button--primary Button--offCanvasButton" uk-toggle="target: #offcanvas">
+        <img
+            class="OffCanvasButton__icon"
+            src="{{ '/images/offCanvasButton.png' }}"
+            alt="" 
+            width="24" 
+            height="14"
+        >
+    </button>
+{% endmacro %}
+
+{% macro offCanvas(scope) %}
+    <div id="offcanvas" class="OffCanvas" uk-offcanvas="overlay: true; flip: true">     
+        <div class="OffCanvas__content uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            
+            <div class="OffCanvas__menu">
+                {% include 'components/site-nav.twig' with {
+                    items: scope.menu,
+                    vertical: true,
+                } %}
+            </div>
+        
+            <div class="OffCanvas__logoutButton">
+                {{ macros.logoutButton }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
 
 {% macro content(scope) %}
     <div class="Header">
         <div class="Header__logo">
             Логотип
         </div>
-        <div class="Header__menu">
         
-            {% for item in scope.menu %}
-                {% set item = {
-                    url: item.url ?? '',
-                    name: item.name ?? '',
-                } %}
-                
-                <a class="Header__menuItem LinkWhite" href="{{ item.url }}">
-                    {{ item.name|raw }}
-                </a>
-            {% endfor %}
-            
-        </div>
         {% if (auth_check() or true) %}
-            <a class="Button Button--primary Header__logoutButton LinkWhite" href="{{ route('logout') }}">
-                Выйти из системы
-            </a>
+            <div class="Header__menu">
+                {% include 'components/site-nav.twig' with {
+                    items: scope.menu,
+                    vertical: false,
+                } %}
+            </div>
+            
+            <div class="Header__logoutButton">
+                {{ macros.logoutButton }}
+            </div>
+        
+            <div class="Header__offCanvasButton">
+                {{ macros.offCanvasButton }}
+            </div>
         {% endif %}
     </div>
+
+    {{ macros.offCanvas(scope) }}
 {% endmacro %}
 
 {{ macros.content(scope) }}

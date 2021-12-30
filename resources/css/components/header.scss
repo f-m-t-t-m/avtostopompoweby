@@ -4,6 +4,7 @@
     padding: 8px 16px;
     
     &__logo {
+        margin-right: 36px;
         color: white;
         font-family: Arial;
         font-size: 38px;
@@ -11,19 +12,47 @@
     }
     
     &__menu {
-        margin-left: 36px;
         display: flex;
         align-items: center;
-    }
-    
-    &__menuItem {
-        margin-right: 16px;
-        display: flex;
-        color: white;
-        font-family: Arial;
+        
+        @include vw-sm-down {  
+            display: none;
+        }    
     }
     
     &__logoutButton {
         margin-left: auto;
+        
+        @include vw-sm-down {  
+            display: none;
+        }    
+    }
+    
+    &__offCanvasButton {    
+        margin-left: auto;
+        
+        @include vw-sm-up {
+            display: none;
+        }    
+        @include vw-sm-down {  
+            img {
+                display: block;
+            }
+            button {
+                padding: 15px;
+            }
+        }    
+    }
+}
+.OffCanvas {
+    &__content {    
+        display: flex;
+        flex-flow: column;
+        padding: 105px 21px 54px;
+        background-color: $color-darkblue;
+    }
+    
+    &__logoutButton {
+        margin-top: auto;
     }
 }

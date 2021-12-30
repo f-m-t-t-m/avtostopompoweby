@@ -1,0 +1,25 @@
+{% import _self as macros %}
+
+{% set scope = {
+    items: items ?? [],
+    vertical: vertical ?? false,
+} %}
+
+{% macro content(scope) %}
+    <ul class="SiteNav {{ scope.vertical ? "SiteNav--vertical" }}">
+        {% for item in scope.items %}
+            {% set item = {
+                url: item.url ?? '',
+                name: item.name ?? '',
+            } %}
+            
+            <li class="SiteNav__listItem {{ scope.vertical ? "SiteNav__listItem--vertical" }}">
+                <a href="{{ item.url }}" class="SiteNav__item">
+                    {{ item.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{{ macros.content(scope) }}
