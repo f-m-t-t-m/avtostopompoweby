@@ -23,12 +23,5 @@
     }
     &__item {
         line-height: 1.2;
-        color: $color-white;
-        
-        &hover,
-        &focus,
-        &:active {
-            color: $color-black;
-        }
     }
 }
