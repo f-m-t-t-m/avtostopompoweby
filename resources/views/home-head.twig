@@ -10,17 +10,21 @@
 
 {% block main %}
     <div class="MiddleBlock DividerBlock">
-        {% include 'components/group-list.twig' with{
-            items: scope.department_groups,
-            id: scope.department_id,
-        } %}
-        {% include 'components/subject-table.twig' with{
-            subjects: scope.subjects,
-            teachers: scope.teachers,
-            groups: scope.groups,
-            showGroup: true,
-            showTeacher: true,
-        } %}
+        <div class="ContentContainer">
+            {% include 'components/group-list.twig' with{
+                items: scope.department_groups,
+                id: scope.department_id,
+            } %}
+        </div>
+        <div class="ContentContainer">
+            {% include 'components/subject-table.twig' with{
+                subjects: scope.subjects,
+                teachers: scope.teachers,
+                groups: scope.groups,
+                showGroup: true,
+                showTeacher: true,
+            } %}
+        </div>
     </div>
 {% endblock %}
 

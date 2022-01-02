@@ -1,8 +1,4 @@
 .GroupList {
-    background-color: white;
-    border-radius: 20px;
-    margin: 0 16px 16px;
-    padding: 38px;
     display: flex;
     flex-direction: column;
     
@@ -17,6 +13,10 @@
         font-family: Arial;
         font-size: 38px;
         font-weight: bold;
+    
+        @include vw-sm-down {
+            font-size: 28px;
+        }
     } 
     
     &__button {

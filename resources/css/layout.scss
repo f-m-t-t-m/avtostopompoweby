@@ -25,13 +25,44 @@ body {
     }
 }
 
+.FormContainer {
+    background-color: $color-lightblue;
+    border-radius: 20px;
+    padding: 38px;
+    
+    @include vw-sm-down {
+        border-radius: 0;
+    }
+}
+
+.ContentContainer {
+    margin: 0 16px 16px;
+    background-color: $color-white;
+    border-radius: 20px;
+    padding: 38px;
+    
+    @include vw-sm-down {
+        border-radius: 0;
+        margin: 0 0 16px;
+        padding: 16px;
+    }
+}
+
 .CenteredBlock {
     margin: auto;
+    
+    @include vw-sm-down {
+        width: 100%;
+    }
 }
 
 .MiddleBlock {
     margin: 0 auto;
     width: 1400px;
+    
+    @include vw-sm-down {
+        width: 100%;
+    }
 }
 
 .DividerBlock {

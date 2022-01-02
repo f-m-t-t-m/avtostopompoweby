@@ -1,8 +1,10 @@
 {% extends 'layouts/base.twig' %}
 
 {% block main %}
-    {% include 'components/forms/register-form.twig' with {
-        'groups': groups,
-    } %}
+    <div class="CenteredBlock FormContainer">
+        {% include 'components/forms/register-form.twig' with {
+            'groups': groups,
+        } %}
+    </div>
 {% endblock %}
 

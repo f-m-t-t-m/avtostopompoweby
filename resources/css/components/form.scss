@@ -1,10 +1,13 @@
 .Form {
-    background-color: $color-lightblue;
-    border-radius: 20px;
-    padding: 38px;
     width: 340px;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    
+    @include vw-sm-down {
+        width: auto;
+        max-width: 300px;
+    }
     
     &__header {
         margin-bottom: 16px;
@@ -12,6 +15,10 @@
         font-family: Arial;
         font-size: 38px;
         font-weight: bold;
+    
+        @include vw-sm-down {
+            font-size: 28px;
+        }
     }
     
     &__label {

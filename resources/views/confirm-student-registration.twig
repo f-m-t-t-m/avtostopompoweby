@@ -49,9 +49,11 @@
 
 {% block main %}
     <div class="MiddleBlock">
-        {% include 'components/student-list.twig' with{
-            items: scope.students,
-        } %}
+        <div class="ContentContainer">
+            {% include 'components/student-list.twig' with{
+                items: scope.students,
+            } %}
+        </div>
     </div>
 {% endblock %}
 

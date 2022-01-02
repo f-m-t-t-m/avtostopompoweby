@@ -1,34 +1,32 @@
 {% import _self as macros %}
 
 {% macro content() %}
-    <div class="CenteredBlock">
-        <form method="POST" action="{{ route('login') }}">
-            {{ csrf_field() }}
-            <div class="Form">
-                <div class="Form__header">
-                    Вход в систему
-                </div>
-
-                <label class="Form__label" for="email">Email:</label>
-                <input class="Form__field" type="text" id="email" name="email" value="{{ old('email') }}">
-                {% if errors.first('email') %}
-                    <p>{{ errors.first('email') }}</p>
-                {% endif %}
-
-                <label class="Form__label" for="password">Пароль:</label>
-                <input class="Form__field" type="password" id="password" name="password">
-                {% if errors.first('password') %}
-                    <p>{{ errors.first('password') }}</p>
-                {% endif %}
-
-                {{ app.session.get('error') }}
-                <input class="Button Button--primary Form__button" type="submit" id="submit" name="submit" value="Войти">
-                <div class="Form__hint">
-                    Нет аккаунта? <a href="{{ route('register') }}">Зарегестрироваться</a>
-                </div>
+    <form method="POST" action="{{ route('login') }}">
+        {{ csrf_field() }}
+        <div class="Form">
+            <div class="Form__header">
+                Вход в систему
             </div>
-        </form>
-    </div>
+
+            <label class="Form__label" for="email">Email:</label>
+            <input class="Form__field" type="text" id="email" name="email" value="{{ old('email') }}">
+            {% if errors.first('email') %}
+                <p>{{ errors.first('email') }}</p>
+            {% endif %}
+
+            <label class="Form__label" for="password">Пароль:</label>
+            <input class="Form__field" type="password" id="password" name="password">
+            {% if errors.first('password') %}
+                <p>{{ errors.first('password') }}</p>
+            {% endif %}
+
+            {{ app.session.get('error') }}
+            <input class="Button Button--primary Form__button" type="submit" id="submit" name="submit" value="Войти">
+            <div class="Form__hint">
+                Нет аккаунта? <a href="{{ route('register') }}">Зарегестрироваться</a>
+            </div>
+        </div>
+    </form>
 {% endmacro %}
 
 {{ macros.content() }}

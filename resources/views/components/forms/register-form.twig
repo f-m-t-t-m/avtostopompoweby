@@ -5,70 +5,68 @@
 } %}
 
 {% macro content(scope) %}
-    <div class="CenteredBlock">
-        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="Form">
-                <div class="Form__header">
-                    Регистрация
-                </div>
-                    <label class="Form__label" for="name">Имя:</label>
-                    <input class="Form__field" type="text" id="name" name="name" value="{{ old('name') }}">
-                    {% if errors.first('name') %}
-                        <p>{{ errors.first('name') }}</p>
-                    {% endif %}
-
-                    <label class="Form__label" for="surname">Фамилия:</label>
-                    <input class="Form__field" type="text" id="surname" name="surname" value="{{ old('surname') }}">
-                    {% if errors.first('surname') %}
-                        <p>{{ errors.first('surname') }}</p>
-                    {% endif %}
-
-                    <label class="Form__label" for="role">Роль в системе:</label>
-                    <select class="Form__field" id="role" name="role">
-                        <option value="">--выберите группу--</option>
-                        <option value="student" {{ old('role') == 'student' ? 'selected="selected"' : ''}}>Студент</option>
-                        <option value="teacher" {{ old('role') == 'teacher' ? 'selected="selected"' : ''}}>Преподаватель</option>
-                        <option value="head" {{ old('role') == 'head' ? 'selected="selected"' : ''}}>Зав. кафедрой</option>
-                    </select>
-
-                    <label class="Form__label" for="group">Учебная группа:</label>
-                    <select class="Form__field" id="group" name="group">
-                            <option value="">--выберите группу--</option>
-                        {% for group in scope.groups %}
-                            <option value={{ group.id }}>{{ group.short_name }}</option>
-                        {% endfor %}
-                    </select>
-                    {% if errors.first('group') %}
-                        <p>{{ errors.first('group') }}</p>
-                    {% endif %}
-
-                    <label class="Form__label" for="email" >Email:</label>
-                    <input class="Form__field" type="text" id="email" name="email" value="{{ old('email') }}">
-                    {% if errors.first('email') %}
-                        <p>{{ errors.first('email') }}</p>
-                    {% endif %}
-
-                    <label class="Form__label" for="password" >Пароль:</label>
-                    <input class="Form__field" type="password" id="password" name="password">
-                    {% if errors.first('password') %}
-                        <p>{{ errors.first('password') }}</p>
-                    {% endif %}
-
-                    <label class="Form__label" for="image">Фото:</label>
-                    <input class="Form__fileChooser" type="file" id="image" name="image" accept="image/*" value="{{ old('image') }}">
-                    {% if errors.first('image') %}
-                        <p>{{ errors.first('image') }}</p>
-                    {% endif %}
-
-                    <input class="Button Button--primary Form__button" type="submit" id="submit" name="submit" value="Зарегистрироваться">
-
-                <div class="Form__hint">
-                    Уже есть аккаунт? <a href="login">Войти</a>
-                </div>
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="Form">
+            <div class="Form__header">
+                Регистрация
             </div>
-        </form>
-    </div>
+                <label class="Form__label" for="name">Имя:</label>
+                <input class="Form__field" type="text" id="name" name="name" value="{{ old('name') }}">
+                {% if errors.first('name') %}
+                    <p>{{ errors.first('name') }}</p>
+                {% endif %}
+
+                <label class="Form__label" for="surname">Фамилия:</label>
+                <input class="Form__field" type="text" id="surname" name="surname" value="{{ old('surname') }}">
+                {% if errors.first('surname') %}
+                    <p>{{ errors.first('surname') }}</p>
+                {% endif %}
+
+                <label class="Form__label" for="role">Роль в системе:</label>
+                <select class="Form__field" id="role" name="role">
+                    <option value="">--выберите группу--</option>
+                    <option value="student" {{ old('role') == 'student' ? 'selected="selected"' : ''}}>Студент</option>
+                    <option value="teacher" {{ old('role') == 'teacher' ? 'selected="selected"' : ''}}>Преподаватель</option>
+                    <option value="head" {{ old('role') == 'head' ? 'selected="selected"' : ''}}>Зав. кафедрой</option>
+                </select>
+
+                <label class="Form__label" for="group">Учебная группа:</label>
+                <select class="Form__field" id="group" name="group">
+                        <option value="">--выберите группу--</option>
+                    {% for group in scope.groups %}
+                        <option value={{ group.id }}>{{ group.short_name }}</option>
+                    {% endfor %}
+                </select>
+                {% if errors.first('group') %}
+                    <p>{{ errors.first('group') }}</p>
+                {% endif %}
+
+                <label class="Form__label" for="email" >Email:</label>
+                <input class="Form__field" type="text" id="email" name="email" value="{{ old('email') }}">
+                {% if errors.first('email') %}
+                    <p>{{ errors.first('email') }}</p>
+                {% endif %}
+
+                <label class="Form__label" for="password" >Пароль:</label>
+                <input class="Form__field" type="password" id="password" name="password">
+                {% if errors.first('password') %}
+                    <p>{{ errors.first('password') }}</p>
+                {% endif %}
+
+                <label class="Form__label" for="image">Фото:</label>
+                <input class="Form__fileChooser" type="file" id="image" name="image" accept="image/*" value="{{ old('image') }}">
+                {% if errors.first('image') %}
+                    <p>{{ errors.first('image') }}</p>
+                {% endif %}
+
+                <input class="Button Button--primary Form__button" type="submit" id="submit" name="submit" value="Зарегистрироваться">
+
+            <div class="Form__hint">
+                Уже есть аккаунт? <a href="login">Войти</a>
+            </div>
+        </div>
+    </form>
 {% endmacro %}
 
 {{ macros.content(scope) }}

@@ -8,13 +8,15 @@
 
 {% block main %}
     <div class="MiddleBlock">
-        {% include 'components/subject-table.twig' with{
-            subjects: scope.subjects,
-            teachers: scope.teachers,
-            groups: scope.groups,
-            showGroup: true,
-            showTeacher: false,
-        } %}
+        <div class="ContentContainer">
+            {% include 'components/subject-table.twig' with{
+                subjects: scope.subjects,
+                teachers: scope.teachers,
+                groups: scope.groups,
+                showGroup: true,
+                showTeacher: false,
+            } %}
+        </div>
     </div>
 {% endblock %}
 

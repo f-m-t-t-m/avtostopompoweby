@@ -40,4 +40,8 @@ td {
     &:active {
         background-color: darken($color-darkblue, 15%); /* #3B63AB но на ~25% темнее */ 
     }
+    
+    @include vw-sm-down {
+        padding: 0 8px;
+    }
 }
