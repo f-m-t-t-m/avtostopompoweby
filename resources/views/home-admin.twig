@@ -1,40 +1,9 @@
 {% extends 'layouts/base.twig' %}
 
 {% set scope = {
-    items: [
-        {
-            fullName: 'кафедра',
-            miniName: 'кафе',
-            boss: 'Преподаватель'
-        },
-        {
-            fullName: 'кафедра',
-            miniName: 'кафе',
-            boss: 'Преподаватель'
-        },
-        {
-            fullName: 'кафедра',
-            miniName: 'кафе',
-            boss: 'Преподаватель'
-        },
-        {
-            fullName: 'кафедра',
-            miniName: 'кафе',
-            boss: 'Преподаватель'
-        },
-        {
-            fullName: 'кафедра',
-            miniName: 'кафе',
-            boss: 'Преподаватель'
-        },
-    ],
-    list: [
-        'Заведующий кафедры 1',
-        'Заведующий кафедры 2',
-        'Заведующий кафедры 3',
-        'Заведующий кафедры 4',
-        'Заведующий кафедры 5',
-    ]
+    departments: departments,
+    heads: heads,
+    list: list,
 }  %}
 
 {% block main %}
@@ -46,7 +15,8 @@
             </form>
         </div>
         {% include 'components/admin-table.twig' with {
-            scope: scope.items,
+            departments: scope.departments,
+            heads: scope.heads,
         } %}
     </div>
 {% endblock %}

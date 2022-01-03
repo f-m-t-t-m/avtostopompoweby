@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ConfirmUserController;
+use App\Http\Controllers\DeparmentController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
@@ -21,11 +23,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-Route::get('/create-group/{id}', [GroupController::class, 'show_create_form'])->name('create-group');
-Route::post('/create-group/save', [GroupController::class, 'create_group'])->name('save_group');
-
 Route::match(['get', 'post'], '/login', LoginController::class)->name('login');
 Route::match(['get', 'post'], '/register', RegisterController::class)->name('register');
 
@@ -37,14 +34,19 @@ Route::middleware('auth')->group(function () {
     Route::post('/sections/store', [SectionController::class, 'store'])->name('store_section');
     Route::post('comments/store', [CommentController::class, 'store'])->name('store_comment');
 
+    Route::get('/create-group/{id}', [GroupController::class, 'show_create_form'])->name('create-group');
+    Route::post('/create-group/save', [GroupController::class, 'create_group'])->name('save_group');
+
     Route::get('/create_disciplines/{id}', [SubjectController::class, 'show_create_form'])->name('create-disciplines');
     Route::post('/create_disciplines/save', [SubjectController::class, 'create_subject'])->name('save_subject');
+
+    Route::get('/confirm-student-registration', [ConfirmUserController::class, 'show'])
+        ->name('confirm-student-registration');
+    Route::patch('/confirm_user/{id}', [ConfirmUserController::class, 'confirm'])
+        ->name('confirm_user');
 });
 
-// rout от Ксюхи
-Route::get('/home-admin', function () {
-    return view('home-admin');
-})->name('home-admin');
-Route::get('/confirm-student-registration', function () {
-    return view('confirm-student-registration');
-})->name('confirm-student-registration');
+Route::post('/create-department/save', [DeparmentController::class, 'create'])
+    ->name('save_department');
+Route::post('/change-department', [DeparmentController::class, 'change_department'])
+    ->name('change-department');

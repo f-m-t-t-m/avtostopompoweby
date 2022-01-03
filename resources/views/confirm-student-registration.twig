@@ -1,50 +1,8 @@
 {% extends 'layouts/base.twig' %}
 
-{% set scope = {    
-    students: [
-        {
-            name: "Иван",
-            surname: "Иванов",
-            group: "Группа 1",
-            email: "hmm@mail.ru",
-            image: "https://i.kym-cdn.com/photos/images/facebook/001/431/201/40f.png",
-        },
-        {
-            name: "Иван",
-            surname: "Иванов",
-            group: "Группа 1",
-            email: "hmm@mail.ru",
-            image: "https://i.kym-cdn.com/photos/images/facebook/001/431/201/40f.png",
-        },
-        {
-            name: "Иван",
-            surname: "Иванов",
-            group: "Группа 1",
-            email: "hmm@mail.ru",
-            image: "https://i.kym-cdn.com/photos/images/facebook/001/431/201/40f.png",
-        },
-        {
-            name: "Иван",
-            surname: "Иванов",
-            group: "Группа 1",
-            email: "hmm@mail.ru",
-            image: "https://i.kym-cdn.com/photos/images/facebook/001/431/201/40f.png",
-        },
-        {
-            name: "Иван",
-            surname: "Иванов",
-            group: "Группа 1",
-            email: "hmm@mail.ru",
-            image: "https://i.kym-cdn.com/photos/images/facebook/001/431/201/40f.png",
-        },
-        {
-            name: "Иван",
-            surname: "Иванов",
-            group: "Группа 1",
-            email: "hmm@mail.ru",
-            image: "https://i.kym-cdn.com/photos/images/facebook/001/431/201/40f.png",
-        },
-    ]
+{% set scope = {
+    students: users,
+    groups: groups,
 } %}
 
 {% block main %}
@@ -52,6 +10,7 @@
         <div class="ContentContainer">
             {% include 'components/student-list.twig' with{
                 items: scope.students,
+                groups: scope.groups,
             } %}
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 {% set scope = {
     items: items ?? [],
+    groups: groups ?? [],
 } %}
 
 {% macro content(scope) %}
@@ -13,19 +14,20 @@
         </div>
         <div class="StudentList__scrollable">
             <ul class="StudentList__list">
-
+                {% set count = 0 %}
                 {% for item in scope.items %}
                     {% set item = {
+                        id: item.id ?? '',
                         name: item.name ?? '',
                         surname: item.surname ?? '',
-                        group: item.group ?? '',
+                        group: scope.groups[count] ?? '',
                         email: item.email ?? '',
                         image: item.image ?? '',
                     } %}
 
                     <li class="StudentList__item">
                         <img class="StudentList__itemImage" src="{{ item.image }}" alt="Фото">
-                        
+
                         <p class="StudentList__itemName">
                             {{ item.surname }} {{ item.name }}
                         </p>
@@ -35,10 +37,13 @@
                         <p class="StudentList__itemGroup">
                             {{ item.group }}
                         </p>
-                        <a class="Button Button--primary LinkWhite StudentList__itemButton">
-                            Подтвердить
-                        </a>
+                        <form action = "{{ route('confirm_user', [item.id]) }}" method = "post">
+                            {{ csrf_field() }}
+                            {{ method_field('patch') }}
+                            <button class="Button Button--primary LinkWhite StudentList__itemButton">Подтвердить</button>
+                        </form>
                     </li>
+                    {% set count = count+1 %}
                 {% endfor %}
 
             </ul>

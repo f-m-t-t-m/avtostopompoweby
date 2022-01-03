@@ -2,9 +2,6 @@
 
 {% set scope = {
     list: list ?? [],
-    fullName: 'Кафедра',
-    miniName: 'кафе',
-    boss: 'Преподаватель',
 } %}
 
 {% macro content(scope) %}
@@ -12,29 +9,30 @@
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">Изменение кафедры</h2>
             <button type="button" class="uk-modal-close-default" data-uk-close></button>
-            <form method="POST" action="" class="SectionForm">
+            <form method="POST" action="{{ route('change-department') }}" class="SectionForm">
+                {{ csrf_field() }}
+                <input id="department_id" type="hidden" name="department_id" value=""/>
                 <label for="fullName" class="SectionFrom__title ">
                     Полное название кафедры:
                 </label>
-                <input type="text" class="SectionForm__input" name="name" value="{{ scope.fullName }}" required>
+                <input id="department_name" type="text" class="SectionForm__input" name="name" required>
                 <label for="miniName" class="SectionForm__title">
                     Сокращённое название кафедры:
                 </label>
-                <input name="text" id="" class="SectionForm__input" value="{{ scope.miniName }}">
+                <input id="department_short_name" name="text" id="" class="SectionForm__input" value="{{ scope.miniName }}">
                 <label for="boss" class="SectionForm__title">
                     Заведующий кафедры:
                 </label>
-                <select name="head_of_department" id="" class="SectionForm__select">
-                    <option selected>{{ scope.boss }}</option>
+                <select name="head_of_department" id="select" class="SectionForm__select">
                     {% for item in scope.list %}
-                        <option>{{ item }}</option>
+                        <option value="{{ item.id }}">{{ item.name}} {{ item.surname}}</option>
                     {% endfor %}
                 </select>
                 <div class="SectionForm__footer">
-                    <button class="Button Button--primary Form__button" type="submit">
+                    <button class="Button Button--primary Form__button" type="submit"  name="action" value="update">
                         Изменить
                     </button>
-                    <button class="Button Button--primary Form__button" type="submit">
+                    <button class="Button Button--primary Form__button" type="submit" name="action" value="delete">
                         Удалить
                     </button>
                 </div>

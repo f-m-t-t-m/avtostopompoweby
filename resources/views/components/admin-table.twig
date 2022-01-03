@@ -1,6 +1,9 @@
 {% import _self as macros %}
 
-{% set scope = scope ?? [] %}
+{% set scope = {
+    departments: departments ?? [],
+    heads: heads ?? [],
+} %}
 
 {% macro content(scope) %}
     <div class="Section">
@@ -19,20 +22,58 @@
                 <td>Заведующий кафедры</td>
                 <td>Редактирование</td>
             </tr>
-            {% for item in scope %}
+            {% set count = 0 %}
+            {% for item in scope.departments %}
                 <tr>
-                    <td>{{ item.fullName }}</td>
-                    <td>{{ item.miniName }}</td>
-                    <td>{{ item.boss }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.short_name }}</td>
+                    <td>{{ scope.heads[count].name }} {{ scope.heads[count].surname }}</td>
                     <td>
-                        <button type="button" class="Button Button--primary" data-uk-toggle="#change-department">
+                        <button name="change_btn" type="button" class="Button Button--primary" data-uk-toggle="#change-department"
+                                value="{{ item.id }}">
                             Изменить
                         </button>
                     </td>
                 </tr>
+                {% set count = count+1 %}
             {% endfor %}
         </table>
     </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            department_id = document.getElementById("department_id")
+            department_name = document.getElementById("department_name")
+            department_short_name = document.getElementById("department_short_name")
+            buttons = document.getElementsByName("change_btn")
+            select = document.getElementById("select")
+            departments = {{ scope.departments|json_encode|raw }}
+            heads = {{ scope.heads|json_encode|raw }}
+
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function () {
+                        del = document.getElementById("added");
+                        if (del != null) {
+                            del.remove()
+                        }
+                        department_id.value = buttons[i].value;
+                        for(let j = 0; j < departments.length; j++) {
+                            if (departments[j].id == department_id.value) {
+                                department_name.value = departments[j].name
+                                department_short_name.value = departments[j].short_name
+                                var opt = document.createElement('option');
+                                opt.id = "added"
+                                opt.value = heads[j].id
+                                opt.innerHTML = heads[j].name + " " + heads[j].surname
+                                opt.setAttribute('selected', true);
+                                select.appendChild(opt)
+                            }
+                        }
+                    }
+                )
+            }
+        }
+    </script>
 {% endmacro %}
 
 {{ macros.content(scope) }}

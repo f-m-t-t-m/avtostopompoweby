@@ -17,7 +17,7 @@ class DepartmentFactory extends Factory
         return [
             'name' => $this->faker->jobTitle(),
             'short_name' => $this->faker->citySuffix(),
-            'user_id' => $this->faker->randomElement(User::query()->where('role', 'department_head')->pluck('id'))
+            'user_id' => $this->faker->randomElement(User::query()->where('role', 'head')->pluck('id'))
         ];
     }
 }

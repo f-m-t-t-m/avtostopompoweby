@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\GroupResource;
+use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,6 +56,18 @@ class HomePageController extends Controller
                                             'groups' => $groups,
                                             'department_groups' => $department_groups,
                                             'department_id' => $id]);
+        }
+
+        if ($user->role === 'admin') {
+            $departments = Department::all();
+            $heads = [];
+            foreach ($departments as $department) {
+                $heads[] = $department->user;
+            }
+            $list = User::query()->where('role', 'head')->doesntHave('department')->get();
+            return view('home-admin', ['departments' => $departments,
+                                            'heads' => $heads,
+                                            'list' => $list]);
         }
     }
 }

@@ -7,7 +7,8 @@
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">Создать кафедру</h2>
             <button type="button" class="uk-modal-close-default" data-uk-close></button>
-            <form method="POST" action="" class="SectionForm">
+            <form method="POST" action="{{ route('save_department') }}" class="SectionForm">
+                {{ csrf_field() }}
                 <label for="fullName" class="SectionFrom__title ">
                     Полное название кафедры:
                 </label>
@@ -21,7 +22,7 @@
                 </label>
                 <select name="head_of_department" id="" class="SectionForm__select">
                     {% for item in list %}
-                        <option>{{ item }}</option>
+                        <option value={{ item.id }}>{{ item.name }} {{ item.surname }}</option>
                     {% endfor %}
                 </select>
                 <button class="Button Button--primary Form__button" type="submit">
