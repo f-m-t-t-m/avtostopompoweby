@@ -10,7 +10,7 @@
                     Разделы
                 </h2>
                 {% if (auth_user().role == 'teacher' or auth_user().role == 'head')%}
-                    <button type="button" class="Section__button" data-uk-toggle="#create_section">
+                    <button type="button" id="open_create_section" class="Section__button" data-uk-toggle="#create_section">
                         Добавить раздел
                     </button>
                 {% endif %}
@@ -29,6 +29,16 @@
             </table>
         </div>
     </div>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            {% if errors.any() %}
+                document.getElementById("section_name").value = "{{ old('name') }}"
+                document.getElementById("section_text").value = "{{ old('text') }}"
+                document.getElementById('open_create_section').click()
+            {% endif %}
+        }
+    </script>
 {% endmacro %}
 
 {{ macros.content(scope) }}

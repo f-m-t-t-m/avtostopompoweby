@@ -12,19 +12,30 @@
                 <label for="fullName" class="SectionFrom__title ">
                     Полное название кафедры:
                 </label>
-                <input type="text" class="SectionForm__input" name="name" required>
+                <input type="text" class="SectionForm__input" name="name" id="create_name">
+                {% if errors.first('name') %}
+                    <p>{{ errors.first('name') }}</p>
+                {% endif %}
                 <label for="miniName" class="SectionForm__title">
                     Сокращённое название кафедры:
                 </label>
-                <input name="text" id="" class="SectionForm__input">
+                <input name="text" class="SectionForm__input" id="create_short_name">
+                {% if errors.first('text') %}
+                    <p>{{ errors.first('text') }}</p>
+                {% endif %}
                 <label for="boss" class="SectionForm__title">
                     Заведующий кафедры:
                 </label>
-                <select name="head_of_department" id="" class="SectionForm__select">
+                <select name="head_of_department" class="SectionForm__select">
                     {% for item in list %}
-                        <option value={{ item.id }}>{{ item.name }} {{ item.surname }}</option>
+                        <option value="{{ item.id }}" id="create_head_{{ item.id }}">
+                            {{ item.name }} {{ item.surname }}
+                        </option>
                     {% endfor %}
                 </select>
+                {% if errors.first('head_of_department') %}
+                    <p>{{ errors.first('head_of_department') }}</p>
+                {% endif %}
                 <button class="Button Button--primary Form__button" type="submit">
                     Создать
                 </button>

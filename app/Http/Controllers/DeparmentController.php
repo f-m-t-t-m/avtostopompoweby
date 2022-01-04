@@ -4,14 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DeparmentController extends Controller {
     public function create(Request $request) {
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'text' => 'required',
             'head_of_department' => 'required'
         ]);
+
+        if ($validator->fails()) {
+            return redirect(url()->previous())
+                ->withErrors($validator)
+                ->with('create_error', true)
+                ->withInput();
+        }
+
+        $validated = $validator->validated();
         $department = new Department();
         $department->name = $validated['name'];
         $department->short_name = $validated['text'];
@@ -20,30 +30,32 @@ class DeparmentController extends Controller {
         return redirect()->route('main_page');
     }
 
-    public function delete(Request $request) {
-        $department = Department::query()->where('id', $request->department_id)->first();
-        $department->delete();
-    }
-
-    public function update(Request $request) {
-        $validated = $request->validate([
-            'name' => 'required',
-            'text' => 'required',
-            'head_of_department' => 'required'
-        ]);
-        $department = Department::query()->where('id', $request->department_id)->first();
-        $department->name = $validated['name'];
-        $department->short_name = $validated['text'];
-        $department->user_id = $validated['head_of_department'];
-        $department->save();
-    }
-
     public function change_department(Request $request) {
         if ($request['action'] == 'update') {
-            $this->update($request);
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'text' => 'required',
+                'head_of_department' => 'required'
+            ]);
+
+            if ($validator->fails()) {
+                return redirect(url()->previous())
+                    ->withErrors($validator)
+                    ->with('update_error', true)
+                    ->with('department_id', $request->department_id)
+                    ->withInput();
+            }
+
+            $validated = $validator->validated();
+            $department = Department::query()->where('id', $request->department_id)->first();
+            $department->name = $validated['name'];
+            $department->short_name = $validated['text'];
+            $department->user_id = $validated['head_of_department'];
+            $department->save();
         }
         if ($request['action'] == 'delete') {
-            $this->delete($request);
+            $department = Department::query()->where('id', $request->department_id)->first();
+            $department->delete();
         }
         return redirect()->route('main_page');
     }

@@ -23,10 +23,10 @@ class SubjectPolicy
         if ($user->role === 'student') {
             $subjects = $user->student->group->subjects;
         }
-        if ($user->role === 'teacher') {
+        else if ($user->role === 'teacher') {
             $subjects = $user->subjects;
         }
-        if ($user->role === 'head') {
+        else if ($user->role === 'head') {
             $subjects = array();
             $department_groups = $user->department->groups;
             foreach ($department_groups as $group) {
@@ -34,6 +34,10 @@ class SubjectPolicy
                     $subjects[] = $subj;
                 }
             }
+        }
+
+        else {
+            return false;
         }
 
         foreach ($subjects as $subj) {

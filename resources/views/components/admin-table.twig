@@ -11,7 +11,7 @@
             <h2 class="Section__title">
                 Кафедры
             </h2>
-            <button type="button" class="Section__button" data-uk-toggle="#create_department">
+            <button type="button" class="Section__button" id="#open_create_department" data-uk-toggle="#create_department">
                 Создать кафедру
             </button>
         </div>
@@ -29,7 +29,8 @@
                     <td>{{ item.short_name }}</td>
                     <td>{{ scope.heads[count].name }} {{ scope.heads[count].surname }}</td>
                     <td>
-                        <button name="change_btn" type="button" class="Button Button--primary" data-uk-toggle="#change-department"
+                        <button id="#open_update_department_{{ item.id }}" name="change_btn"
+                                type="button" class="Button Button--primary" data-uk-toggle="#change-department"
                                 value="{{ item.id }}">
                             Изменить
                         </button>
@@ -47,7 +48,7 @@
             buttons = document.getElementsByName("change_btn")
             select = document.getElementById("select")
             departments = {{ scope.departments|json_encode|raw }}
-            heads = {{ scope.heads|json_encode|raw }}
+                heads = {{ scope.heads|json_encode|raw }}
 
 
             for (let i = 0; i < buttons.length; i++) {
@@ -57,7 +58,7 @@
                             del.remove()
                         }
                         department_id.value = buttons[i].value;
-                        for(let j = 0; j < departments.length; j++) {
+                        for (let j = 0; j < departments.length; j++) {
                             if (departments[j].id == department_id.value) {
                                 department_name.value = departments[j].name
                                 department_short_name.value = departments[j].short_name
@@ -72,7 +73,21 @@
                     }
                 )
             }
+            {% if errors.any() %}
+                {% if session_has('create_error') %}
+                    document.getElementById("create_name").value = "{{ old('name') }}"
+                    document.getElementById("create_short_name").value = "{{ old('text') }}"
+                    document.getElementById("create_head_".concat("{{ old('head_of_department') }}")).setAttribute("selected", "true");
+                    document.getElementById('#open_create_department').click()
+                {% endif %}
+                {% if session_has('update_error') %}
+                    document.getElementById('#open_update_department_'.concat({{ session_get('department_id') }})).click()
+                {% endif %}
+            {% endif %}
         }
+    </script>
+    <script type="text/javascript">
+
     </script>
 {% endmacro %}
 

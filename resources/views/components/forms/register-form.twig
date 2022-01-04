@@ -35,7 +35,7 @@
                 <select class="Form__field" id="group" name="group">
                         <option value="">--выберите группу--</option>
                     {% for group in scope.groups %}
-                        <option value={{ group.id }}>{{ group.short_name }}</option>
+                        <option value="{{ group.id }}" {{ old('group') == group.id  ? "selected" : ""}}>{{ group.short_name }}</option>
                     {% endfor %}
                 </select>
                 {% if errors.first('group') %}

@@ -11,11 +11,17 @@
                 <label for="" class="SectionFrom__title ">
                     Название раздела:
                 </label>
-                <input type="text" class="SectionForm__input" name="name" required>
+                <input id="section_name" type="text" class="SectionForm__input" name="name">
+                {% if errors.first('name') %}
+                    <p>{{ errors.first('name') }}</p>
+                {% endif %}
                 <label for="" class="SectionForm__title">
                     Текст:
                 </label>
-                <textarea name="text" id="" class="SectionForm__textarea"></textarea>
+                <textarea name="text" id="section_text" class="SectionForm__textarea"></textarea>
+                {% if errors.first('text') %}
+                    <p>{{ errors.first('text') }}</p>
+                {% endif %}
                 <button class="Button Button--primary Form__button" type="submit">
                     Создать раздел
                 </button>

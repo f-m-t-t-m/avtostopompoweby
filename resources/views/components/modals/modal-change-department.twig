@@ -15,11 +15,17 @@
                 <label for="fullName" class="SectionFrom__title ">
                     Полное название кафедры:
                 </label>
-                <input id="department_name" type="text" class="SectionForm__input" name="name" required>
+                <input id="department_name" type="text" class="SectionForm__input" name="name">
+                {% if errors.first('name') %}
+                    <p>{{ errors.first('name') }}</p>
+                {% endif %}
                 <label for="miniName" class="SectionForm__title">
                     Сокращённое название кафедры:
                 </label>
                 <input id="department_short_name" name="text" id="" class="SectionForm__input" value="{{ scope.miniName }}">
+                {% if errors.first('text') %}
+                    <p>{{ errors.first('text') }}</p>
+                {% endif %}
                 <label for="boss" class="SectionForm__title">
                     Заведующий кафедры:
                 </label>
@@ -28,6 +34,9 @@
                         <option value="{{ item.id }}">{{ item.name}} {{ item.surname}}</option>
                     {% endfor %}
                 </select>
+                {% if errors.first('head_of_department') %}
+                    <p>{{ errors.first('head_of_department') }}</p>
+                {% endif %}
                 <div class="SectionForm__footer">
                     <button class="Button Button--primary Form__button" type="submit"  name="action" value="update">
                         Изменить
