@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ApiCommentController;
+use App\Http\Controllers\ApiGroupController;
 use App\Http\Controllers\ApiSectionController;
 use App\Http\Controllers\ApiSubjectController;
 use Illuminate\Http\Request;
@@ -51,6 +52,8 @@ Route::apiResource('subjects.sections.comments', ApiCommentController::class)
     ->missing(function () {
         return response()->json(['message' => 'Comment not found'], 404);
     });
+
+Route::apiResource('groups', ApiGroupController::class);
 
 
 

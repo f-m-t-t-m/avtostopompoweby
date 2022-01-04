@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\Group;
 use App\Models\Student;
 use App\Models\User;
@@ -10,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -24,7 +26,7 @@ class ApiAuthController extends Controller
             'surname' => 'required',
             'role' => 'required',
             'group' => Rule::requiredIf($request->role === 'student'),
-            'avatar' => 'nullable',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png|max:10000',
         ]);
 
         if ($validator->fails()) {
@@ -42,6 +44,13 @@ class ApiAuthController extends Controller
         $user->status = 1;
         if (isset($validated['avatar'])) {
             $user->avatar = $validated['avatar'];
+        }
+
+        if (isset($validated['image'])) {
+            $fileName = time().'_'.$request->image->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('avatars/', $fileName, 's3');
+            Storage::disk('s3')->setVisibility('avatars/'.$fileName, 'public');
+            $user->avatar = Storage::disk('s3')->url('avatars/'.$fileName);
         }
         $user->save();
         if ($user->role === 'student') {
@@ -77,14 +86,17 @@ class ApiAuthController extends Controller
         }
 
         $validated = $validator->validated();
+        $user = User::query()->where('email', $validated['email'])->first();
+        if ($user->status == 0) {
+            return response()->json(['message' => 'User isn\'t confirmed'], 423);
+        }
         if (!Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
             return response()->json(['message' => 'Wrong login or password'], 422);
         }
 
-        $user = User::query()->where('email', $validated['email'])->first();
         $token = $user->createToken('token')->plainTextToken;
         $response = [
-            'user' => $user,
+            'user' => UserResource::make($user),
             'token' => $token,
         ];
 
