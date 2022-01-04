@@ -19,7 +19,7 @@ class ConfirmUserController extends Controller {
         foreach ($groups as $group) {
             $students = $group->students;
             foreach ($students as $student) {
-                if ($student->user->status == 1) {
+                if ($student->user->status == 0) {
                     $users[] = $student->user;
                     $grps[] = $student->group->name;
                 }

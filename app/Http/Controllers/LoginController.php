@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -30,6 +31,12 @@ class LoginController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
             ]);
+
+            $user = User::query()->where('email', $validated['email'])->first();
+            if ($user->status == 0) {
+                return redirect()
+                    ->route('login')->with('error', 'Неподтвержденный аккаунт');
+            }
 
             if (Auth::attempt($validated)) {
                 $request->session()->regenerate();

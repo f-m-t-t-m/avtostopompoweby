@@ -44,9 +44,11 @@ Route::middleware('auth')->group(function () {
         ->name('confirm-student-registration');
     Route::patch('/confirm_user/{id}', [ConfirmUserController::class, 'confirm'])
         ->name('confirm_user');
+
+    Route::post('/create-department/save', [DeparmentController::class, 'create'])
+        ->name('save_department');
+    Route::post('/change-department', [DeparmentController::class, 'change_department'])
+        ->name('change-department');
 });
 
-Route::post('/create-department/save', [DeparmentController::class, 'create'])
-    ->name('save_department');
-Route::post('/change-department', [DeparmentController::class, 'change_department'])
-    ->name('change-department');
+

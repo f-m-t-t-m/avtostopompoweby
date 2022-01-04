@@ -58,7 +58,7 @@ class RegisterController extends Controller
             $user->name = $validated['name'];
             $user->surname = $validated['surname'];
             $user->role = $validated['role'];
-            $user->status = 1;
+            $user->status = 0;
             if (isset($validated['image'])) {
                 $fileName = time().'_'.$request->image->getClientOriginalName();
                 $filePath = $request->file('image')->storeAs('avatars/', $fileName, 's3');

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class DeparmentController extends Controller {
     public function create(Request $request) {
+        $this->authorize('create', Department::class);
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'text' => 'required',
@@ -31,6 +33,7 @@ class DeparmentController extends Controller {
     }
 
     public function change_department(Request $request) {
+        $this->authorize('create', Department::class);
         if ($request['action'] == 'update') {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
