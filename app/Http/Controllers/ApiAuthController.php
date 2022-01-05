@@ -59,18 +59,12 @@ class ApiAuthController extends Controller
             $student->group_id = Group::query()->where('name', $validated['group'])->first()->id;
             $student->save();
         }
-
-        $token = $user->createToken('token')->plainTextToken;
-        $response = [
-            'user' => $user,
-            'token' => $token,
-        ];
-        return response()->json($response, 201);
+        return response()->json(['message' => 'Registration has been successfully']);
     }
 
     public function logout() : JsonResponse {
         Auth::user()->tokens()->delete();
-        return response()->json(['message' => 'Logged out'], 200);
+        return response()->json(['message' => 'Logged out']);
     }
 
     public function login(Request $request): JsonResponse {
