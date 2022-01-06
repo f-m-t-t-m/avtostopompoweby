@@ -26,7 +26,7 @@ class ApiAuthController extends Controller
             'surname' => 'required',
             'role' => 'required',
             'group' => Rule::requiredIf($request->role === 'student'),
-            'avatar' => 'nullable|mimes:jpeg,jpg,png|max:10000',
+            'avatar' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -42,16 +42,15 @@ class ApiAuthController extends Controller
         $user->surname = $validated['surname'];
         $user->role = $validated['role'];
         $user->status = 1;
+
         if (isset($validated['avatar'])) {
-            $user->avatar = $validated['avatar'];
+            $avatar = base64_decode($validated['avatar']);
+            $fullFileName = 'avatar/'.time().'_'.$request->name.$request->surname.'.png';
+            Storage::disk('s3')->put($fullFileName, $avatar);
+            Storage::disk('s3')->setVisibility($fullFileName, 'public');
+            $user->avatar = Storage::disk('s3')->url($fullFileName);
         }
 
-        if (isset($validated['image'])) {
-            $fileName = time().'_'.$request->image->getClientOriginalName();
-            $filePath = $request->file('image')->storeAs('avatars/', $fileName, 's3');
-            Storage::disk('s3')->setVisibility('avatars/'.$fileName, 'public');
-            $user->avatar = Storage::disk('s3')->url('avatars/'.$fileName);
-        }
         $user->save();
         if ($user->role === 'student') {
             $student = new Student();
