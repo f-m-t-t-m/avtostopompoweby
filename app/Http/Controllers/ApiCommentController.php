@@ -8,6 +8,8 @@ use App\Models\Section;
 use App\Models\Subject;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ApiCommentController extends Controller
 {
@@ -28,9 +30,23 @@ class ApiCommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Subject $subject, Section $section, Request $request): JsonResponse {
+        $validator = Validator::make($request->all(), [
+            'text' => 'required|max:150'
+        ]);
+
+        if ($validator->fails()) {
+            $messages = $validator->errors()->all();
+            return response()->json(['message' => $messages], 422);
+        }
+        $validated = $validator->validated();
+        $comment = new Comment();
+        $comment->text = $validated['text'];
+        $comment->user_id = Auth::user()->id;
+        $comment->section_id = $section->id;
+        $comment->save();
+
+        return response()->json(new CommentResource($comment), 201);
     }
 
     /**

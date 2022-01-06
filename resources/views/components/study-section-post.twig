@@ -19,7 +19,8 @@
                     <p class="PostSection__titleComment">Комментарии:</p>
                     {% set count = 0 %}
                     {% for comment in scope.comments %}
-                        <div class="Comment">
+                        <a id="to_{{ comment.id }}"></a>
+                        <div class="Comment" id="comment_{{ comment.id }}">
                             <div class="Comment__avatar">
                                 <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
                             </div>
@@ -31,6 +32,11 @@
                                     {{ comment.created_at }}
                                 </div>
                             </div>
+                            {% if (comment.comment_id) %}
+                                <div class="Reply__text" style="background: gray">
+                                    <p>{{ scope.replies[count].text }}</p>
+                                </div>
+                            {% endif %}
                             <div class="Comment__text">
                                 <p>{{ comment.text }}</p>
                             </div>
@@ -38,9 +44,9 @@
                                 <a href="{{ comment.file }}" target="_blank"> это файл</a>
                             {% endif %}
                             <div class="Comment__footer">
-                                <a href="/" class="Comment__button">
+                                <div id="reply_{{ comment.id }}" class="Comment__button, reply_comment">
                                     Ответить
-                                </a>
+                                </div>
                             </div>
                         </div>
                         {% set count = count+1 %}
@@ -51,8 +57,11 @@
                 <div class="PostSection__newComments">
                     <form method="POST" action="{{ route('store_comment') }}" class="PostSection__addComments" enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        <input id="reply_id" type="hidden" name="reply_id" value=""/>
                         <input id="section_id" type="hidden" name="section_id" value="{{ scope.section.id }}"/>
                         <label for="comment" class="PostSection__addComments--label">Оставить комментарий</label>
+                        <p id="reply_info"></p>
+                        <p id="cancel_reply"></p>
                         <textarea name="text" class="PostSection__addComments--textarea">{{ old('text') }}</textarea>
                         {% if errors.first('text') %}
                             <p>{{ errors.first('text') }}</p>
@@ -70,6 +79,33 @@
 
             </div>
         </div>
+
+    <script type="text/javascript">
+        btns = document.getElementsByClassName("reply_comment");
+        reply_info = document.getElementById("reply_info");
+        cancel_reply = document.getElementById("cancel_reply");
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function () {
+               id =  btns[i].getAttribute("id");
+               document.getElementById("reply_id").value = id.split('_')[1];
+               let comment = document.getElementById("comment_"+id.split('_')[1]);
+               let name = comment.getElementsByClassName("Comment__header--name")[0].textContent;
+               document.getElementById("reply_info").textContent = "Вы отвечаете на сообщение " + name;
+                cancel_reply.textContent = "Отставить ответ"
+               location.hash = "";
+               location.hash = "#form";
+            });
+        }
+        reply_info.addEventListener('click', function () {
+            location.hash = "";
+            location.hash = "#to_"+document.getElementById("reply_id").value;
+        });
+        cancel_reply.addEventListener('click', function () {
+            document.getElementById("reply_id").value = ""
+            document.getElementById("reply_info").textContent = ""
+            cancel_reply.textContent = ""
+        })
+    </script>
 {% endmacro %}
 
 {{ macros.content(scope) }}

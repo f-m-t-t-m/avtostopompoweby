@@ -32,26 +32,25 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function () {
             return response()->json(['message' => 'Subject not found'], 404);
         });
+    Route::apiResource('subjects.sections', ApiSectionController::class)
+        ->scoped([
+            'subject' => 'id',
+            'section' => 'id'
+        ])
+        ->missing(function () {
+            return response()->json(['message' => 'Section not found'], 404);
+        });
+
+    Route::apiResource('subjects.sections.comments', ApiCommentController::class)
+        ->scoped([
+            'subject' => 'id',
+            'section' => 'id',
+            'comment' => 'id'
+        ])
+        ->missing(function () {
+            return response()->json(['message' => 'Comment not found'], 404);
+        });
 });
-
-Route::apiResource('subjects.sections', ApiSectionController::class)
-    ->scoped([
-        'subject' => 'id',
-        'section' => 'id'
-    ])
-    ->missing(function () {
-        return response()->json(['message' => 'Section not found'], 404);
-    });
-
-Route::apiResource('subjects.sections.comments', ApiCommentController::class)
-    ->scoped([
-        'subject' => 'id',
-        'section' => 'id',
-        'comment' => 'id'
-    ])
-    ->missing(function () {
-        return response()->json(['message' => 'Comment not found'], 404);
-    });
 
 Route::apiResource('groups', ApiGroupController::class);
 

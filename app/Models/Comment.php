@@ -17,4 +17,8 @@ class Comment extends Model
     public function section(): BelongsTo {
         return $this->belongsTo(Section::class);
     }
+
+    public function comment(): BelongsTo {
+        return $this->belongsTo(Comment::class);
+    }
 }

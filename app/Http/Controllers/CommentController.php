@@ -30,6 +30,9 @@ class CommentController extends Controller {
         $comment->text = $validated['text'];
         $comment->user_id = Auth::user()->id;
         $comment->section_id = (int)$request->section_id;
+        if ($request['reply_id']) {
+            $comment->comment_id = (int)$request->reply_id;
+        }
         if (isset($validated['file'])) {
             $fileName = time().'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('files/', $fileName, 's3');

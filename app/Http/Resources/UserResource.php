@@ -22,7 +22,7 @@ class UserResource extends JsonResource
             'email' => $this->email,
         ];
         if ($this->student) {
-            $arrayData['group'] = $this->student->group;
+            $arrayData['group'] = $this->student->group->name;
         }
         return $arrayData;
     }

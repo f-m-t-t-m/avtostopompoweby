@@ -17,13 +17,16 @@ class SectionController extends Controller
         $subject = $section->subject;
         $comments = $section->comments;
         $users = array();
+        $replies = array();
         foreach ($comments as $comm) {
             $users[] = $comm->user;
+            $replies[] = $comm->comment;
         }
         $this->authorize('view', $subject);
         return view('study-section', [ 'section' => $section,
                                             'comments' => $comments,
-                                            'users' => $users]
+                                            'users' => $users,
+                                            'replies' => $replies]
         );
     }
 
