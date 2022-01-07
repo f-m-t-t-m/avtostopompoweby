@@ -15,7 +15,7 @@ class SectionController extends Controller
             abort(404);
         }
         $subject = $section->subject;
-        $comments = $section->comments;
+        $comments = $section->comments()->paginate(5);
         $users = array();
         $replies = array();
         foreach ($comments as $comm) {
@@ -44,5 +44,27 @@ class SectionController extends Controller
         $section->save();
 
         return redirect()->route('discipline', [(int)$section->subject_id]);
+    }
+
+    public function get_comments(Request $request, int $id) {
+        if ($request->ajax()) {
+            $section = Section::query()->where('id', $id)->first();
+            if ($section === null) {
+                abort(404);
+            }
+            $comments = $section->comments()->paginate(5);
+            $users = array();
+            $replies = array();
+            foreach ($comments as $comm) {
+                $users[] = $comm->user;
+                $replies[] = $comm->comment;
+            }
+            return view('components/comment_pagination', [
+                    'comments' => $comments,
+                    'users' => $users,
+                    'replies' => $replies]
+            );
+        }
+        abort(404);
     }
 }

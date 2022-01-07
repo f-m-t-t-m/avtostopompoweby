@@ -3,6 +3,7 @@
 {% set scope = scope ?? {} %}
 
 {% macro content(scope) %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <div class=" Section__block">
             <div class="PostSection">
                 <div class="PostSection__header">
@@ -16,42 +17,11 @@
                     </p>
                 </div>
                 <div class="PostSection__comments">
-                    <p class="PostSection__titleComment">Комментарии:</p>
-                    {% set count = 0 %}
-                    {% for comment in scope.comments %}
-                        <a id="to_{{ comment.id }}"></a>
-                        <div class="Comment" id="comment_{{ comment.id }}">
-                            <div class="Comment__avatar">
-                                <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
-                            </div>
-                            <div class="Comment__header">
-                                <div class="Comment__header--name">
-                                    {{ scope.users[count].name ~ ' ' ~ scope.users[count].surname}}
-                                </div>
-                                <div class="Comment__header--date">
-                                    {{ comment.created_at }}
-                                </div>
-                            </div>
-                            {% if (comment.comment_id) %}
-                                <div class="Reply__text" style="background: gray">
-                                    <p>{{ scope.replies[count].text }}</p>
-                                </div>
-                            {% endif %}
-                            <div class="Comment__text">
-                                <p>{{ comment.text }}</p>
-                            </div>
-                            {% if comment.file %}
-                                <a href="{{ comment.file }}" target="_blank"> это файл</a>
-                            {% endif %}
-                            <div class="Comment__footer">
-                                <div id="reply_{{ comment.id }}" class="Comment__button, reply_comment">
-                                    Ответить
-                                </div>
-                            </div>
-                        </div>
-                        {% set count = count+1 %}
-                    {% endfor %}
-
+                    {% include 'components/comment_pagination.twig' with {
+                        comments: scope.comments,
+                        users: scope.users,
+                        replies: scope.replies,
+                    } %}
                 </div>
                 <a id="form"></a>
                 <div class="PostSection__newComments">
@@ -105,6 +75,39 @@
             document.getElementById("reply_info").textContent = ""
             cancel_reply.textContent = ""
         })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.pagination a', function (event) {
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                get_comments(page);
+            });
+        })
+
+        let currentRequest = null;
+        function get_comments(page) {
+            var l = window.location;
+            comm_url = l.origin + "/comments/"+{{ scope.section.id }} +"/pagination" + "?page=" + page,
+            currentRequest = $.ajax({
+                url: comm_url,
+                beforeSend : function()    {
+                    if(currentRequest != null) {
+                        currentRequest.abort();
+                    }
+                    $('#load_img').show()
+                    $('.Comment').hide()
+                },
+                success: function (result) {
+                    $('.PostSection__comments').html(result)
+                },
+                complete: function () {
+                    $("#load_img").hide()
+                    $('.Comment').show()
+                }
+            })
+        }
     </script>
 {% endmacro %}
 

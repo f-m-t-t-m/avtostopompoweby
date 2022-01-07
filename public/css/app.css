@@ -11923,13 +11923,48 @@ body {
   padding: 5px 5px;
 }
 
+.FormContainer {
+  background-color: #6995D0;
+  border-radius: 20px;
+  padding: 38px;
+}
+@media (max-width: 780px) {
+  .FormContainer {
+    border-radius: 0;
+  }
+}
+
+.ContentContainer {
+  margin: 0 16px 16px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 38px;
+}
+@media (max-width: 780px) {
+  .ContentContainer {
+    border-radius: 0;
+    margin: 0 0 16px;
+    padding: 16px;
+  }
+}
+
 .CenteredBlock {
   margin: auto;
+}
+@media (max-width: 780px) {
+  .CenteredBlock {
+    width: 100%;
+  }
 }
 
 .MiddleBlock {
   margin: 0 auto;
   width: 1400px;
+}
+@media (max-width: 780px) {
+  .MiddleBlock {
+    width: 100%;
+  }
 }
 
 .DividerBlock {
@@ -11946,8 +11981,8 @@ body {
     grid-template-rows: 1fr 1fr;
   }
 }
-.DividerBlock div {
-  overflow: hidden;
+.DividerBlock > div {
+  overflow: auto;
 }
 
 tr {
@@ -11993,6 +12028,11 @@ td {
   background-color: #274272;
   /* #3B63AB но на ~25% темнее */
 }
+@media (max-width: 780px) {
+  .Button {
+    padding: 0 8px;
+  }
+}
 
 .Header {
   display: flex;
@@ -12000,33 +12040,93 @@ td {
   padding: 8px 16px;
 }
 .Header__logo {
+  margin-right: 36px;
   color: white;
   font-family: Arial;
   font-size: 38px;
   font-weight: bold;
 }
+@media (max-width: 780px) {
+  .Header__logo {
+    margin-right: 16px;
+  }
+}
 .Header__menu {
-  margin-left: 36px;
   display: flex;
   align-items: center;
 }
-.Header__menuItem {
-  margin-right: 16px;
-  display: flex;
-  color: white;
-  font-family: Arial;
+@media (max-width: 780px) {
+  .Header__menu {
+    display: none;
+  }
 }
 .Header__logoutButton {
   margin-left: auto;
 }
+@media (max-width: 780px) {
+  .Header__logoutButton {
+    display: none;
+  }
+}
+.Header__offCanvasButton {
+  margin-left: auto;
+}
+@media (min-width: 781px) {
+  .Header__offCanvasButton {
+    display: none;
+  }
+}
+.Header__offCanvasButton img {
+  display: block;
+}
+.Header__offCanvasButton button {
+  padding: 15px;
+}
+
+.OffCanvas__content {
+  display: flex;
+  flex-flow: column;
+  padding: 105px 21px 54px;
+  background-color: #3B63AB;
+}
+.OffCanvas__logoutButton {
+  margin-top: auto;
+}
+
+.SiteNav {
+  display: flex;
+  list-style: none;
+}
+.SiteNav--vertical {
+  flex-flow: column;
+}
+.SiteNav__listItem {
+  width: 100px;
+}
+.SiteNav__listItem:not(:last-child) {
+  margin-right: 16px;
+}
+.SiteNav__listItem--vertical {
+  width: auto;
+}
+.SiteNav__listItem--vertical:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+.SiteNav__item {
+  line-height: 1.2;
+}
 
 .Form {
-  background-color: #6995D0;
-  border-radius: 20px;
-  padding: 38px;
   width: 340px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+}
+@media (max-width: 780px) {
+  .Form {
+    width: auto;
+    max-width: 300px;
+  }
 }
 .Form__header {
   margin-bottom: 16px;
@@ -12034,6 +12134,11 @@ td {
   font-family: Arial;
   font-size: 38px;
   font-weight: bold;
+}
+@media (max-width: 780px) {
+  .Form__header {
+    font-size: 28px;
+  }
 }
 .Form__label {
   font-family: Arial;
@@ -12068,10 +12173,6 @@ td {
 }
 
 .GroupList {
-  background-color: white;
-  border-radius: 20px;
-  margin: 0 16px 16px;
-  padding: 38px;
   display: flex;
   flex-direction: column;
 }
@@ -12085,6 +12186,11 @@ td {
   font-family: Arial;
   font-size: 38px;
   font-weight: bold;
+}
+@media (max-width: 780px) {
+  .GroupList__title {
+    font-size: 28px;
+  }
 }
 .GroupList__button {
   margin-left: auto;
@@ -12115,10 +12221,6 @@ td {
 }
 
 .SubjectTable {
-  background-color: white;
-  border-radius: 20px;
-  margin: 0 16px 16px;
-  padding: 38px;
   display: flex;
   flex-direction: column;
 }
@@ -12130,6 +12232,11 @@ td {
   font-family: Arial;
   font-size: 38px;
   font-weight: bold;
+}
+@media (max-width: 780px) {
+  .SubjectTable__title {
+    font-size: 28px;
+  }
 }
 .SubjectTable__scrollable {
   overflow-y: scroll;
@@ -12357,4 +12464,52 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.StudentList {
+  display: flex;
+  flex-direction: column;
+}
+.StudentList__header {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+.StudentList__title {
+  margin: 0;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+@media (max-width: 780px) {
+  .StudentList__title {
+    font-size: 28px;
+  }
+}
+.StudentList__scrollable {
+  overflow-y: scroll;
+}
+.StudentList__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.StudentList__item {
+  background-color: #6995D0;
+  margin-bottom: 2px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+.StudentList__itemImage {
+  height: 49px;
+}
+.StudentList__itemName, .StudentList__itemEmail, .StudentList__itemGroup {
+  margin: 0;
+  padding-left: 12px;
+  font-family: Arial;
+}
+.StudentList__itemButton {
+  margin-left: auto;
 }

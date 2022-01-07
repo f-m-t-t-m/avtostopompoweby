@@ -51,4 +51,6 @@ Route::middleware('auth')->group(function () {
         ->name('change-department');
 });
 
+Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments"]);
+
 

@@ -1,0 +1,51 @@
+{% import _self as macros %}
+
+{% set scope = {
+    comments: comments,
+    users: users,
+    replies: replies,
+} %}
+
+{% macro content(scope) %}
+    <div id="load_img" style="text-align: center; display: none">
+        <img src="/images/wait.gif">
+    </div>
+    <p class="PostSection__titleComment">Комментарии:</p>
+    {% set count = 0 %}
+    {% for comment in scope.comments %}
+        <a id="to_{{ comment.id }}"></a>
+        <div class="Comment" id="comment_{{ comment.id }}">
+            <div class="Comment__avatar">
+                <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
+            </div>
+            <div class="Comment__header">
+                <div class="Comment__header--name">
+                    {{ scope.users[count].name ~ ' ' ~ scope.users[count].surname}}
+                </div>
+                <div class="Comment__header--date">
+                    {{ comment.created_at }}
+                </div>
+            </div>
+            {% if (comment.comment_id) %}
+                <div class="Reply__text" style="background: gray">
+                    <p>{{ scope.replies[count].text }}</p>
+                </div>
+            {% endif %}
+            <div class="Comment__text">
+                <p>{{ comment.text }}</p>
+            </div>
+            {% if comment.file %}
+                <a href="{{ comment.file }}" target="_blank"> это файл</a>
+            {% endif %}
+            <div class="Comment__footer">
+                <div id="reply_{{ comment.id }}" class="Comment__button, reply_comment">
+                    Ответить
+                </div>
+            </div>
+        </div>
+        {% set count = count+1 %}
+    {% endfor %}
+    {{ scope.comments.links("pagination::default")|raw }}
+{% endmacro %}
+
+{{ macros.content(scope) }}
