@@ -1,6 +1,7 @@
 .SubjectTable {
     display: flex;
     flex-direction: column;
+    height: 100%;
     
     &__header {
         margin-bottom: 16px;
@@ -18,7 +19,7 @@
     } 
     
     &__scrollable {
-        overflow-y: scroll;
+        overflow-y: auto;
     } 
     
     &__table {

@@ -4,12 +4,8 @@
   min-height: 100vh;
 }
 
-.Section {
+.Section {  
   &__block {
-    background-color: white;
-    border-radius: 20px;
-    margin: 0 16px 16px;
-    padding: 38px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -35,6 +31,10 @@
         font-family: Arial;
         font-size: 38px;
         font-weight: bold;
+    
+        @include vw-sm-down {
+            font-size: 28px;
+        }
     }
 
     &__main {

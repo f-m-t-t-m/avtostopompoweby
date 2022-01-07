@@ -14,14 +14,18 @@
         var id = {{ scope.discipline.id }};
     </script>
     <div class="MiddleBlock DividerBlock">
-        {% include 'components/discipline-info.twig' with {
-            discipline: scope.discipline,
-            teacher: scope.teacher.name ~ ' ' ~ scope.teacher.surname?? '',
-            group: scope.group,
-        } %}
-        {% include 'components/section-table.twig' with {
-            scope: scope.sections,
-        } %}
+        <div class="ContentContainer">
+            {% include 'components/discipline-info.twig' with {
+                discipline: scope.discipline,
+                teacher: scope.teacher.name ~ ' ' ~ scope.teacher.surname?? '',
+                group: scope.group,
+            } %}
+        </div>
+        <div class="ContentContainer">
+            {% include 'components/section-table.twig' with {
+                scope: scope.sections,
+            } %}
+        </div>
     </div>
 {% endblock %}
 

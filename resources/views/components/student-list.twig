@@ -37,10 +37,10 @@
                         <p class="StudentList__itemGroup">
                             {{ item.group }}
                         </p>
-                        <form action = "{{ route('confirm_user', [item.id]) }}" method = "post">
+                        <form class="StudentList__itemButton" action = "{{ route('confirm_user', [item.id]) }}" method = "post">
                             {{ csrf_field() }}
                             {{ method_field('patch') }}
-                            <button class="Button Button--primary LinkWhite StudentList__itemButton">Подтвердить</button>
+                            <button class="Button Button--primary LinkWhite">Подтвердить</button>
                         </form>
                     </li>
                     {% set count = count+1 %}
