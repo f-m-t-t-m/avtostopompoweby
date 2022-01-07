@@ -40,7 +40,10 @@ class CommentController extends Controller {
             $comment->file = Storage::disk('s3')->url('files/'.$fileName);
         }
         $comment->save();
-        return redirect()
-            ->route('section', [(int)$request->section_id]);
+        $section = Section::query()->where('id', (int)$request->section_id)->first();
+        $comments = $section->comments()->paginate(5);
+        $lastPage = $comments->lastPage();
+        $url = route('section', [(int)$request->section_id]).'?page='.$lastPage;
+        return redirect($url);
     }
 }

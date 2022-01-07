@@ -46,6 +46,24 @@
         {% set count = count+1 %}
     {% endfor %}
     {{ scope.comments.links("pagination::default")|raw }}
+
+    <script type="text/javascript">
+        btns = document.getElementsByClassName("reply_comment");
+        reply_info = document.getElementById("reply_info");
+        cancel_reply = document.getElementById("cancel_reply");
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function () {
+                id =  btns[i].getAttribute("id");
+                document.getElementById("reply_id").value = id.split('_')[1];
+                let comment = document.getElementById("comment_"+id.split('_')[1]);
+                let name = comment.getElementsByClassName("Comment__header--name")[0].textContent;
+                document.getElementById("reply_info").textContent = "Вы отвечаете на сообщение " + name;
+                cancel_reply.textContent = "Отставить ответ"
+                location.hash = "";
+                location.hash = "#form";
+            });
+        }
+    </script>
 {% endmacro %}
 
 {{ macros.content(scope) }}

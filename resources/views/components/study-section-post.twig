@@ -50,33 +50,6 @@
             </div>
         </div>
 
-    <script type="text/javascript">
-        btns = document.getElementsByClassName("reply_comment");
-        reply_info = document.getElementById("reply_info");
-        cancel_reply = document.getElementById("cancel_reply");
-        for(let i = 0; i < btns.length; i++) {
-            btns[i].addEventListener('click', function () {
-               id =  btns[i].getAttribute("id");
-               document.getElementById("reply_id").value = id.split('_')[1];
-               let comment = document.getElementById("comment_"+id.split('_')[1]);
-               let name = comment.getElementsByClassName("Comment__header--name")[0].textContent;
-               document.getElementById("reply_info").textContent = "Вы отвечаете на сообщение " + name;
-                cancel_reply.textContent = "Отставить ответ"
-               location.hash = "";
-               location.hash = "#form";
-            });
-        }
-        reply_info.addEventListener('click', function () {
-            location.hash = "";
-            location.hash = "#to_"+document.getElementById("reply_id").value;
-        });
-        cancel_reply.addEventListener('click', function () {
-            document.getElementById("reply_id").value = ""
-            document.getElementById("reply_info").textContent = ""
-            cancel_reply.textContent = ""
-        })
-    </script>
-
     <script>
         $(document).ready(function () {
             $(document).on('click', '.pagination a', function (event) {
@@ -98,6 +71,8 @@
                     }
                     $('#load_img').show()
                     $('.Comment').hide()
+                    $('.PostSection__titleComment').hide()
+
                 },
                 success: function (result) {
                     $('.PostSection__comments').html(result)
@@ -105,9 +80,33 @@
                 complete: function () {
                     $("#load_img").hide()
                     $('.Comment').show()
+                    $('.PostSection__titleComment').show()
                 }
             })
         }
+    </script>
+
+    <script type="text/javascript">
+        btns = document.getElementsByClassName("reply_comment");
+        reply_info = document.getElementById("reply_info");
+        cancel_reply = document.getElementById("cancel_reply");
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function () {
+                id =  btns[i].getAttribute("id");
+                document.getElementById("reply_id").value = id.split('_')[1];
+                let comment = document.getElementById("comment_"+id.split('_')[1]);
+                let name = comment.getElementsByClassName("Comment__header--name")[0].textContent;
+                document.getElementById("reply_info").textContent = "Вы отвечаете на сообщение " + name;
+                cancel_reply.textContent = "Отставить ответ"
+                location.hash = "";
+                location.hash = "#form";
+            });
+        }
+        cancel_reply.addEventListener('click', function () {
+            document.getElementById("reply_id").value = ""
+            document.getElementById("reply_info").textContent = ""
+            cancel_reply.textContent = ""
+        })
     </script>
 {% endmacro %}
 
