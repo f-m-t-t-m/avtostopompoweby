@@ -8,9 +8,11 @@
 } %}
 
 {% block main %}
-    <div class="ContainerSection">
-        {% include 'components/study-section-post.twig' with {
-            scope: scope,
-        } %}
+    <div class="MiddleBlock">
+        <div class="ContentContainer">
+            {% include 'components/study-section-post.twig' with {
+                scope: scope,
+            } %}
+        </div>
     </div>
 {% endblock %}

@@ -7,17 +7,19 @@
 }  %}
 
 {% block main %}
-    <div class="ContainerSection">
-        <div class="uk-margin Section__search">
-            <form class="uk-search uk-search-default">
-                <span class="uk-search-icon-flip" uk-search-icon></span>
-                <input class="uk-search-input" type="search" placeholder="Search...">
-            </form>
+    <div class="MiddleBlock">
+        <div class="ContentContainer">
+            <div class="uk-margin Section__search">
+                <form class="uk-search uk-search-default">
+                    <span class="uk-search-icon-flip" uk-search-icon></span>
+                    <input class="uk-search-input" type="search" placeholder="Search...">
+                </form>
+            </div>
+            {% include 'components/admin-table.twig' with {
+                departments: scope.departments,
+                heads: scope.heads,
+            } %}
         </div>
-        {% include 'components/admin-table.twig' with {
-            departments: scope.departments,
-            heads: scope.heads,
-        } %}
     </div>
 {% endblock %}
 

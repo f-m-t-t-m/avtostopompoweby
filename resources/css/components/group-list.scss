@@ -1,6 +1,7 @@
 .GroupList {
     display: flex;
     flex-direction: column;
+    height: 100%;
     
     &__header {
         margin-bottom: 16px;
@@ -24,7 +25,7 @@
     }
     
     &__scrollable {
-        overflow-y: scroll;
+        overflow-y: auto;
     } 
     
     &__list {
@@ -38,17 +39,31 @@
         margin-bottom: 2px;
         padding: 4px;
         display: flex;
-        align-items: center;
+        justify-content: space-between;
+        align-items: baseline;
         border-radius: 4px;
+        
+        @include vw-sm-down {
+            flex-direction: column;
+        }
     }
     
     &__itemName {
         margin: 0;
-        padding-left: 12px;
+        margin-left: 12px;
         font-family: Arial;
+        
+        @include vw-sm-down {
+            margin-left: 0px;
+            margin-bottom: 4px;
+        }
     }
     
     &__itemButton {
-        margin-left: auto;
+        
+        @include vw-sm-down {
+            margin-left: auto;
+            line-height: 32px;
+        }
     }
 }

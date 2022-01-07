@@ -1,6 +1,7 @@
 .StudentList {
     display: flex;
     flex-direction: column;
+    height: 100%;
     
     &__header {
         margin-bottom: 16px;
@@ -20,7 +21,7 @@
     } 
     
     &__scrollable {
-        overflow-y: scroll;
+        overflow-y: auto;
     } 
     
     &__list {
@@ -33,22 +34,45 @@
         background-color: $color-lightblue;
         margin-bottom: 2px;
         padding: 4px;
-        display: flex;
-        align-items: center;
         border-radius: 4px;
+        display: grid;
+        grid-template-areas: 
+            "image name email group button";
+        grid-template-columns: 50px repeat(3, 1fr) 152px;
+        column-gap: 12px;
+        row-gap: 4px;
+        
+        @include vw-sm-down {
+            grid-template-areas: 
+                "image button"
+                "name name"
+                "email email"
+                "group group";
+            grid-template-columns: 50px 1fr;
+        }
     }
     
     &__itemImage {
+        grid-area: image;
         height: 49px;
     }
     
     &__itemName,&__itemEmail,&__itemGroup {
         margin: 0;
-        padding-left: 12px;
         font-family: Arial;
+    }
+    &__itemName {
+        grid-area: name;
+    }
+    &__itemEmail {
+        grid-area: email;
+    }
+    &__itemGroup {
+        grid-area: group;
     }
     
     &__itemButton {
-        margin-left: auto;
+        grid-area: button;
+        justify-self: end;
     }
 }

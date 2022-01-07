@@ -15,30 +15,32 @@
                 Создать кафедру
             </button>
         </div>
-        <table class="SectionStudy__table">
-            <tr>
-                <td>Полное название кафедры</td>
-                <td>Сокращённое название кафедры</td>
-                <td>Заведующий кафедры</td>
-                <td>Редактирование</td>
-            </tr>
-            {% set count = 0 %}
-            {% for item in scope.departments %}
+        <div class="SectionStudy__scrollable">
+            <table class="SectionStudy__table">
                 <tr>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.short_name }}</td>
-                    <td>{{ scope.heads[count].name }} {{ scope.heads[count].surname }}</td>
-                    <td>
-                        <button id="#open_update_department_{{ item.id }}" name="change_btn"
-                                type="button" class="Button Button--primary" data-uk-toggle="#change-department"
-                                value="{{ item.id }}">
-                            Изменить
-                        </button>
-                    </td>
+                    <td>Полное название кафедры</td>
+                    <td>Сокращённое название кафедры</td>
+                    <td>Заведующий кафедры</td>
+                    <td>Редактирование</td>
                 </tr>
-                {% set count = count+1 %}
-            {% endfor %}
-        </table>
+                {% set count = 0 %}
+                {% for item in scope.departments %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.short_name }}</td>
+                        <td>{{ scope.heads[count].name }} {{ scope.heads[count].surname }}</td>
+                        <td>
+                            <button id="#open_update_department_{{ item.id }}" name="change_btn"
+                                    type="button" class="Button Button--primary" data-uk-toggle="#change-department"
+                                    value="{{ item.id }}">
+                                Изменить
+                            </button>
+                        </td>
+                    </tr>
+                    {% set count = count+1 %}
+                {% endfor %}
+            </table>
+        </div>
     </div>
     <script type="text/javascript">
         window.onload = function () {
