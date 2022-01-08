@@ -19,6 +19,15 @@
                 </a>
             </li>
         {% endfor %}
+        {% if (scope.vertical) %}
+            <li class="SiteNav__listItem SiteNav__listItem--vertical SiteNav__divider"></li>
+            <li class="SiteNav__listItem SiteNav__listItem--vertical">
+                <a href="" class="SiteNav__item LinkWhite">Личный кабинет</a>
+            </li>
+            <li class="SiteNav__listItem SiteNav__listItem--vertical">
+                <a href="" class="SiteNav__item LinkWhite">Оповещения</a>
+            </li>
+        {% endif %}
     </ul>
 {% endmacro %}
 

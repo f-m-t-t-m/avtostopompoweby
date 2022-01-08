@@ -17,11 +17,16 @@
             width: auto;
             
             &:not(:last-child) {
-                margin-bottom: 1.5em;
+                margin-bottom: 1em;
             }
         }
     }
     &__item {
         line-height: 1.2;
+    }
+    &__divider {
+        background-color: white;
+        height: 1px;
+        width: 180px;
     }
 }

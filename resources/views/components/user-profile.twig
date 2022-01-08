@@ -1,0 +1,62 @@
+{% import _self as macros %}
+
+{% set scope = {
+    user: scope.user,
+} %}
+
+{% macro content(scope) %}
+    <div class="UserProfile">
+        <div class="UserProfile__header">
+            <h2 class="UserProfile__title">
+                Личный кабинет
+            </h2>
+            <div class="UserProfile__menu">
+                <a class="UserProfile__menuItem">
+                    Оповещения
+                </a>
+                <a class="UserProfile__menuItem LinkRed">
+                    Выйти
+                </a>
+            </div>
+        </div>
+        <div class="UserProfile__info">
+            <div class="UserProfile__infoImage">
+                <img class="UserProfile__image" src="{{ scope.user.image }}" alt="Фото">
+            </div>
+            <div class="UserProfile__infoText">
+                <div class="UserProfile__item">
+                    <label class="UserProfile__itemLabel">Имя:</label>
+                    <p class="UserProfile__itemValue">{{ scope.user.name }}</p>
+                </div>
+                <div class="UserProfile__item">
+                    <label class="UserProfile__itemLabel">Фамилия:</label>
+                    <p class="UserProfile__itemValue">{{ scope.user.surname }}</p>
+                </div>
+                <div class="UserProfile__item">
+                    <label class="UserProfile__itemLabel">Email:</label>
+                    <p class="UserProfile__itemValue">{{ scope.user.email }}</p>
+                </div>
+                <div class="UserProfile__item">
+                    <label class="UserProfile__itemLabel">Роль:</label>
+                    <p class="UserProfile__itemValue">{{ scope.user.role }}</p>
+                </div>
+                
+                {% if (scope.user.role == "Студент") %}
+                <div class="UserProfile__item">
+                    <label class="UserProfile__itemLabel">Группа:</label>
+                    <p class="UserProfile__itemValue">{{ scope.user.group }}</p>
+                </div>
+                {% endif %}
+                
+                {% if (scope.user.role == "Зав. кафедрой") %}
+                <div class="UserProfile__item">
+                    <label class="UserProfile__itemLabel">Кафедра:</label>
+                    <p class="UserProfile__itemValue">{{ scope.user.department }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

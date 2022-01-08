@@ -1,0 +1,97 @@
+.UserProfile {
+    display: flex;
+    flex-direction: column;
+    
+    &__header {
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: row;
+    
+        @include vw-xsm-down {
+            flex-direction: column;
+        }
+    } 
+    
+    &__title {
+        margin: 0;
+        margin-right: auto;
+        font-family: Arial;
+        font-size: 38px;
+        font-weight: bold;
+    
+        @include vw-sm-down {
+            font-size: 28px;
+        }
+    }
+    
+    &__menu {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+    &__menuItem {
+        
+        &:not(:last-child) {
+            margin-right: 16px;
+        }
+    }
+    
+    &__info {
+        display: flex;
+    
+        @include vw-xsm-down {
+            flex-direction: column;
+        }
+    }
+    
+    &__infoImage {
+        max-height: 300px;
+        max-width: 300px;
+    
+        @include vw-sm-down {
+            max-height: 220px;
+            max-width: 220px;
+        }
+    }
+    
+    &__image {
+        max-height: 300px;
+        max-width: 300px;
+        height: auto;
+        width: auto;
+    
+        @include vw-sm-down {
+            max-height: 420px;
+            max-width: 220px;
+        }
+    }
+    
+    &__infoText {
+        display: flex;
+        flex-direction: column;
+        margin-left: 16px;
+    
+        @include vw-xsm-down {
+            margin-left: 0;
+            margin-top: 16px;
+        }
+    }
+    
+    &__item {
+        display: flex;
+        flex-direction: column;
+        
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+    
+    &__itemLabel {
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    &__itemValue {
+        font-size: 16px;
+    }
+}

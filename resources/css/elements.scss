@@ -24,6 +24,13 @@ td {
     }
 }
 
+.LinkRed {
+    color: red;
+    &:hover {
+        color: red;
+    }
+}
+
 .Button {
     @extend .uk-button;
     

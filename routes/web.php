@@ -54,3 +54,25 @@ Route::middleware('auth')->group(function () {
 Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments"]);
 
 
+Route::get('/test/confirm-student-registration', function () {
+    return view('confirm-student-registration');
+})->name('confirm-student-registration');
+Route::get('/test/discipline', function () {
+    return view('discipline');
+})->name('discipline');
+Route::get('/test/study-section', function () {
+    return view('study-section');
+})->name('study-section');
+Route::get('/test/home-head', function () {
+    return view('home-head');
+})->name('home-head');
+Route::get('/test/home-admin', function () {
+    return view('home-admin');
+})->name('home-admin');
+Route::get('/test/create-group', function () {
+    return view('create-group');
+})->name('create-group');
+Route::get('/test/user-profile', function () {
+    return view('user-profile');
+})->name('user-profile');
+

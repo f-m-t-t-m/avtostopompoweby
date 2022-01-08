@@ -24,11 +24,29 @@
         <img
             class="OffCanvasButton__icon"
             src="{{ '/images/offCanvasButton.png' }}"
-            alt="" 
+            alt="Меню" 
             width="24" 
-            height="14"
+            height="19"
         >
     </button>
+{% endmacro %}
+
+{% macro userProfileButton() %}
+    <div class="UserProfileButton">
+        <img
+            class="UserProfileButton__icon"
+            src="{{ '/images/profile.png' }}"
+            alt="Профиль" 
+        >
+    </div>
+    <div uk-dropdown="mode: click; pos: bottom-right">
+        <ul class="uk-nav uk-dropdown-nav">
+            <li class="uk-active"><a href="#">Личный кабинет</a></li>
+            <li class="uk-active"><a href="#">Оповещения</a></li>
+            <li class="uk-nav-divider"></li>
+            <li class="uk-active"><a href="{{ route('logout') }}">Выйти из системы</a></li>
+        </ul>
+    </div>
 {% endmacro %}
 
 {% macro offCanvas(scope) %}
@@ -42,7 +60,7 @@
                     vertical: true,
                 } %}
             </div>
-        
+            
             <div class="OffCanvas__logoutButton">
                 {{ macros.logoutButton }}
             </div>
@@ -64,8 +82,8 @@
                 } %}
             </div>
             
-            <div class="Header__logoutButton">
-                {{ macros.logoutButton }}
+            <div class="Header__userProfileButton">
+                {{ macros.userProfileButton }}
             </div>
         
             <div class="Header__offCanvasButton">

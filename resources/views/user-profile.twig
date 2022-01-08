@@ -1,0 +1,24 @@
+{% extends 'layouts/base.twig' %}
+
+{% set scope = {
+    user: {
+        image: 'https://i.kym-cdn.com/photos/images/facebook/001/431/201/40f.png',
+        name: 'Имя',
+        surname: 'Фамилия',
+        email: 'email@mail.ru',
+        role: 'Студент',
+        group: 'Группа 1',
+        
+    }
+} %}
+
+{% block main %}
+    <div class="MiddleBlock">
+        <div class="ContentContainer">
+            {% include 'components/user-profile.twig' with{
+                user: user,
+            } %}
+        </div>
+    </div>
+{% endblock %}
+

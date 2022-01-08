@@ -46,6 +46,15 @@
             padding: 15px;
         }
     }
+    
+    &__userProfileButton {    
+        margin-left: auto;
+        cursor: pointer;
+        
+        @include vw-sm-down {
+            display: none;
+        }    
+    }
 }
 .OffCanvas {
     &__content {    

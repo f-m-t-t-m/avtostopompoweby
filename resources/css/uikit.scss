@@ -52,6 +52,17 @@ $global-font-family: Arial;
     line-height: 49px;
     transition: background-color 0.25s ease-in-out;
 }
+@mixin vw-xsm-up {
+    @media (min-width: 501px) {
+        @content;
+    }
+}
+@mixin vw-xsm-down {
+    @media (max-width: 500px) {
+        @content;
+    }
+}
+
 @mixin vw-sm-up {
     @media (min-width: 781px) {
         @content;
