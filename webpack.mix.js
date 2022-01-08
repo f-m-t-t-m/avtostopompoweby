@@ -15,6 +15,7 @@ const { resolve } = require('path');
 mix
     .setPublicPath('public')
     .js('resources/js/app.js', 'js/app.js')
+    .vue()
     .sass('resources/css/app.scss', 'css/app.css')
     .browserSync({
         proxy: 'localhost',
