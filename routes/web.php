@@ -7,6 +7,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SubjectController;
@@ -49,10 +50,11 @@ Route::middleware('auth')->group(function () {
         ->name('save_department');
     Route::post('/change-department', [DeparmentController::class, 'change_department'])
         ->name('change-department');
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 });
 
 Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments"]);
-
 
 //Route::get('/test/confirm-student-registration', function () {
 //    return view('confirm-student-registration');
@@ -75,4 +77,5 @@ Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments
 //Route::get('/test/user-profile', function () {
 //    return view('user-profile');
 //})->name('user-profile');
+
 

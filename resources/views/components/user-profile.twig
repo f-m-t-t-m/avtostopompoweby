@@ -14,14 +14,14 @@
                 <a class="UserProfile__menuItem">
                     Оповещения
                 </a>
-                <a class="UserProfile__menuItem LinkRed">
+                <a class="UserProfile__menuItem LinkRed" href="{{ route('logout') }}">
                     Выйти
                 </a>
             </div>
         </div>
         <div class="UserProfile__info">
             <div class="UserProfile__infoImage">
-                <img class="UserProfile__image" src="{{ scope.user.image }}" alt="Фото">
+                <img class="UserProfile__image" src="{{ scope.user.avatar }}" alt="Фото">
             </div>
             <div class="UserProfile__infoText">
                 <div class="UserProfile__item">
@@ -40,18 +40,18 @@
                     <label class="UserProfile__itemLabel">Роль:</label>
                     <p class="UserProfile__itemValue">{{ scope.user.role }}</p>
                 </div>
-                
-                {% if (scope.user.role == "Студент") %}
+
+                {% if (scope.user.role == "student") %}
                 <div class="UserProfile__item">
                     <label class="UserProfile__itemLabel">Группа:</label>
-                    <p class="UserProfile__itemValue">{{ scope.user.group }}</p>
+                    <p class="UserProfile__itemValue">{{ scope.user.student.group.name }}</p>
                 </div>
                 {% endif %}
-                
-                {% if (scope.user.role == "Зав. кафедрой") %}
+
+                {% if (scope.user.role == "head") %}
                 <div class="UserProfile__item">
                     <label class="UserProfile__itemLabel">Кафедра:</label>
-                    <p class="UserProfile__itemValue">{{ scope.user.department }}</p>
+                    <p class="UserProfile__itemValue">{{ scope.user.department.name }}</p>
                 </div>
                 {% endif %}
             </div>
