@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\Http\Resources\GroupResource;
 use App\Models\Department;
 use App\Models\User;

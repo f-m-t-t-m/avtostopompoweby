@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\Models\Comment;
 use App\Models\Section;
 use Illuminate\Http\Request;
@@ -43,6 +44,20 @@ class CommentController extends Controller {
         $section = Section::query()->where('id', (int)$request->section_id)->first();
         $comments = $section->comments()->paginate(5);
         $lastPage = $comments->lastPage();
+        $users = [];
+        $users[] = $section->subject->user;
+        $users[] = $section->subject->group->department->user;
+        $students = $section->subject->group->students;
+        foreach ($students as $student) {
+            $users[] = $student->user;
+        }
+        $subject = $section->subject;
+        foreach ($users as $user) {
+            if ($user->id != Auth::user()->id) {
+                NewMessage::dispatch($section, $subject, $comment, $lastPage, $user->id);
+            }
+        }
+
         $url = route('section', [(int)$request->section_id]).'?page='.$lastPage;
         return redirect($url);
     }

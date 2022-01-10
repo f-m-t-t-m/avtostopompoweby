@@ -29,10 +29,11 @@
 
         {% block modals %}{% endblock %}
         {% block modalWindow %}{% endblock %}
-
-        <div id="app">
-            <example-component></example-component>
-        </div>
+        {% if (auth_check()) %}
+            <div id="app">
+                <example-component :user="{{ auth_user() }}"></example-component>
+            </div>
+        {% endif %}
         <script type="text/javascript" src="/js/app.js"></script>
     </body>
 </html>
