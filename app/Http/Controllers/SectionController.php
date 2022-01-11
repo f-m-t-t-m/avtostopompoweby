@@ -6,6 +6,8 @@ use App\Models\Section;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class SectionController extends Controller
 {
@@ -33,13 +35,29 @@ class SectionController extends Controller
     public function store(Request $request) {
         $subject = Subject::query()->where('id', (int)$request->discipline_id)->first();
         $this->authorize('create', [Section::class, $subject]);
-        $validated = $request->validate([
+        $validator = Validator::make ($request->all(), [
             'text' => 'required',
             'name' => 'required',
+            'file' => 'nullable|mimes:pdf|max:5120',
         ]);
+
+        if ($validator->fails()) {
+            return redirect(url()->previous())
+                ->withErrors($validator)
+                ->with('create_error', true)
+                ->withInput();
+        }
+        $validated = $validator->validated();
         $section = new Section();
         $section->name = $validated['name'];
         $section->text = $validated['text'];
+        if (isset($validated['file'])) {
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('files/', $fileName, 's3');
+            Storage::disk('s3')->setVisibility('files/'.$fileName, 'public');
+            $section->file = Storage::disk('s3')->url('files/'.$fileName);
+        }
+
         $section->subject_id = (int)$request->discipline_id;
         $section->save();
 

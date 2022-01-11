@@ -5,7 +5,7 @@
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">Создать раздел</h2>
             <button type="button" class="uk-modal-close-default" data-uk-close></button>
-            <form method="POST" action="{{ route('store_section') }}" class="SectionForm">
+            <form method="POST" action="{{ route('store_section') }}" class="SectionForm" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input id="discipline_id" type="hidden" name="discipline_id" value=""/>
                 <label for="" class="SectionFrom__title ">
@@ -21,6 +21,10 @@
                 <textarea name="text" id="section_text" class="SectionForm__textarea"></textarea>
                 {% if errors.first('text') %}
                     <p>{{ errors.first('text') }}</p>
+                {% endif %}
+                <input type="file" name="file" id="file">
+                {% if errors.first('file') %}
+                    <p>{{ errors.first('file') }}</p>
                 {% endif %}
                 <button class="Button Button--primary Form__button" type="submit">
                     Создать раздел

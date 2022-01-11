@@ -14,6 +14,9 @@
                 <div class="PostSection__main">
                     <p class="PostSection__text">
                         {{ scope.section.text }}
+                        {% if scope.section.file %}
+                            <p><a href="{{ scope.section.file }}" target="_blank"> это файл</a></p>
+                        {% endif %}
                     </p>
                 </div>
                 <div class="PostSection__comments">
