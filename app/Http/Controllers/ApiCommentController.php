@@ -44,6 +44,9 @@ class ApiCommentController extends Controller
         $comment->text = $validated['text'];
         $comment->user_id = Auth::user()->id;
         $comment->section_id = $section->id;
+        if ($request->reply) {
+            $comment->comment_id = $request->reply;
+        }
         $comment->save();
 
         return response()->json(new CommentResource($comment), 201);
