@@ -58,7 +58,7 @@ class CommentController extends Controller {
             }
         }
 
-        $url = route('section', [(int)$request->section_id]).'?page='.$lastPage;
+        $url = route('section', [(int)$request->section_id]).'?page='.$lastPage.'#to_'.$comment->id;
         return redirect($url);
     }
 }

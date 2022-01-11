@@ -19,6 +19,7 @@
                         {% endif %}
                     </p>
                 </div>
+                <a id="comments"></a>
                 <div class="PostSection__comments">
                     {% include 'components/comment_pagination.twig' with {
                         comments: scope.comments,
@@ -59,6 +60,8 @@
                 event.preventDefault();
                 var page = $(this).attr('href').split('page=')[1];
                 get_comments(page);
+                location.hash = "";
+                location.hash = "#comments";
             });
         })
 
