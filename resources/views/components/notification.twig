@@ -1,0 +1,17 @@
+{% import _self as macros %}
+
+{% set scope = scope ?? "" %}
+
+{% macro content(scope) %}
+    <div class="Notification__section">
+        <p class="Notification__text">
+            {{ scope }}
+        </p>
+        <a class="Notification__button">
+            прочитано
+        </a>
+        <input type="checkbox" name="" value="прочитано" class="Notification__point">
+    </div>
+{% endmacro %}
+
+{{ macros.content(scope) }}

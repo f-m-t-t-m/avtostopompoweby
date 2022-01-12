@@ -1,0 +1,24 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}Уведомления{% endblock %}
+
+{% set scope = [
+    "Lorem ipsum dolor sit amet.",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, sed?",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+] %}
+
+{% block main %}
+    <div class="MiddleBlock">
+        <div class="ContentContainer">
+            <div class="Notification__message">
+                <a href="" class="Notification__message--text">Отметить всё как прочитанное</a>
+            </div>
+            {% for item in scope %}
+                {% include 'components/notification.twig' with {
+                    scope: item,
+                } %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

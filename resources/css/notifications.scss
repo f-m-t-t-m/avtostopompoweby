@@ -1,0 +1,51 @@
+.Notification {
+  &__section {
+    padding: 40px;
+    border-top: solid 1px grey;
+    border-bottom: solid 1px grey;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    @include vw-sm-down {
+      padding: 20px;
+    }
+  }
+
+  &__message {
+    margin-bottom: 10px;
+
+    &--text {
+      text-decoration: none;
+      color: blue;
+    }
+
+    &--text:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__button {
+    color: darkblue;
+    text-decoration: none;
+
+    @include vw-sm-down {
+      display: none;
+    }
+  }
+
+  &__button:hover {
+    text-decoration: underline;
+  }
+
+  &__point {
+    @include vw-sm-down {
+      width: 15px;
+      height: 15px;
+    }
+
+    @include vw-sm-up {
+      display: none;
+    }
+  }
+}

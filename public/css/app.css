@@ -11910,17 +11910,13 @@ body {
 }
 .Layout__header {
   background-color: #6995D0;
-  padding: 5px 5px;
+  padding: 8px 16px;
 }
 .Layout__main {
   background-color: #F0F0F0;
   flex: 1;
   padding: 24px 0px;
   display: flex;
-}
-.Layout__footer {
-  background-color: #3B63AB;
-  padding: 5px 5px;
 }
 
 .FormContainer {
@@ -11931,6 +11927,7 @@ body {
 @media (max-width: 780px) {
   .FormContainer {
     border-radius: 0;
+    padding: 16px;
   }
 }
 
@@ -11972,7 +11969,7 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   width: 1400px;
-  height: 800px;
+  height: 840px;
 }
 @media (max-width: 1264px) {
   .DividerBlock {
@@ -12014,6 +12011,13 @@ td {
   color: white;
 }
 
+.LinkRed {
+  color: red;
+}
+.LinkRed:hover {
+  color: red;
+}
+
 .Button {
   border: none;
   border-radius: 4px;
@@ -12037,7 +12041,6 @@ td {
 .Header {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
 }
 .Header__logo {
   margin-right: 36px;
@@ -12048,7 +12051,7 @@ td {
 }
 @media (max-width: 780px) {
   .Header__logo {
-    margin-right: 16px;
+    margin-right: 0;
   }
 }
 .Header__menu {
@@ -12082,6 +12085,15 @@ td {
 .Header__offCanvasButton button {
   padding: 15px;
 }
+.Header__userProfileButton {
+  margin-left: auto;
+  cursor: pointer;
+}
+@media (max-width: 780px) {
+  .Header__userProfileButton {
+    display: none;
+  }
+}
 
 .OffCanvas__content {
   display: flex;
@@ -12110,10 +12122,15 @@ td {
   width: auto;
 }
 .SiteNav__listItem--vertical:not(:last-child) {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 .SiteNav__item {
   line-height: 1.2;
+}
+.SiteNav__divider {
+  background-color: white;
+  height: 1px;
+  width: 180px;
 }
 
 .Form {
@@ -12175,6 +12192,7 @@ td {
 .GroupList {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .GroupList__header {
   margin-bottom: 16px;
@@ -12196,7 +12214,7 @@ td {
   margin-left: auto;
 }
 .GroupList__scrollable {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .GroupList__list {
   margin: 0;
@@ -12208,21 +12226,37 @@ td {
   margin-bottom: 2px;
   padding: 4px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
   border-radius: 4px;
+}
+@media (max-width: 780px) {
+  .GroupList__item {
+    flex-direction: column;
+  }
 }
 .GroupList__itemName {
   margin: 0;
-  padding-left: 12px;
+  margin-left: 12px;
   font-family: Arial;
 }
-.GroupList__itemButton {
-  margin-left: auto;
+@media (max-width: 780px) {
+  .GroupList__itemName {
+    margin-left: 0px;
+    margin-bottom: 4px;
+  }
+}
+@media (max-width: 780px) {
+  .GroupList__itemButton {
+    margin-left: auto;
+    line-height: 32px;
+  }
 }
 
 .SubjectTable {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .SubjectTable__header {
   margin-bottom: 16px;
@@ -12239,19 +12273,16 @@ td {
   }
 }
 .SubjectTable__scrollable {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .SubjectTable__table {
   width: 100%;
 }
 
 .Section {
-  background-color: white;
-  border-radius: 20px;
-  margin: 0 16px 16px;
-  padding: 38px;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .Section__header {
   margin-bottom: 16px;
@@ -12263,6 +12294,11 @@ td {
   font-family: Arial;
   font-size: 38px;
   font-weight: bold;
+}
+@media (max-width: 780px) {
+  .Section__title {
+    font-size: 28px;
+  }
 }
 .Section__button {
   background-color: #3B63AB;
@@ -12282,6 +12318,12 @@ td {
   background-color: #224A92;
 }
 
+.Discipline {
+  height: 100%;
+}
+.Discipline__scrollable {
+  overflow-y: auto;
+}
 .Discipline__teacher {
   font-size: 25px;
   font-weight: bold;
@@ -12290,6 +12332,16 @@ td {
   font-weight: normal;
   text-decoration: none;
   font-size: 20px;
+}
+@media (max-width: 780px) {
+  .Discipline__teacher--name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 780px) {
+  .Discipline__teacher {
+    font-size: 20px;
+  }
 }
 .Discipline__group {
   font-size: 25px;
@@ -12301,16 +12353,45 @@ td {
   font-size: 20px;
   font-weight: normal;
 }
+@media (max-width: 780px) {
+  .Discipline__group--name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 780px) {
+  .Discipline__group {
+    font-size: 20px;
+  }
+}
 .Discipline__information p {
   font-size: 25px;
   font-weight: bold;
+}
+@media (max-width: 780px) {
+  .Discipline__information p {
+    font-size: 20px;
+  }
 }
 .Discipline__information--text {
   font-family: "Times New Roman", sans-serif;
   font-size: 18px;
   font-weight: normal;
 }
+@media (max-width: 780px) {
+  .Discipline__information--text {
+    font-size: 16px;
+  }
+}
 
+.SectionStudy {
+  height: 100%;
+}
+.SectionStudy__scrollable {
+  overflow: auto;
+}
+.SectionStudy__table {
+  width: 100%;
+}
 .SectionStudy__link {
   color: black;
   cursor: pointer;
@@ -12326,10 +12407,6 @@ td {
 }
 
 .Section__block {
-  background-color: white;
-  border-radius: 20px;
-  margin: 0 16px 16px;
-  padding: 38px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -12352,6 +12429,11 @@ td {
   font-family: Arial;
   font-size: 38px;
   font-weight: bold;
+}
+@media (max-width: 780px) {
+  .PostSection__title {
+    font-size: 28px;
+  }
 }
 .PostSection__main {
   display: block;
@@ -12469,6 +12551,7 @@ h2 {
 .StudentList {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .StudentList__header {
   margin-bottom: 16px;
@@ -12487,7 +12570,7 @@ h2 {
   }
 }
 .StudentList__scrollable {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .StudentList__list {
   margin: 0;
@@ -12498,18 +12581,174 @@ h2 {
   background-color: #6995D0;
   margin-bottom: 2px;
   padding: 4px;
-  display: flex;
-  align-items: center;
   border-radius: 4px;
+  display: grid;
+  grid-template-areas: "image name email group button";
+  grid-template-columns: 50px repeat(3, 1fr) 152px;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+  row-gap: 4px;
+}
+@media (max-width: 780px) {
+  .StudentList__item {
+    grid-template-areas: "image button" "name name" "email email" "group group";
+    grid-template-columns: 50px 1fr;
+  }
 }
 .StudentList__itemImage {
+  grid-area: image;
   height: 49px;
 }
 .StudentList__itemName, .StudentList__itemEmail, .StudentList__itemGroup {
   margin: 0;
-  padding-left: 12px;
   font-family: Arial;
 }
+.StudentList__itemName {
+  grid-area: name;
+}
+.StudentList__itemEmail {
+  grid-area: email;
+}
+.StudentList__itemGroup {
+  grid-area: group;
+}
 .StudentList__itemButton {
-  margin-left: auto;
+  grid-area: button;
+  justify-self: end;
+}
+
+.UserProfile {
+  display: flex;
+  flex-direction: column;
+}
+.UserProfile__header {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 500px) {
+  .UserProfile__header {
+    flex-direction: column;
+  }
+}
+.UserProfile__title {
+  margin: 0;
+  margin-right: auto;
+  font-family: Arial;
+  font-size: 38px;
+  font-weight: bold;
+}
+@media (max-width: 780px) {
+  .UserProfile__title {
+    font-size: 28px;
+  }
+}
+.UserProfile__menu {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.UserProfile__menuItem:not(:last-child) {
+  margin-right: 16px;
+}
+.UserProfile__info {
+  display: flex;
+}
+@media (max-width: 500px) {
+  .UserProfile__info {
+    flex-direction: column;
+  }
+}
+.UserProfile__infoImage {
+  max-height: 300px;
+  max-width: 300px;
+}
+@media (max-width: 780px) {
+  .UserProfile__infoImage {
+    max-height: 220px;
+    max-width: 220px;
+  }
+}
+.UserProfile__image {
+  max-height: 300px;
+  max-width: 300px;
+  height: auto;
+  width: auto;
+}
+@media (max-width: 780px) {
+  .UserProfile__image {
+    max-height: 420px;
+    max-width: 220px;
+  }
+}
+.UserProfile__infoText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+@media (max-width: 500px) {
+  .UserProfile__infoText {
+    margin-left: 0;
+    margin-top: 16px;
+  }
+}
+.UserProfile__item {
+  display: flex;
+  flex-direction: column;
+}
+.UserProfile__item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.UserProfile__itemLabel {
+  font-size: 12px;
+  font-weight: bold;
+}
+.UserProfile__itemValue {
+  font-size: 16px;
+}
+
+.Notification__section {
+  padding: 40px;
+  border-top: solid 1px grey;
+  border-bottom: solid 1px grey;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+@media (max-width: 780px) {
+  .Notification__section {
+    padding: 20px;
+  }
+}
+.Notification__message {
+  margin-bottom: 10px;
+}
+.Notification__message--text {
+  text-decoration: none;
+  color: blue;
+}
+.Notification__message--text:hover {
+  text-decoration: underline;
+}
+.Notification__button {
+  color: darkblue;
+  text-decoration: none;
+}
+@media (max-width: 780px) {
+  .Notification__button {
+    display: none;
+  }
+}
+.Notification__button:hover {
+  text-decoration: underline;
+}
+@media (max-width: 780px) {
+  .Notification__point {
+    width: 15px;
+    height: 15px;
+  }
+}
+@media (min-width: 781px) {
+  .Notification__point {
+    display: none;
+  }
 }

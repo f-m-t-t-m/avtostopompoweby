@@ -82,7 +82,6 @@ services:
         restart: unless-stopped
         healthcheck:
             test: node /usr/local/src/healthcheck.js
-            start_period: 5s
             interval: 3s
             timeout: 3s
             retries: 10

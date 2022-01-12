@@ -24,6 +24,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// route от Ксюхи
+Route::get('/notifications', function () {
+    return view('notifications');
+})->name('notifications');
+
 Route::match(['get', 'post'], '/login', LoginController::class)->name('login');
 Route::match(['get', 'post'], '/register', RegisterController::class)->name('register');
 
@@ -77,5 +82,4 @@ Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments
 //Route::get('/test/user-profile', function () {
 //    return view('user-profile');
 //})->name('user-profile');
-
 
