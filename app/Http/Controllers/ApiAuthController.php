@@ -58,7 +58,7 @@ class ApiAuthController extends Controller
             $student->group_id = Group::query()->where('name', $validated['group'])->first()->id;
             $student->save();
         }
-        return response()->json(['message' => 'Registration has been successfully']);
+        return response()->json(['message' => 'Registration has been successfully','url'=> $user->avatar]);
     }
 
     public function logout() : JsonResponse {

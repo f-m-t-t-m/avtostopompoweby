@@ -1,17 +1,19 @@
 {% import _self as macros %}
 
-{% set scope = scope ?? "" %}
+{% set scope = notifications ?? [] %}
 
 {% macro content(scope) %}
-    <div class="Notification__section">
-        <p class="Notification__text">
-            {{ scope }}
-        </p>
-        <a class="Notification__button">
-            прочитано
-        </a>
-        <input type="checkbox" name="" value="прочитано" class="Notification__point">
-    </div>
+    {% for item in scope %}
+        <div class="Notification__section">
+            <p class="Notification__text">
+                {{ item.count }} {{ item.notification.text }}
+            </p>
+            <a class="Notification__button">
+                прочитано
+            </a>
+            <input type="checkbox" name="" value="прочитано" class="Notification__point">
+        </div>
+    {% endfor %}
 {% endmacro %}
 
 {{ macros.content(scope) }}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
 use App\Models\Comment;
+use App\Models\Notification;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,11 @@ class CommentController extends Controller {
         foreach ($users as $user) {
             if ($user->id != Auth::user()->id) {
                 NewMessage::dispatch($section, $subject, $comment, $lastPage, $user->id);
+                $notification = new Notification();
+                $notification->user_id = $user->id;
+                $notification->text = sprintf('Новое сообщение в разделе: %s предмета: %s',
+                    $section->name, $subject->name);
+                $notification->save();
             }
         }
 

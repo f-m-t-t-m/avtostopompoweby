@@ -2,11 +2,9 @@
 
 {% block title %}Уведомления{% endblock %}
 
-{% set scope = [
-    "Lorem ipsum dolor sit amet.",
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, sed?",
-    "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-] %}
+{% set scope = {
+    notifications: notifications,
+} %}
 
 {% block main %}
     <div class="MiddleBlock">
@@ -14,11 +12,9 @@
             <div class="Notification__message">
                 <a href="" class="Notification__message--text">Отметить всё как прочитанное</a>
             </div>
-            {% for item in scope %}
                 {% include 'components/notification.twig' with {
-                    scope: item,
+                    notifications: scope.notifications,
                 } %}
-            {% endfor %}
         </div>
     </div>
 {% endblock %}

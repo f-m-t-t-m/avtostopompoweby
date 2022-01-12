@@ -7,6 +7,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SectionController;
@@ -23,11 +24,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// route от Ксюхи
-Route::get('/notifications', function () {
-    return view('notifications');
-})->name('notifications');
 
 Route::match(['get', 'post'], '/login', LoginController::class)->name('login');
 Route::match(['get', 'post'], '/register', RegisterController::class)->name('register');
@@ -57,6 +53,9 @@ Route::middleware('auth')->group(function () {
         ->name('change-department');
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
+    Route::get('/notifications', [NotificationController::class, 'show'])
+        ->name('notifications');
 });
 
 Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments"]);

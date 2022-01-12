@@ -26,9 +26,10 @@
                     {{ comment.created_at }}
                 </div>
             </div>
-            {% if (comment.comment_id) %}
+            {% if (comment.comment) %}
                 <div class="Reply__text" style="background: gray">
-                    <p>{{ scope.replies[count].text }}</p>
+                    <p>{{ comment.comment.user.name }} {{ comment.comment.user.surname }}</p>
+                    <p>{{ comment.comment.text }}</p>
                 </div>
             {% endif %}
             <div class="Comment__text">
