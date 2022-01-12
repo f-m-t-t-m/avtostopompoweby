@@ -35,9 +35,15 @@
         font-family: Arial;
     }
     
-    &__fileChooser::file-selector-button {
+    &__fileChooser {
         margin-top: 0px;
         margin-bottom: 8px;
+    }
+    
+    &__fileChooser::file-selector-button {
+        @extend .uk-button;
+        @extend .uk-button-primary;
+        margin-right: 8px;
     }
     
     &__button {

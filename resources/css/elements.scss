@@ -37,18 +37,4 @@ td {
     &--primary {
         @extend .uk-button-primary;
     }
-    border: none;
-    border-radius: 4px;
-    font-family: Arial;
-    font-weight: bold;
-    &:hover {
-        background-color: darken($color-darkblue, 5%); /* #3B63AB но на ~10% темнее */  
-    }
-    &:active {
-        background-color: darken($color-darkblue, 15%); /* #3B63AB но на ~25% темнее */ 
-    }
-    
-    @include vw-sm-down {
-        padding: 0 8px;
-    }
 }

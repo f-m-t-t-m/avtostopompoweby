@@ -36,6 +36,7 @@
     color: white;
     font-family: Arial;
     font-weight: bold;
+    font-size: 16px;
 }
 .Form_fileChooser::file-selector-button:hover {
     background-color: #3159A1; /* #3B63AB но на ~10% темнее */ 
