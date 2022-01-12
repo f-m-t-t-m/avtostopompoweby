@@ -1,7 +1,6 @@
 .Header {
     display: flex;
     align-items: center;
-    padding: 8px 16px;
     
     &__logo {
         margin-right: 36px;
@@ -11,7 +10,7 @@
         font-weight: bold;
         
         @include vw-sm-down {  
-            margin-right: 16px;
+            margin-right: 0;
         }    
     }
     

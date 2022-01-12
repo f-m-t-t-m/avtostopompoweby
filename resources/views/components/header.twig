@@ -71,10 +71,10 @@
 {% macro content(scope) %}
     <div class="Header">
         <div class="Header__logo">
-            Логотип
+            Кафедра
         </div>
 
-        {% if (auth_check() or true) %}
+        {% if (auth_check()) %}
             <div class="Header__menu">
                 {% include 'components/site-nav.twig' with {
                     items: scope.menu,
