@@ -3,6 +3,7 @@ body {
 }
 
 .Layout {
+    background-color: $color-lightgray;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -13,7 +14,6 @@ body {
     }   
     
     &__main {
-        background-color: $color-lightgray;
         flex: 1;
         padding: 24px 0px;
         display: flex;

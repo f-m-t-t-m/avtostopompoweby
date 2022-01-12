@@ -4,7 +4,7 @@
 
 {% macro content(scope) %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <div class=" Section__block">
+        <div class="Section__block">
             <div class="PostSection">
                 <div class="PostSection__header">
                     <h2 class="PostSection__title">
@@ -40,17 +40,16 @@
                         {% if errors.first('text') %}
                             <p>{{ errors.first('text') }}</p>
                         {% endif %}
-                        <p class="PostSection__addFile"><input type="file" name="file" id="file" value="{{ old('file') }}">
+                        <p class="PostSection__addFile"><input class="Form__fileChooser" type="file" name="file" id="file" value="{{ old('file') }}">
                         {% if errors.first('file') %}
                             <p>{{ errors.first('file') }}</p>
                         {% endif %}
-                            <input type="submit" value="Добавить"></p>
-                        <button class="PostSection__button">
+                            <input class="Button Button--primary PostSection__button" type="submit" value="Добавить"></p>
+                        <button class="Button Button--primary PostSection__button">
                             Поделиться
                         </button>
                     </form>
                 </div>
-
             </div>
         </div>
 
