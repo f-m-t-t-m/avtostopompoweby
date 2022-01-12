@@ -84,8 +84,16 @@
     }
 
     &__addFile {
+        display: flex;
+        align-items: center;
+        flex-flow: row wrap;
+        margin-bottom: 0;
     }
 
-    &__button {
+    &__addButton {
+        margin-bottom: 8px;
+    }
+
+    &__sendButton {
     }
 }
