@@ -15,6 +15,12 @@
     {% for comment in scope.comments %}
         <a id="to_{{ comment.id }}"></a>
         <div class="Comment" id="comment_{{ comment.id }}">
+            {% if (comment.comment) %}
+                <div class="Reply__text">
+                    <p style="font-size: 14px">{{ comment.comment.user.name }} {{ comment.comment.user.surname }}</p>
+                    <p>{{ comment.comment.text }}</p>
+                </div>
+            {% endif %}
             <div class="Comment__avatar">
                 <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
             </div>
@@ -26,20 +32,17 @@
                     {{ comment.created_at }}
                 </div>
             </div>
-            {% if (comment.comment) %}
-                <div class="Reply__text" style="background: gray">
-                    <p>{{ comment.comment.user.name }} {{ comment.comment.user.surname }}</p>
-                    <p>{{ comment.comment.text }}</p>
-                </div>
-            {% endif %}
+
             <div class="Comment__text">
                 <p>{{ comment.text }}</p>
             </div>
             {% if comment.file %}
-                <a href="{{ comment.file }}" target="_blank"> это файл</a>
+                <a href="{{ comment.file }}" target="_blank">
+                    <img src="/images/file-image.jpg" alt="" class="Comment__file--image">
+                </a>
             {% endif %}
             <div class="Comment__footer">
-                <div id="reply_{{ comment.id }}" class="Comment__button, reply_comment">
+                <div id="reply_{{ comment.id }}" class="Comment__button reply_comment">
                     Ответить
                 </div>
             </div>

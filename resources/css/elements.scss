@@ -33,8 +33,59 @@ td {
 
 .Button {
     @extend .uk-button;
-    
+
     &--primary {
         @extend .uk-button-primary;
     }
+}
+
+// pagination
+.pagination {
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.pagination li {
+    //margin: 0 3px;
+    float: left;
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 12px;
+    color: #fff;
+    margin-left: -1px;
+    border: 1px solid transparent;
+    line-height: 1.5;
+}
+
+.pagination li:first-child a {
+    -moz-border-radius: 6px 0 0 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px 0 0 6px;
+}
+
+.pagination li:last-child a {
+    -moz-border-radius: 0 6px 6px 0;
+    -webkit-border-radius: 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.pagination li {
+    border-color: #ddd;
+    color: #4285F4;
+    background: #fff;
+}
+
+.pagination li:hover {
+    background: #eee;
+}
+
+.pagination li.active, .pagination li:active {
+    border-color: #4285F4;
+    background: #4285F4;
+    color: #fff;
 }
