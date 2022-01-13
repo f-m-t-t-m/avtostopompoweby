@@ -45,7 +45,7 @@ class ApiAuthController extends Controller
 
         if (isset($validated['avatar'])) {
             $avatar = base64_decode($validated['avatar']);
-            $fullFileName = 'avatar/'.time().'_'.$request->name.$request->surname.'.png';
+            $fullFileName = 'avatars/'.time().'_'.$request->name.$request->surname.'.png';
             Storage::disk('s3')->put($fullFileName, $avatar);
             Storage::disk('s3')->setVisibility($fullFileName, 'public');
             $user->avatar = Storage::disk('s3')->url($fullFileName);

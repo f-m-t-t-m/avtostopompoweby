@@ -9,6 +9,7 @@ use App\Models\Subject;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ApiCommentController extends Controller
@@ -32,7 +33,8 @@ class ApiCommentController extends Controller
      */
     public function store(Subject $subject, Section $section, Request $request): JsonResponse {
         $validator = Validator::make($request->all(), [
-            'text' => 'required|max:150'
+            'text' => 'required|max:150',
+            'file' => 'nullable'
         ]);
 
         if ($validator->fails()) {
@@ -47,6 +49,15 @@ class ApiCommentController extends Controller
         if ($request->reply) {
             $comment->comment_id = $request->reply;
         }
+
+        if (isset($validated['file'])) {
+            $pdf = base64_decode($validated['file']);
+            $fullFileName = 'files/'.time().'_'.Auth::user()->name.Auth::user()->surname.'.pdf';
+            Storage::disk('s3')->put($fullFileName, $pdf);
+            Storage::disk('s3')->setVisibility($fullFileName, 'public');
+            $comment->file = Storage::disk('s3')->url($fullFileName);
+        }
+
         $comment->save();
 
         return response()->json(new CommentResource($comment), 201);

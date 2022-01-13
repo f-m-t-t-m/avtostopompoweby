@@ -23,7 +23,7 @@ class CommentResource extends JsonResource
         ];
         if ($this->comment) {
             $arrayData['reply_id'] = $this->comment->id;
-            $arrayData['reply_user'] = $this->comment->user->name . ' ' . $this->comment->user->surname;
+            $arrayData['reply_name'] = $this->comment->user->name;
         }
         return $arrayData;
     }
