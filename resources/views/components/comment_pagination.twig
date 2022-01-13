@@ -1,7 +1,7 @@
 {% import _self as macros %}
 
 {% set scope = {
-    comments: comments,
+    comments: comments ?? [],
     users: users,
     replies: replies,
 } %}
@@ -10,46 +10,49 @@
     <div id="load_img" style="text-align: center; display: none">
         <img src="/images/wait.gif">
     </div>
-    <p class="PostSection__titleComment">Комментарии:</p>
-    {% set count = 0 %}
-    {% for comment in scope.comments %}
-        <a id="to_{{ comment.id }}"></a>
-        <div class="Comment" id="comment_{{ comment.id }}">
-            {% if (comment.comment) %}
-                <div class="Reply__text">
-                    <p style="font-size: 14px">{{ comment.comment.user.name }} {{ comment.comment.user.surname }}</p>
-                    <p>{{ comment.comment.text }}</p>
+    {% if scope.comments %}
+        <p class="PostSection__titleComment">Комментарии:</p>
+        {% set count = 0 %}
+        {% for comment in scope.comments %}
+            <a id="to_{{ comment.id }}"></a>
+            <div class="Comment" id="comment_{{ comment.id }}">
+                {% if (comment.comment) %}
+                    <div class="Reply__text">
+                        <p style="font-size: 14px">{{ comment.comment.user.name }} {{ comment.comment.user.surname }}</p>
+                        <p>{{ comment.comment.text }}</p>
+                    </div>
+                {% endif %}
+                <div class="Comment__avatar">
+                    <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
                 </div>
-            {% endif %}
-            <div class="Comment__avatar">
-                <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
-            </div>
-            <div class="Comment__header">
-                <div class="Comment__header--name">
-                    {{ scope.users[count].name ~ ' ' ~ scope.users[count].surname}}
+                <div class="Comment__header">
+                    <div class="Comment__header--name">
+                        {{ scope.users[count].name ~ ' ' ~ scope.users[count].surname}}
+                    </div>
+                    <div class="Comment__header--date">
+                        {{ comment.created_at }}
+                    </div>
                 </div>
-                <div class="Comment__header--date">
-                    {{ comment.created_at }}
-                </div>
-            </div>
 
-            <div class="Comment__text">
-                <p>{{ comment.text }}</p>
-            </div>
-            {% if comment.file %}
-                <a href="{{ comment.file }}" target="_blank">
-                    <img src="/images/file-image.jpg" alt="" class="Comment__file--image">
-                </a>
-            {% endif %}
-            <div class="Comment__footer">
-                <div id="reply_{{ comment.id }}" class="Comment__button reply_comment">
-                    Ответить
+                <div class="Comment__text">
+                    <p>{{ comment.text }}</p>
+                </div>
+                {% if comment.file %}
+                    <a href="{{ comment.file }}" target="_blank">
+                        <img src="/images/file-image.jpg" alt="" class="Comment__file--image">
+                    </a>
+                {% endif %}
+                <div class="Comment__footer">
+                    <div id="reply_{{ comment.id }}" class="Comment__button reply_comment">
+                        Ответить
+                    </div>
                 </div>
             </div>
-        </div>
-        {% set count = count+1 %}
-    {% endfor %}
-    {{ scope.comments.links("pagination::default")|raw }}
+            {% set count = count+1 %}
+            {{ scope.comments.links("pagination::default")|raw }}
+        {% endfor %}
+    {% endif %}
+
 
     <script type="text/javascript">
         btns = document.getElementsByClassName("reply_comment");

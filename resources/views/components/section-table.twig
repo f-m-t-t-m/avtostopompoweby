@@ -16,18 +16,11 @@
                 {% endif %}
             </div>
             <div class="SectionStudy__scrollable">
-                <table class="SectionStudy__table">
-                    <tr>
-                        <th>Название раздела</th>
-                        <th>Описание</th>
-                    </tr>
+                <ul class="SectionStudy__list">
                     {% for item in scope %}
-                        <tr>
-                            <td><a href="{{ route('section', [item.id]) }}" class="SectionStudy__link">{{ item.name }}</a></td>
-                            <td>{{ item.description }}</td>
-                        </tr>
+                        <li><a href="{{ route('section', [item.id]) }}" class="SectionStudy__link">{{ item.name }}</a></li>
                     {% endfor %}
-                </table>
+                </ul>
             </div>
         </div>
     </div>
@@ -35,9 +28,9 @@
     <script type="text/javascript">
         window.onload = function() {
             {% if errors.any() %}
-                document.getElementById("section_name").value = "{{ old('name') }}"
-                document.getElementById("section_text").value = "{{ old('text') }}"
-                document.getElementById('open_create_section').click()
+            document.getElementById("section_name").value = "{{ old('name') }}"
+            document.getElementById("section_text").value = "{{ old('text') }}"
+            document.getElementById('open_create_section').click()
             {% endif %}
         }
     </script>

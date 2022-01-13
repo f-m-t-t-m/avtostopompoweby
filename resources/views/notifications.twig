@@ -9,14 +9,21 @@
 {% block main %}
     <div class="MiddleBlock">
         <div class="ContentContainer">
-            <form id="read_all" class="Notification__button" action="" method = "post">
-                {{ csrf_field() }}
-                {{ method_field('patch') }}
-                <button class="Button Button--primary LinkWhite">Отметить всё, как прочитанное</button>
-            </form>
+            {% if scope.notifications %}
+                <form id="read_all" class="Notification__button" action="" method = "post">
+                    {{ csrf_field() }}
+                    {{ method_field('patch') }}
+                    <button class="Button Button--primary LinkWhite">Отметить всё, как прочитанное</button>
+                </form>
                 {% include 'components/notification.twig' with {
                     notifications: scope.notifications,
                 } %}
+            {% else %}
+                <p class="Notification__no">
+                    Нет уведомлений
+                </p>
+            {% endif %}
+
         </div>
     </div>
     <script>
