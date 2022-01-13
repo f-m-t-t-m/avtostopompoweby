@@ -1,51 +1,69 @@
 .Notification {
+  &__no {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
   &__section {
     padding: 40px;
     border-top: solid 1px grey;
     border-bottom: solid 1px grey;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 5px;
 
     @include vw-sm-down {
       padding: 20px;
+      display: flex;
+      flex-direction: column;
     }
   }
 
   &__message {
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
 
     &--text {
-      text-decoration: none;
-      color: blue;
+      font-size: 18px;
     }
 
     &--text:hover {
       text-decoration: underline;
+      cursor: default;
+    }
+
+    &--count {
+      display: block;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      font-size: 18px;
+      border: 2px solid $color-darkblue;
+      border-radius: 12px;
+      margin-right: 2px;
+      color: $color-darkblue;
     }
   }
 
   &__button {
     color: darkblue;
     text-decoration: none;
-
-    @include vw-sm-down {
-      display: none;
-    }
+    margin: 10px;
   }
 
   &__button:hover {
     text-decoration: underline;
   }
+}
 
-  &__point {
-    @include vw-sm-down {
-      width: 15px;
-      height: 15px;
-    }
+.LinkWhite {
+  margin-bottom: 20px;
 
-    @include vw-sm-up {
-      display: none;
-    }
+  @include vw-sm-down {
+    margin-bottom: 10px;
   }
 }
