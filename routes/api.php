@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ApiCommentController;
 use App\Http\Controllers\ApiGroupController;
+use App\Http\Controllers\ApiNotificationController;
 use App\Http\Controllers\ApiSectionController;
 use App\Http\Controllers\ApiSubjectController;
 use Illuminate\Http\Request;
@@ -49,6 +50,13 @@ Route::middleware('auth:sanctum')->group(function () {
         ])
         ->missing(function () {
             return response()->json(['message' => 'Comment not found'], 404);
+        });
+    Route::apiResource('notifications', ApiNotificationController::class)
+        ->scoped([
+            'notification' => 'id',
+        ])
+        ->missing(function () {
+            return response()->json(['message' => 'Notification not found'], 404);
         });
 });
 

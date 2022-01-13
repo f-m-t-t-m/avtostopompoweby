@@ -81,4 +81,3 @@ Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments
 //Route::get('/test/user-profile', function () {
 //    return view('user-profile');
 //})->name('user-profile');
-
