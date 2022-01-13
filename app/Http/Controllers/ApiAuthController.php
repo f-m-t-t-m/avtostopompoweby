@@ -95,4 +95,11 @@ class ApiAuthController extends Controller
 
         return response()->json($response, 201);
     }
+
+    public function saveToken(Request $request) {
+        $user = Auth::user();
+        $user->fcm_token = $request->fcm_token;
+        $user->save();
+        return response()->json($user);
+    }
 }

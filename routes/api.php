@@ -25,6 +25,7 @@ Route::post('/login', [ApiAuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [ApiAuthController::class, 'logout']);
+    Route::post('/fcm-token', [ApiAuthController::class, 'saveToken']);
 
     Route::apiResource('subjects', ApiSubjectController::class)
         ->scoped([
