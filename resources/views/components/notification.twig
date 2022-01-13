@@ -5,12 +5,14 @@
 {% macro content(scope) %}
     {% for item in scope %}
         <div class="Notification__section">
-            <p class="Notification__text">
+            <p class="Notification__text" ids="{{ item.ids }}">
                 {{ item.count }} {{ item.notification.text }}
             </p>
-            <a class="Notification__button">
-                прочитано
-            </a>
+            <form class="Notification__button" action = "{{ route('read-notifications', [item.ids]) }}" method = "post">
+                {{ csrf_field() }}
+                {{ method_field('patch') }}
+                <button class="Button Button--primary LinkWhite">Прочитано</button>
+            </form>
             <input type="checkbox" name="" value="прочитано" class="Notification__point">
         </div>
     {% endfor %}

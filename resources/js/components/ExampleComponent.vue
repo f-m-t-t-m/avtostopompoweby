@@ -13,6 +13,7 @@
             }
         },
         mounted() {
+            console.log('example')
             window.Echo.private('notification.'+this.user.id).listen('NewMessage', (e) => {
                 console.log(e);
 

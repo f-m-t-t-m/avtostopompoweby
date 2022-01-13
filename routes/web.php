@@ -56,6 +56,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/notifications', [NotificationController::class, 'show'])
         ->name('notifications');
+    Route::patch('/read-notification/{ids}', [NotificationController::class, 'read_all'])
+        ->name('read-notifications');
 });
 
 Route::get('/comments/{id}/pagination', [SectionController::class, "get_comments"]);

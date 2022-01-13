@@ -9,12 +9,31 @@
 {% block main %}
     <div class="MiddleBlock">
         <div class="ContentContainer">
-            <div class="Notification__message">
-                <a href="" class="Notification__message--text">Отметить всё как прочитанное</a>
-            </div>
+            <form id="read_all" class="Notification__button" action="" method = "post">
+                {{ csrf_field() }}
+                {{ method_field('patch') }}
+                <button class="Button Button--primary LinkWhite">Отметить всё, как прочитанное</button>
+            </form>
                 {% include 'components/notification.twig' with {
                     notifications: scope.notifications,
                 } %}
         </div>
     </div>
+    <script>
+        window.onload = function () {
+            const notifications = JSON.parse('{{ scope.notifications | json_encode | raw }}');
+            let ids_ = "";
+            for(let i = 0; i < notifications.length; i++) {
+                ids_ += notifications[i].ids;
+                if (i !== notifications.length-1) {
+                    ids_ += ',';
+                }
+            }
+            btn = document.getElementById("read_all");
+            var url = '{{ route("read-notifications", ":id") }}'
+            url = url.replace(':id', ids_);
+            btn.action = url;
+            console.log(btn.action);
+        }
+    </script>
 {% endblock %}
