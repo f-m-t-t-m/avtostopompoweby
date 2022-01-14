@@ -58,7 +58,7 @@ class CommentController extends Controller {
             if ($user->id != Auth::user()->id) {
                 NewMessage::dispatch($section, $subject, $comment, $lastPage, $user->id);
                 if($user->fcm_token) {
-                    $user->notify(new PushNotification);
+                    $user->notify(new PushNotification($section, $subject));
                 }
                 $notification = new Notification();
                 $notification->user_id = $user->id;

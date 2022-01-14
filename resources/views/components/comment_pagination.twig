@@ -22,9 +22,15 @@
                         <p>{{ comment.comment.text }}</p>
                     </div>
                 {% endif %}
-                <div class="Comment__avatar">
-                    <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
-                </div>
+                {% if comment.user.avatar %}
+                    <div class="Comment__avatar">
+                        <img src="{{ scope.users[count].avatar }}" alt="Аватарка">
+                    </div>
+                {% else %}
+                    <div class="Comment__avatar">
+                        <img src="/images/foto.jpg" alt="Аватарка">
+                    </div>
+                {% endif %}
                 <div class="Comment__header">
                     <div class="Comment__header--name">
                         {{ scope.users[count].name ~ ' ' ~ scope.users[count].surname}}
