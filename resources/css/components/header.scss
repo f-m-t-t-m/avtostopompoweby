@@ -1,43 +1,47 @@
 .Header {
     display: flex;
     align-items: center;
-    
+
     &__logo {
         margin-right: 36px;
         color: white;
         font-family: Arial;
         font-size: 38px;
         font-weight: bold;
-        
-        @include vw-sm-down {  
+
+        @include vw-sm-down {
             margin-right: 0;
-        }    
+        }
     }
-    
+
+    &__logo:hover {
+        cursor: default;
+    }
+
     &__menu {
         display: flex;
         align-items: center;
-        
-        @include vw-sm-down {  
+
+        @include vw-sm-down {
             display: none;
-        }    
+        }
     }
-    
+
     &__logoutButton {
         margin-left: auto;
-        
-        @include vw-sm-down {  
+
+        @include vw-sm-down {
             display: none;
-        }    
+        }
     }
-    
-    &__offCanvasButton {    
+
+    &__offCanvasButton {
         margin-left: auto;
-        
+
         @include vw-sm-up {
             display: none;
-        }    
-        
+        }
+
         img {
             display: block;
         }
@@ -45,24 +49,24 @@
             padding: 15px;
         }
     }
-    
-    &__userProfileButton {    
+
+    &__userProfileButton {
         margin-left: auto;
         cursor: pointer;
-        
+
         @include vw-sm-down {
             display: none;
-        }    
+        }
     }
 }
 .OffCanvas {
-    &__content {    
+    &__content {
         display: flex;
         flex-flow: column;
         padding: 105px 21px 54px;
         background-color: $color-darkblue;
     }
-    
+
     &__logoutButton {
         margin-top: auto;
     }

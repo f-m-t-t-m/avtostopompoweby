@@ -38,7 +38,13 @@
                 </div>
                 <div class="UserProfile__item">
                     <label class="UserProfile__itemLabel">Роль:</label>
-                    <p class="UserProfile__itemValue">{{ scope.user.role }}</p>
+                    {% if scope.user.role == 'student' %}
+                        <p class="UserProfile__itemValue">Студент</p>
+                    {% elseif scope.user.role == 'head' %}
+                        <p class="UserProfile__itemValue">Зав. кафедры</p>
+                    {% elseif scope.user.role == 'teacher' %}
+                        <p class="UserProfile__itemValue">Преподаватель</p>
+                    {% endif %}
                 </div>
 
                 {% if (scope.user.role == "student") %}
