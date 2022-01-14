@@ -8,10 +8,14 @@
 {% block main %}
     <div class="MiddleBlock">
         <div class="ContentContainer">
-            {% include 'components/student-list.twig' with{
-                items: scope.students,
-                groups: scope.groups,
-            } %}
+            {% if scope.students %}
+                {% include 'components/student-list.twig' with{
+                    items: scope.students,
+                    groups: scope.groups,
+                } %}
+            {% else %}
+                <p class="StudentList__title" >Нет студентов на подтверждение</p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

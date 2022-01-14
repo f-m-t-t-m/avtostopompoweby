@@ -15,13 +15,20 @@
                     </button>
                 {% endif %}
             </div>
+            {% if scope %}
             <div class="SectionStudy__scrollable">
-                <ul class="SectionStudy__list">
+                <table class="SectionStudy__table">
+                    <tr>
+                        <th>Название раздела</th>
+                    </tr>
                     {% for item in scope %}
-                        <li><a href="{{ route('section', [item.id]) }}" class="SectionStudy__link">{{ item.name }}</a></li>
+                        <tr>
+                            <td><a href="{{ route('section', [item.id]) }}" class="SectionStudy__link">{{ item.name }}</a></td>
+                        </tr>
                     {% endfor %}
-                </ul>
+                </table>
             </div>
+            {% endif %}
         </div>
     </div>
 

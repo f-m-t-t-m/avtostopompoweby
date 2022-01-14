@@ -25,7 +25,15 @@
                         image: item.avatar ?? '',
                     } %}
                     <li class="StudentList__item">
-                        <img class="StudentList__itemImage" src="{{ item.image }}" alt="Фото">
+                        {% if item.image %}
+                            <div class="StudentList__itemImage">
+                                <img src="{{ item.image }}" alt="Аватарка">
+                            </div>
+                        {% else %}
+                            <div class="StudentList__itemImage">
+                                <img src="/images/foto.jpg" alt="Аватарка">
+                            </div>
+                        {% endif %}
 
                         <p class="StudentList__itemName">
                             {{ item.surname }} {{ item.name }}
