@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
+use App\Events\PushNotification;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
+use App\Models\Notification;
 use App\Models\Section;
 use App\Models\Subject;
 use Illuminate\Http\JsonResponse;
@@ -59,6 +62,29 @@ class ApiCommentController extends Controller
         }
 
         $comment->save();
+
+        $comments = $section->comments()->paginate(5);
+        $lastPage = $comments->lastPage();
+        $users = [];
+        $users[] = $section->subject->user;
+        $users[] = $section->subject->group->department->user;
+        $students = $section->subject->group->students;
+        foreach ($students as $student) {
+            $users[] = $student->user;
+        }
+        foreach ($users as $user) {
+            if ($user->id != Auth::user()->id) {
+                NewMessage::dispatch($section, $subject, $comment, $lastPage, $user->id);
+                if($user->fcm_token) {
+                    $user->notify(new PushNotification);
+                }
+                $notification = new Notification();
+                $notification->user_id = $user->id;
+                $notification->text = sprintf('Новое сообщение в разделе: %s предмета: %s',
+                    $section->name, $subject->name);
+                $notification->save();
+            }
+        }
 
         return response()->json(new CommentResource($comment), 201);
     }

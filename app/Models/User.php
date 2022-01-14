@@ -64,4 +64,9 @@ class User extends Authenticatable
     public function student(): HasOne {
         return $this->hasOne(Student::class);
     }
+
+    public function routeNotificationForFcm()
+    {
+        return $this->fcm_token;
+    }
 }

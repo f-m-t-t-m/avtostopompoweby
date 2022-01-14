@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
+use App\Events\PushNotification;
 use App\Models\Comment;
 use App\Models\Notification;
 use App\Models\Section;
@@ -56,6 +57,9 @@ class CommentController extends Controller {
         foreach ($users as $user) {
             if ($user->id != Auth::user()->id) {
                 NewMessage::dispatch($section, $subject, $comment, $lastPage, $user->id);
+                if($user->fcm_token) {
+                    $user->notify(new PushNotification);
+                }
                 $notification = new Notification();
                 $notification->user_id = $user->id;
                 $notification->text = sprintf('Новое сообщение в разделе: %s предмета: %s',

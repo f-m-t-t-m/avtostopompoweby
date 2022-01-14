@@ -49,8 +49,8 @@
                 </div>
             </div>
             {% set count = count+1 %}
-            {{ scope.comments.links("pagination::default")|raw }}
         {% endfor %}
+        {{ scope.comments.links("pagination::default")|raw }}
     {% endif %}
 
 
