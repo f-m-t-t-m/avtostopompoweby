@@ -42,48 +42,29 @@
 }
 
 .Discipline {
+  margin-bottom: 16px;
   height: 100%;
 
   &__scrollable{
     overflow-y: auto;
   }
 
-  &__teacher {
-    font-size: 25px;
+  &__teacher, &__group {
+    font-size: 24px;
     font-weight: bold;
+
+    @include vw-sm-down {
+      font-size: 18px;
+    }
 
     &--name {
       font-weight: normal;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 24px;
 
       @include vw-sm-down {
         font-size: 18px;
       }
-    }
-
-    @include vw-sm-down {
-      font-size: 20px;
-    }
-  }
-
-  &__group {
-    p {
-      font-weight: bold;
-    }
-    font-size: 25px;
-
-    &--name {
-      font-size: 20px;
-      font-weight: normal;
-
-      @include vw-sm-down {
-        font-size: 18px;
-      }
-    }
-
-    @include vw-sm-down {
-      font-size: 20px;
     }
   }
 
@@ -111,16 +92,23 @@
 
 .SectionStudy {
   &__list {
-    margin-left: 50px;
-    margin-top: 25px;
+    margin-left: 24px;
+
+    @include vw-sm-down {
+      margin-left: 16px;
+    }
   }
 
   &__link {
     color: black;
     cursor: pointer;
-    font-size: 25px;
+    font-size: 24px;
     list-style: circle;
     margin-y: 3px;
+
+    @include vw-sm-down {
+      font-size: 18px;
+    }
   }
 
   &__link:hover {

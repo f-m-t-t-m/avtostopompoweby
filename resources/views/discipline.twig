@@ -13,15 +13,13 @@
     <script type="text/javascript">
         var id = {{ scope.discipline.id }};
     </script>
-    <div class="MiddleBlock DividerBlock">
+    <div class="MiddleBlock">
         <div class="ContentContainer">
             {% include 'components/discipline-info.twig' with {
                 discipline: scope.discipline,
                 teacher: scope.teacher.name ~ ' ' ~ scope.teacher.surname?? '',
                 group: scope.group,
             } %}
-        </div>
-        <div class="ContentContainer">
             {% include 'components/section-table.twig' with {
                 scope: scope.sections,
             } %}
