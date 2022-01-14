@@ -2080,6 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    console.log('example');
     window.Echo["private"]('notification.' + this.user.id).listen('NewMessage', function (e) {
       console.log(e);
       var content = {
@@ -2202,8 +2203,8 @@ vue__WEBPACK_IMPORTED_MODULE_3__["default"].use(vue_toastification__WEBPACK_IMPO
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "38aacc4cb31540172925",
+  cluster: "eu",
   encrypted: true
 });
 

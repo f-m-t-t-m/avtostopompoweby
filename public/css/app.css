@@ -2225,7 +2225,7 @@ select.uk-form-width-xsmall {
  * 9. Align text if button has a width
  * 10. Required for `a`.
  */
-.uk-button, .Button {
+.Form__fileChooser::-webkit-file-upload-button {
   /* 1 */
   margin: 0;
   /* 2 */
@@ -2257,11 +2257,83 @@ select.uk-form-width-xsmall {
   font-family: Arial;
   font-weight: 500;
   font-size: 0.875rem;
-  line-height: 49px;
+  line-height: 42px;
+  -webkit-transition: background-color 0.25s ease-in-out;
   transition: background-color 0.25s ease-in-out;
+  border: none;
+  border-radius: 4px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.uk-button, .Form__fileChooser::file-selector-button, .Button {
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  border: none;
+  /* 3 */
+  overflow: visible;
+  /* 4 */
+  font: inherit;
+  color: inherit;
+  /* 5 */
+  text-transform: none;
+  /* 6 */
+  -webkit-appearance: none;
+  border-radius: 0;
+  /* 7 */
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 30px;
+  vertical-align: middle;
+  font-size: 0.875rem;
+  /* 8 */
+  line-height: 38px;
+  /* 9 */
+  text-align: center;
+  /* 10 */
+  text-decoration: none;
+  padding-x: 40px;
+  border-radius: 10px;
+  font-family: Arial;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 42px;
+  transition: background-color 0.25s ease-in-out;
+  border: none;
+  border-radius: 4px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.Form__fileChooser:hover::-webkit-file-upload-button {
+  background-color: #345898;
+  /* #3B63AB но на ~10% темнее */
+}
+.uk-button:hover, .Form__fileChooser:hover::file-selector-button, .Button:hover {
+  background-color: #345898;
+  /* #3B63AB но на ~10% темнее */
+}
+.Form__fileChooser:active::-webkit-file-upload-button {
+  background-color: #274272;
+  /* #3B63AB но на ~25% темнее */
+}
+.uk-button:active, .Form__fileChooser:active::file-selector-button, .Button:active {
+  background-color: #274272;
+  /* #3B63AB но на ~25% темнее */
+}
+@media (max-width: 780px) {
+  .Form__fileChooser::-webkit-file-upload-button {
+    padding: 0 8px;
+  }
+  .uk-button, .Form__fileChooser::file-selector-button, .Button {
+    padding: 0 8px;
+  }
 }
 
-.uk-button:not(:disabled), .Button:not(:disabled) {
+.Form__fileChooser:not(:disabled)::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.uk-button:not(:disabled), .Form__fileChooser:not(:disabled)::file-selector-button, .Button:not(:disabled) {
   cursor: pointer;
 }
 
@@ -2274,7 +2346,11 @@ select.uk-form-width-xsmall {
 }
 
 /* Hover */
-.uk-button:hover, .Button:hover {
+.Form__fileChooser:hover::-webkit-file-upload-button {
+  /* 9 */
+  text-decoration: none;
+}
+.uk-button:hover, .Form__fileChooser:hover::file-selector-button, .Button:hover {
   /* 9 */
   text-decoration: none;
 }
@@ -2309,21 +2385,35 @@ select.uk-form-width-xsmall {
 /*
  * Primary
  */
-.uk-button-primary, .Button--primary {
+.Form__fileChooser::-webkit-file-upload-button {
+  background-color: #3B63AB;
+  color: white;
+  border: 1px solid transparent;
+}
+.uk-button-primary, .Form__fileChooser::file-selector-button, .Button--primary {
   background-color: #3B63AB;
   color: white;
   border: 1px solid transparent;
 }
 
 /* Hover */
-.uk-button-primary:hover, .Button--primary:hover {
+.Form__fileChooser:hover::-webkit-file-upload-button {
+  background-color: #2e4d85;
+  color: white;
+}
+.uk-button-primary:hover, .Form__fileChooser:hover::file-selector-button, .Button--primary:hover {
   background-color: #2e4d85;
   color: white;
 }
 
 /* OnClick + Active */
-.uk-button-primary:active, .Button--primary:active,
+.Form__fileChooser:active::-webkit-file-upload-button, .uk-active.Form__fileChooser::-webkit-file-upload-button {
+  background-color: #1a2c4c;
+  color: white;
+}
+.uk-button-primary:active, .Form__fileChooser:active::file-selector-button, .Button--primary:active,
 .uk-button-primary.uk-active,
+.uk-active.Form__fileChooser::file-selector-button,
 .uk-active.Button--primary {
   background-color: #1a2c4c;
   color: white;
@@ -2377,8 +2467,14 @@ select.uk-form-width-xsmall {
  * Disabled
  * The same for all style modifiers
  */
+.Form__fileChooser:disabled::-webkit-file-upload-button {
+  background-color: transparent;
+  color: #999;
+  border-color: #e5e5e5;
+}
 .uk-button-default:disabled,
 .uk-button-primary:disabled,
+.Form__fileChooser:disabled::file-selector-button,
 .Button--primary:disabled,
 .uk-button-secondary:disabled,
 .uk-button-danger:disabled {
@@ -2490,8 +2586,12 @@ select.uk-form-width-xsmall {
 /*
  * Collapse border
  */
-.uk-button-group > .uk-button:nth-child(n+2), .uk-button-group > .Button:nth-child(n+2),
+.uk-button-group > .Form__fileChooser:nth-child(n+2)::-webkit-file-upload-button, .uk-button-group > div:nth-child(n+2) .Form__fileChooser::-webkit-file-upload-button {
+  margin-left: -1px;
+}
+.uk-button-group > .uk-button:nth-child(n+2), .uk-button-group > .Form__fileChooser:nth-child(n+2)::file-selector-button, .uk-button-group > .Button:nth-child(n+2),
 .uk-button-group > div:nth-child(n+2) .uk-button,
+.uk-button-group > div:nth-child(n+2) .Form__fileChooser::file-selector-button,
 .uk-button-group > div:nth-child(n+2) .Button {
   margin-left: -1px;
 }
@@ -2502,10 +2602,16 @@ select.uk-form-width-xsmall {
  * the active state will not work if you click the icon inside the button
  * Workaround: Just use a `button` or `input` element as button
  */
-.uk-button-group .uk-button:hover, .uk-button-group .Button:hover,
+.uk-button-group .Form__fileChooser:hover::-webkit-file-upload-button, .uk-button-group .Form__fileChooser:active::-webkit-file-upload-button, .uk-button-group .uk-active.Form__fileChooser::-webkit-file-upload-button {
+  position: relative;
+  z-index: 1;
+}
+.uk-button-group .uk-button:hover, .uk-button-group .Form__fileChooser:hover::file-selector-button, .uk-button-group .Button:hover,
 .uk-button-group .uk-button:active,
+.uk-button-group .Form__fileChooser:active::file-selector-button,
 .uk-button-group .Button:active,
 .uk-button-group .uk-button.uk-active,
+.uk-button-group .uk-active.Form__fileChooser::file-selector-button,
 .uk-button-group .uk-active.Button {
   position: relative;
   z-index: 1;
@@ -11457,36 +11563,59 @@ iframe.uk-cover {
   color: #fff;
   border-color: #fff;
 }
-.uk-light .uk-button-primary, .uk-light .Button--primary, .uk-section-primary:not(.uk-preserve-color) .uk-button-primary, .uk-section-primary:not(.uk-preserve-color) .Button--primary, .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary, .uk-section-secondary:not(.uk-preserve-color) .Button--primary, .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary, .uk-tile-primary:not(.uk-preserve-color) .Button--primary, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary, .uk-tile-secondary:not(.uk-preserve-color) .Button--primary, .uk-card-primary.uk-card-body .uk-button-primary, .uk-card-primary.uk-card-body .Button--primary, .uk-card-primary > :not([class*=uk-card-media]) .uk-button-primary, .uk-card-primary > :not([class*=uk-card-media]) .Button--primary, .uk-card-secondary.uk-card-body .uk-button-primary, .uk-card-secondary.uk-card-body .Button--primary, .uk-card-secondary > :not([class*=uk-card-media]) .uk-button-primary, .uk-card-secondary > :not([class*=uk-card-media]) .Button--primary, .uk-overlay-primary .uk-button-primary, .uk-overlay-primary .Button--primary, .uk-offcanvas-bar .uk-button-primary, .uk-offcanvas-bar .Button--primary {
+.uk-light .Form__fileChooser::-webkit-file-upload-button, .uk-section-primary:not(.uk-preserve-color) .Form__fileChooser::-webkit-file-upload-button, .uk-section-secondary:not(.uk-preserve-color) .Form__fileChooser::-webkit-file-upload-button, .uk-tile-primary:not(.uk-preserve-color) .Form__fileChooser::-webkit-file-upload-button, .uk-tile-secondary:not(.uk-preserve-color) .Form__fileChooser::-webkit-file-upload-button, .uk-card-primary.uk-card-body .Form__fileChooser::-webkit-file-upload-button, .uk-card-primary > :not([class*=uk-card-media]) .Form__fileChooser::-webkit-file-upload-button, .uk-card-secondary.uk-card-body .Form__fileChooser::-webkit-file-upload-button, .uk-card-secondary > :not([class*=uk-card-media]) .Form__fileChooser::-webkit-file-upload-button, .uk-overlay-primary .Form__fileChooser::-webkit-file-upload-button, .uk-offcanvas-bar .Form__fileChooser::-webkit-file-upload-button {
   background-color: #fff;
   color: black;
 }
-.uk-light .uk-button-primary:hover, .uk-light .Button--primary:hover, .uk-section-primary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-section-primary:not(.uk-preserve-color) .Button--primary:hover, .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-section-secondary:not(.uk-preserve-color) .Button--primary:hover, .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-tile-primary:not(.uk-preserve-color) .Button--primary:hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-tile-secondary:not(.uk-preserve-color) .Button--primary:hover, .uk-card-primary.uk-card-body .uk-button-primary:hover, .uk-card-primary.uk-card-body .Button--primary:hover, .uk-card-primary > :not([class*=uk-card-media]) .uk-button-primary:hover, .uk-card-primary > :not([class*=uk-card-media]) .Button--primary:hover, .uk-card-secondary.uk-card-body .uk-button-primary:hover, .uk-card-secondary.uk-card-body .Button--primary:hover, .uk-card-secondary > :not([class*=uk-card-media]) .uk-button-primary:hover, .uk-card-secondary > :not([class*=uk-card-media]) .Button--primary:hover, .uk-overlay-primary .uk-button-primary:hover, .uk-overlay-primary .Button--primary:hover, .uk-offcanvas-bar .uk-button-primary:hover, .uk-offcanvas-bar .Button--primary:hover {
+.uk-light .uk-button-primary, .uk-light .Form__fileChooser::file-selector-button, .uk-light .Button--primary, .uk-section-primary:not(.uk-preserve-color) .uk-button-primary, .uk-section-primary:not(.uk-preserve-color) .Form__fileChooser::file-selector-button, .uk-section-primary:not(.uk-preserve-color) .Button--primary, .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary, .uk-section-secondary:not(.uk-preserve-color) .Form__fileChooser::file-selector-button, .uk-section-secondary:not(.uk-preserve-color) .Button--primary, .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary, .uk-tile-primary:not(.uk-preserve-color) .Form__fileChooser::file-selector-button, .uk-tile-primary:not(.uk-preserve-color) .Button--primary, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary, .uk-tile-secondary:not(.uk-preserve-color) .Form__fileChooser::file-selector-button, .uk-tile-secondary:not(.uk-preserve-color) .Button--primary, .uk-card-primary.uk-card-body .uk-button-primary, .uk-card-primary.uk-card-body .Form__fileChooser::file-selector-button, .uk-card-primary.uk-card-body .Button--primary, .uk-card-primary > :not([class*=uk-card-media]) .uk-button-primary, .uk-card-primary > :not([class*=uk-card-media]) .Form__fileChooser::file-selector-button, .uk-card-primary > :not([class*=uk-card-media]) .Button--primary, .uk-card-secondary.uk-card-body .uk-button-primary, .uk-card-secondary.uk-card-body .Form__fileChooser::file-selector-button, .uk-card-secondary.uk-card-body .Button--primary, .uk-card-secondary > :not([class*=uk-card-media]) .uk-button-primary, .uk-card-secondary > :not([class*=uk-card-media]) .Form__fileChooser::file-selector-button, .uk-card-secondary > :not([class*=uk-card-media]) .Button--primary, .uk-overlay-primary .uk-button-primary, .uk-overlay-primary .Form__fileChooser::file-selector-button, .uk-overlay-primary .Button--primary, .uk-offcanvas-bar .uk-button-primary, .uk-offcanvas-bar .Form__fileChooser::file-selector-button, .uk-offcanvas-bar .Button--primary {
+  background-color: #fff;
+  color: black;
+}
+.uk-light .Form__fileChooser:hover::-webkit-file-upload-button, .uk-section-primary:not(.uk-preserve-color) .Form__fileChooser:hover::-webkit-file-upload-button, .uk-section-secondary:not(.uk-preserve-color) .Form__fileChooser:hover::-webkit-file-upload-button, .uk-tile-primary:not(.uk-preserve-color) .Form__fileChooser:hover::-webkit-file-upload-button, .uk-tile-secondary:not(.uk-preserve-color) .Form__fileChooser:hover::-webkit-file-upload-button, .uk-card-primary.uk-card-body .Form__fileChooser:hover::-webkit-file-upload-button, .uk-card-primary > :not([class*=uk-card-media]) .Form__fileChooser:hover::-webkit-file-upload-button, .uk-card-secondary.uk-card-body .Form__fileChooser:hover::-webkit-file-upload-button, .uk-card-secondary > :not([class*=uk-card-media]) .Form__fileChooser:hover::-webkit-file-upload-button, .uk-overlay-primary .Form__fileChooser:hover::-webkit-file-upload-button, .uk-offcanvas-bar .Form__fileChooser:hover::-webkit-file-upload-button {
   background-color: #f2f2f2;
   color: black;
 }
-.uk-light .uk-button-primary:active, .uk-light .Button--primary:active, .uk-section-primary:not(.uk-preserve-color) .uk-button-primary:active, .uk-section-primary:not(.uk-preserve-color) .Button--primary:active, .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:active, .uk-section-secondary:not(.uk-preserve-color) .Button--primary:active, .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary:active, .uk-tile-primary:not(.uk-preserve-color) .Button--primary:active, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary:active, .uk-tile-secondary:not(.uk-preserve-color) .Button--primary:active, .uk-card-primary.uk-card-body .uk-button-primary:active, .uk-card-primary.uk-card-body .Button--primary:active, .uk-card-primary > :not([class*=uk-card-media]) .uk-button-primary:active, .uk-card-primary > :not([class*=uk-card-media]) .Button--primary:active, .uk-card-secondary.uk-card-body .uk-button-primary:active, .uk-card-secondary.uk-card-body .Button--primary:active, .uk-card-secondary > :not([class*=uk-card-media]) .uk-button-primary:active, .uk-card-secondary > :not([class*=uk-card-media]) .Button--primary:active, .uk-overlay-primary .uk-button-primary:active, .uk-overlay-primary .Button--primary:active, .uk-offcanvas-bar .uk-button-primary:active, .uk-offcanvas-bar .Button--primary:active,
+.uk-light .uk-button-primary:hover, .uk-light .Form__fileChooser:hover::file-selector-button, .uk-light .Button--primary:hover, .uk-section-primary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-section-primary:not(.uk-preserve-color) .Form__fileChooser:hover::file-selector-button, .uk-section-primary:not(.uk-preserve-color) .Button--primary:hover, .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-section-secondary:not(.uk-preserve-color) .Form__fileChooser:hover::file-selector-button, .uk-section-secondary:not(.uk-preserve-color) .Button--primary:hover, .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-tile-primary:not(.uk-preserve-color) .Form__fileChooser:hover::file-selector-button, .uk-tile-primary:not(.uk-preserve-color) .Button--primary:hover, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary:hover, .uk-tile-secondary:not(.uk-preserve-color) .Form__fileChooser:hover::file-selector-button, .uk-tile-secondary:not(.uk-preserve-color) .Button--primary:hover, .uk-card-primary.uk-card-body .uk-button-primary:hover, .uk-card-primary.uk-card-body .Form__fileChooser:hover::file-selector-button, .uk-card-primary.uk-card-body .Button--primary:hover, .uk-card-primary > :not([class*=uk-card-media]) .uk-button-primary:hover, .uk-card-primary > :not([class*=uk-card-media]) .Form__fileChooser:hover::file-selector-button, .uk-card-primary > :not([class*=uk-card-media]) .Button--primary:hover, .uk-card-secondary.uk-card-body .uk-button-primary:hover, .uk-card-secondary.uk-card-body .Form__fileChooser:hover::file-selector-button, .uk-card-secondary.uk-card-body .Button--primary:hover, .uk-card-secondary > :not([class*=uk-card-media]) .uk-button-primary:hover, .uk-card-secondary > :not([class*=uk-card-media]) .Form__fileChooser:hover::file-selector-button, .uk-card-secondary > :not([class*=uk-card-media]) .Button--primary:hover, .uk-overlay-primary .uk-button-primary:hover, .uk-overlay-primary .Form__fileChooser:hover::file-selector-button, .uk-overlay-primary .Button--primary:hover, .uk-offcanvas-bar .uk-button-primary:hover, .uk-offcanvas-bar .Form__fileChooser:hover::file-selector-button, .uk-offcanvas-bar .Button--primary:hover {
+  background-color: #f2f2f2;
+  color: black;
+}
+.uk-light .Form__fileChooser:active::-webkit-file-upload-button, .uk-section-primary:not(.uk-preserve-color) .Form__fileChooser:active::-webkit-file-upload-button, .uk-section-secondary:not(.uk-preserve-color) .Form__fileChooser:active::-webkit-file-upload-button, .uk-tile-primary:not(.uk-preserve-color) .Form__fileChooser:active::-webkit-file-upload-button, .uk-tile-secondary:not(.uk-preserve-color) .Form__fileChooser:active::-webkit-file-upload-button, .uk-card-primary.uk-card-body .Form__fileChooser:active::-webkit-file-upload-button, .uk-card-primary > :not([class*=uk-card-media]) .Form__fileChooser:active::-webkit-file-upload-button, .uk-card-secondary.uk-card-body .Form__fileChooser:active::-webkit-file-upload-button, .uk-card-secondary > :not([class*=uk-card-media]) .Form__fileChooser:active::-webkit-file-upload-button, .uk-overlay-primary .Form__fileChooser:active::-webkit-file-upload-button, .uk-offcanvas-bar .Form__fileChooser:active::-webkit-file-upload-button, .uk-light .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-section-primary:not(.uk-preserve-color) .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-section-secondary:not(.uk-preserve-color) .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-tile-primary:not(.uk-preserve-color) .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-tile-secondary:not(.uk-preserve-color) .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-card-primary.uk-card-body .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-card-primary > :not([class*=uk-card-media]) .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-card-secondary.uk-card-body .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-card-secondary > :not([class*=uk-card-media]) .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-overlay-primary .uk-active.Form__fileChooser::-webkit-file-upload-button, .uk-offcanvas-bar .uk-active.Form__fileChooser::-webkit-file-upload-button {
+  background-color: #e6e6e6;
+  color: black;
+}
+.uk-light .uk-button-primary:active, .uk-light .Form__fileChooser:active::file-selector-button, .uk-light .Button--primary:active, .uk-section-primary:not(.uk-preserve-color) .uk-button-primary:active, .uk-section-primary:not(.uk-preserve-color) .Form__fileChooser:active::file-selector-button, .uk-section-primary:not(.uk-preserve-color) .Button--primary:active, .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:active, .uk-section-secondary:not(.uk-preserve-color) .Form__fileChooser:active::file-selector-button, .uk-section-secondary:not(.uk-preserve-color) .Button--primary:active, .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary:active, .uk-tile-primary:not(.uk-preserve-color) .Form__fileChooser:active::file-selector-button, .uk-tile-primary:not(.uk-preserve-color) .Button--primary:active, .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary:active, .uk-tile-secondary:not(.uk-preserve-color) .Form__fileChooser:active::file-selector-button, .uk-tile-secondary:not(.uk-preserve-color) .Button--primary:active, .uk-card-primary.uk-card-body .uk-button-primary:active, .uk-card-primary.uk-card-body .Form__fileChooser:active::file-selector-button, .uk-card-primary.uk-card-body .Button--primary:active, .uk-card-primary > :not([class*=uk-card-media]) .uk-button-primary:active, .uk-card-primary > :not([class*=uk-card-media]) .Form__fileChooser:active::file-selector-button, .uk-card-primary > :not([class*=uk-card-media]) .Button--primary:active, .uk-card-secondary.uk-card-body .uk-button-primary:active, .uk-card-secondary.uk-card-body .Form__fileChooser:active::file-selector-button, .uk-card-secondary.uk-card-body .Button--primary:active, .uk-card-secondary > :not([class*=uk-card-media]) .uk-button-primary:active, .uk-card-secondary > :not([class*=uk-card-media]) .Form__fileChooser:active::file-selector-button, .uk-card-secondary > :not([class*=uk-card-media]) .Button--primary:active, .uk-overlay-primary .uk-button-primary:active, .uk-overlay-primary .Form__fileChooser:active::file-selector-button, .uk-overlay-primary .Button--primary:active, .uk-offcanvas-bar .uk-button-primary:active, .uk-offcanvas-bar .Form__fileChooser:active::file-selector-button, .uk-offcanvas-bar .Button--primary:active,
 .uk-light .uk-button-primary.uk-active,
+.uk-light .uk-active.Form__fileChooser::file-selector-button,
 .uk-light .uk-active.Button--primary,
 .uk-section-primary:not(.uk-preserve-color) .uk-button-primary.uk-active,
+.uk-section-primary:not(.uk-preserve-color) .uk-active.Form__fileChooser::file-selector-button,
 .uk-section-primary:not(.uk-preserve-color) .uk-active.Button--primary,
 .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary.uk-active,
+.uk-section-secondary:not(.uk-preserve-color) .uk-active.Form__fileChooser::file-selector-button,
 .uk-section-secondary:not(.uk-preserve-color) .uk-active.Button--primary,
 .uk-tile-primary:not(.uk-preserve-color) .uk-button-primary.uk-active,
+.uk-tile-primary:not(.uk-preserve-color) .uk-active.Form__fileChooser::file-selector-button,
 .uk-tile-primary:not(.uk-preserve-color) .uk-active.Button--primary,
 .uk-tile-secondary:not(.uk-preserve-color) .uk-button-primary.uk-active,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-active.Form__fileChooser::file-selector-button,
 .uk-tile-secondary:not(.uk-preserve-color) .uk-active.Button--primary,
 .uk-card-primary.uk-card-body .uk-button-primary.uk-active,
+.uk-card-primary.uk-card-body .uk-active.Form__fileChooser::file-selector-button,
 .uk-card-primary.uk-card-body .uk-active.Button--primary,
 .uk-card-primary > :not([class*=uk-card-media]) .uk-button-primary.uk-active,
+.uk-card-primary > :not([class*=uk-card-media]) .uk-active.Form__fileChooser::file-selector-button,
 .uk-card-primary > :not([class*=uk-card-media]) .uk-active.Button--primary,
 .uk-card-secondary.uk-card-body .uk-button-primary.uk-active,
+.uk-card-secondary.uk-card-body .uk-active.Form__fileChooser::file-selector-button,
 .uk-card-secondary.uk-card-body .uk-active.Button--primary,
 .uk-card-secondary > :not([class*=uk-card-media]) .uk-button-primary.uk-active,
+.uk-card-secondary > :not([class*=uk-card-media]) .uk-active.Form__fileChooser::file-selector-button,
 .uk-card-secondary > :not([class*=uk-card-media]) .uk-active.Button--primary,
 .uk-overlay-primary .uk-button-primary.uk-active,
+.uk-overlay-primary .uk-active.Form__fileChooser::file-selector-button,
 .uk-overlay-primary .uk-active.Button--primary,
 .uk-offcanvas-bar .uk-button-primary.uk-active,
+.uk-offcanvas-bar .uk-active.Form__fileChooser::file-selector-button,
 .uk-offcanvas-bar .uk-active.Button--primary {
   background-color: #e6e6e6;
   color: black;
@@ -11904,16 +12033,17 @@ body {
 }
 
 .Layout {
+  background-color: #F0F0F0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 280px;
 }
 .Layout__header {
   background-color: #6995D0;
   padding: 8px 16px;
 }
 .Layout__main {
-  background-color: #F0F0F0;
   flex: 1;
   padding: 24px 0px;
   display: flex;
@@ -11969,7 +12099,6 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   width: 1400px;
-  height: 840px;
 }
 @media (max-width: 1264px) {
   .DividerBlock {
@@ -12018,24 +12147,48 @@ td {
   color: red;
 }
 
-.Button {
-  border: none;
-  border-radius: 4px;
-  font-family: Arial;
-  font-weight: bold;
+.pagination {
+  margin-top: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-.Button:hover {
-  background-color: #345898;
-  /* #3B63AB но на ~10% темнее */
+
+.pagination li {
+  float: left;
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 5px 12px;
+  color: #fff;
+  margin-left: -1px;
+  border: 1px solid transparent;
+  line-height: 1.5;
 }
-.Button:active {
-  background-color: #274272;
-  /* #3B63AB но на ~25% темнее */
+
+.pagination li:first-child a {
+  border-radius: 6px 0 0 6px;
 }
-@media (max-width: 780px) {
-  .Button {
-    padding: 0 8px;
-  }
+
+.pagination li:last-child a {
+  border-radius: 0 6px 6px 0;
+}
+
+.pagination li {
+  border-color: #ddd;
+  color: #4285F4;
+  background: #fff;
+}
+
+.pagination li:hover {
+  background: #eee;
+}
+
+.pagination li.active, .pagination li:active {
+  border-color: #4285F4;
+  background: #4285F4;
+  color: #fff;
 }
 
 .Header {
@@ -12053,6 +12206,9 @@ td {
   .Header__logo {
     margin-right: 0;
   }
+}
+.Header__logo:hover {
+  cursor: default;
 }
 .Header__menu {
   display: flex;
@@ -12169,13 +12325,15 @@ td {
   border-radius: 4px;
   font-family: Arial;
 }
-.Form__fileChooser::-webkit-file-upload-button {
+.Form__fileChooser {
   margin-top: 0px;
   margin-bottom: 8px;
 }
+.Form__fileChooser::-webkit-file-upload-button {
+  margin-right: 8px;
+}
 .Form__fileChooser::file-selector-button {
-  margin-top: 0px;
-  margin-bottom: 8px;
+  margin-right: 8px;
 }
 .Form__button {
   margin-top: 0px;
@@ -12282,7 +12440,6 @@ td {
 .Section {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 .Section__header {
   margin-bottom: 16px;
@@ -12319,48 +12476,28 @@ td {
 }
 
 .Discipline {
-  height: 100%;
+  margin-bottom: 16px;
 }
 .Discipline__scrollable {
-  overflow-y: auto;
+  overflow-y: hidden;
 }
-.Discipline__teacher {
-  font-size: 25px;
+.Discipline__teacher, .Discipline__group {
+  font-size: 24px;
   font-weight: bold;
 }
-.Discipline__teacher--name {
+@media (max-width: 780px) {
+  .Discipline__teacher, .Discipline__group {
+    font-size: 18px;
+  }
+}
+.Discipline__teacher--name, .Discipline__group--name {
   font-weight: normal;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 24px;
 }
 @media (max-width: 780px) {
-  .Discipline__teacher--name {
+  .Discipline__teacher--name, .Discipline__group--name {
     font-size: 18px;
-  }
-}
-@media (max-width: 780px) {
-  .Discipline__teacher {
-    font-size: 20px;
-  }
-}
-.Discipline__group {
-  font-size: 25px;
-}
-.Discipline__group p {
-  font-weight: bold;
-}
-.Discipline__group--name {
-  font-size: 20px;
-  font-weight: normal;
-}
-@media (max-width: 780px) {
-  .Discipline__group--name {
-    font-size: 18px;
-  }
-}
-@media (max-width: 780px) {
-  .Discipline__group {
-    font-size: 20px;
   }
 }
 .Discipline__information p {
@@ -12395,9 +12532,17 @@ td {
 .SectionStudy__link {
   color: black;
   cursor: pointer;
+  font-size: 24px;
+  margin-y: 3px;
+}
+@media (max-width: 780px) {
+  .SectionStudy__link {
+    font-size: 18px;
+  }
 }
 .SectionStudy__link:hover {
   color: white;
+  text-decoration: underline;
 }
 
 .ContainerSection {
@@ -12437,17 +12582,18 @@ td {
 }
 .PostSection__main {
   display: block;
-  border: 2px solid black;
-  padding: 5px;
-  margin: 20px;
-  font-size: 20px;
+  margin: 16px;
+  font-size: 16px;
+}
+.PostSection__text {
+  font-size: 16px;
 }
 .PostSection__comments {
   width: 100%;
   margin: 20px;
 }
 .PostSection__titleComment {
-  font-size: 20px;
+  font-size: 18px;
   font-style: italic;
 }
 .PostSection__newComments {
@@ -12464,24 +12610,33 @@ td {
 .PostSection__addComments--label {
   font-size: 18px;
   font-style: italic;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .PostSection__addComments--textarea {
   max-width: 650px;
   min-height: 150px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .PostSection__addFile {
-  margin: 10px;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  margin-bottom: 0;
+}
+.PostSection__addButton {
+  margin-bottom: 8px;
+}
+.PostSection__errors {
+  margin-bottom: 8px;
 }
 
 .Comment {
   display: block;
-  width: 100%;
+  width: auto;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 8px 16px;
+  margin-top: 8px;
 }
 .Comment__avatar img {
   width: 40px;
@@ -12494,14 +12649,15 @@ td {
   flex-direction: row;
   justify-content: space-between;
   font-size: 14px;
-  margin: 0 10px;
+  margin: 0 16px;
+  margin-bottom: 8px;
   font-family: Arial, sans-serif;
 }
 .Comment__header--date {
   color: gray;
 }
 .Comment__text {
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
 }
 .Comment__footer {
@@ -12512,7 +12668,28 @@ td {
 .Comment__button {
   font-size: 16px;
   color: #224A92;
+}
+.Comment__file--image {
+  width: 20px;
+  height: 20px;
+}
+
+.reply_comment {
+  font-size: 16px;
+  color: #224A92;
+}
+
+.reply_comment:hover {
+  cursor: pointer;
   text-decoration: underline;
+}
+
+.Reply__text {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  border-left: solid 3px #dcdcdc;
+  background-color: snow;
 }
 
 h2 {
@@ -12541,6 +12718,9 @@ h2 {
 .SectionForm__select {
   margin-top: 8px;
   margin-bottom: 16px;
+}
+.SectionForm__file {
+  margin-bottom: 8px;
 }
 .SectionForm__footer {
   display: flex;
@@ -12597,7 +12777,7 @@ h2 {
 }
 .StudentList__itemImage {
   grid-area: image;
-  height: 49px;
+  max-height: 100%;
 }
 .StudentList__itemName, .StudentList__itemEmail, .StudentList__itemGroup {
   margin: 0;
@@ -12615,6 +12795,9 @@ h2 {
 .StudentList__itemButton {
   grid-area: button;
   justify-self: end;
+}
+.StudentList__itemButton button {
+  line-height: 48px;
 }
 
 .UserProfile {
@@ -12706,49 +12889,73 @@ h2 {
   font-size: 16px;
 }
 
+.Notification__no {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
 .Notification__section {
-  padding: 40px;
+  padding: 16px;
   border-top: solid 1px grey;
   border-bottom: solid 1px grey;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 5px;
 }
 @media (max-width: 780px) {
   .Notification__section {
-    padding: 20px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
   }
 }
 .Notification__message {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
 }
 .Notification__message--text {
+  font-size: 18px;
   text-decoration: none;
   color: blue;
+  margin-right: 8px;
 }
 .Notification__message--text:hover {
   text-decoration: underline;
+  cursor: default;
 }
-.Notification__button {
-  color: darkblue;
-  text-decoration: none;
+.Notification__message--count {
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 18px;
+  border: 2px solid #3B63AB;
+  border-radius: 12px;
+  margin-right: 2px;
+  color: #3B63AB;
+}
+@media (min-width: 781px) {
+  .Notification__text {
+    margin-right: 16px;
+  }
 }
 @media (max-width: 780px) {
-  .Notification__button {
-    display: none;
+  .Notification__buttonMessage {
+    margin-top: 8px;
   }
+}
+.Notification__buttonReadAll {
+  margin-bottom: 16px;
 }
 .Notification__button:hover {
   text-decoration: underline;
 }
 @media (max-width: 780px) {
   .Notification__point {
-    width: 15px;
-    height: 15px;
-  }
-}
-@media (min-width: 781px) {
-  .Notification__point {
-    display: none;
+    min-width: 16px;
+    min-height: 16px;
   }
 }

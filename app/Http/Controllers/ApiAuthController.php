@@ -41,7 +41,7 @@ class ApiAuthController extends Controller
         $user->name = $validated['name'];
         $user->surname = $validated['surname'];
         $user->role = $validated['role'];
-        $user->status = 1;
+        $user->status = 0;
 
         if (isset($validated['avatar'])) {
             $avatar = base64_decode($validated['avatar']);

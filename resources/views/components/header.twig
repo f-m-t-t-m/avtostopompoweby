@@ -115,31 +115,30 @@
 
 {% macro content(scope) %}
     <div class="Header">
-        <div class="Header__logo">
-            Кафедра
+        <div ><a class="Header__logo" href="/"> Кафедра</a>
         </div>
 
         {% if (auth_check() or true) %}
             <div class="Header__menu">
-                {% if (scope.user.role == "student") %}
+                {% if (auth_user().role == "student") %}
                         {% include 'components/site-nav.twig' with {
                             items: scope.menu.student,
                             vertical: false,
                         } %}
                 {% endif %}
-                {% if (scope.user.role == "teacher") %}
+                {% if (auth_user().role == "teacher") %}
                         {% include 'components/site-nav.twig' with {
                             items: scope.menu.teacher,
                             vertical: false,
                         } %}
                 {% endif %}
-                {% if (scope.user.role == "head") %}
+                {% if (auth_user().role == "head") %}
                         {% include 'components/site-nav.twig' with {
                             items: scope.menu.head,
                             vertical: false,
                         } %}
                 {% endif %}
-                {% if (scope.user.role == "admin") %}
+                {% if (auth_user().role == "admin") %}
                         {% include 'components/site-nav.twig' with {
                             items: scope.menu.admin,
                             vertical: false,

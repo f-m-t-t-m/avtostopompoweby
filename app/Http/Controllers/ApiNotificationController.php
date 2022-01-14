@@ -75,7 +75,7 @@ class ApiNotificationController extends Controller
     {
         $notification->read = true;
         $notification->save();
-        return response()->json($notification);
+        return response()->json("successful");
     }
 
     /**
