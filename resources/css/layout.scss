@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-
+    min-width: 280px;
     &__header {
         background-color: $color-lightblue;
         padding: 8px 16px;

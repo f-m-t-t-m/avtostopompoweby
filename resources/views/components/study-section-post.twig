@@ -40,9 +40,9 @@
                         {% if errors.first('text') %}
                             <p>{{ errors.first('text') }}</p>
                         {% endif %}
-                        <p class="PostSection__addFile"><input class="Form__fileChooser" type="file" name="file" id="file" value="{{ old('file') }}">
+                        <p class="PostSection__addFile"><input class="Form__fileChooser" type="file" name="file" id="file" value="{{ old('file') }}"></p>
                         {% if errors.first('file') %}
-                            <p>{{ errors.first('file') }}</p>
+                            <p class="PostSection__errors">{{ errors.first('file') }}</p>
                         {% endif %}
                         <button class="Button Button--primary PostSection__sendButton">
                             Поделиться
