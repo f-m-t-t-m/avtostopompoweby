@@ -33,6 +33,10 @@ class LoginController extends Controller
             ]);
 
             $user = User::query()->where('email', $validated['email'])->first();
+            if ($user === null) {
+                return redirect()
+                    ->route('login')->with('error', 'Неправильный логин или пароль');
+            }
             if ($user->status == 0) {
                 return redirect()
                     ->route('login')->with('error', 'Неподтвержденный аккаунт');

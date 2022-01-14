@@ -80,6 +80,9 @@ class ApiAuthController extends Controller
 
         $validated = $validator->validated();
         $user = User::query()->where('email', $validated['email'])->first();
+        if ($user === null) {
+            return response()->json(['message' => 'Wrong login or password'], 422);
+        }
         if ($user->status == 0) {
             return response()->json(['message' => 'User isn\'t confirmed'], 423);
         }
