@@ -1,16 +1,41 @@
 {% import _self as macros %}
 
 {% set scope = {
-    menu: [
-        {
-            url: '/',
-            name: 'Группы и дисциплины',
-        },
-        {
-            url: '/confirm-student-registration',
-            name: 'Регистрация студентов',
-        },
-    ],
+    user: auth_user,
+    menu: {
+        admin: [
+            {
+                url: '/',
+                name: 'Кафедры',
+            },
+            {
+                url: '/confirm-student-registration',
+                name: 'Регистрация студентов',
+            },
+        ],
+        head: [
+            {
+                url: '/',
+                name: 'Группы и дисциплины',
+            },
+            {
+                url: '/confirm-student-registration',
+                name: 'Регистрация студентов',
+            },
+        ],
+        teacher: [
+            {
+                url: '/',
+                name: 'Ваши дисциплины',
+            },
+        ] ,
+        student: [
+            {
+                url: '/',
+                name: 'Ваши дисциплины',
+            },
+        ],
+    },
 } %}
 
 {% macro logoutButton() %}
@@ -55,10 +80,30 @@
             <button class="uk-offcanvas-close" type="button" uk-close></button>
 
             <div class="OffCanvas__menu">
-                {% include 'components/site-nav.twig' with {
-                    items: scope.menu,
-                    vertical: true,
-                } %}
+                {% if (scope.user.role == "student") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.student,
+                            vertical: true,
+                        } %}
+                {% endif %}
+                {% if (scope.user.role == "teacher") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.teacher,
+                            vertical: true,
+                        } %}
+                {% endif %}
+                {% if (scope.user.role == "head") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.head,
+                            vertical: true,
+                        } %}
+                {% endif %}
+                {% if (scope.user.role == "admin") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.admin,
+                            vertical: true,
+                        } %}
+                {% endif %}
             </div>
 
             <div class="OffCanvas__logoutButton">
@@ -74,12 +119,32 @@
             Кафедра
         </div>
 
-        {% if (auth_check()) %}
+        {% if (auth_check() or true) %}
             <div class="Header__menu">
-                {% include 'components/site-nav.twig' with {
-                    items: scope.menu,
-                    vertical: false,
-                } %}
+                {% if (scope.user.role == "student") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.student,
+                            vertical: false,
+                        } %}
+                {% endif %}
+                {% if (scope.user.role == "teacher") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.teacher,
+                            vertical: false,
+                        } %}
+                {% endif %}
+                {% if (scope.user.role == "head") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.head,
+                            vertical: false,
+                        } %}
+                {% endif %}
+                {% if (scope.user.role == "admin") %}
+                        {% include 'components/site-nav.twig' with {
+                            items: scope.menu.admin,
+                            vertical: false,
+                        } %}
+                {% endif %}
             </div>
 
             <div class="Header__userProfileButton">
