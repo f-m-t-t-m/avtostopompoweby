@@ -8,7 +8,7 @@
     <form method="post" action="{{ route('save_group') }}">
         {{ csrf_field() }}
         <div class="Form">
-            <div class="From__header">
+            <div class="Form__header">
                 <p>Создание группы</p>
             </div>
             <input id="department_id" type="hidden" name="department_id" value="{{ scope.department.id }}"/>

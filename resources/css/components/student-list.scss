@@ -54,7 +54,7 @@
     
     &__itemImage {
         grid-area: image;
-        height: 49px;
+        max-height: 100%;
     }
     
     &__itemName,&__itemEmail,&__itemGroup {
@@ -74,5 +74,9 @@
     &__itemButton {
         grid-area: button;
         justify-self: end;
+        
+        button {
+            line-height: 48px;
+        }
     }
 }
