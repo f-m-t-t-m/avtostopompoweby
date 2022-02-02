@@ -6,7 +6,6 @@
     {% for item in scope %}
         <div class="Notification__section">
             <p class="Notification__text" ids="{{ item.ids }}">
-                <input type="checkbox" name="" value="прочитано" class="Notification__point">
                 {{ item.count }} {{ item.notification.text }}
             </p>
             <form class="Notification__buttonMessage" action = "{{ route('read-notifications', [item.ids]) }}" method = "post">

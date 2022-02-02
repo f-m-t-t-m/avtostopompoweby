@@ -58,7 +58,10 @@ class RegisterController extends Controller
             $user->name = $validated['name'];
             $user->surname = $validated['surname'];
             $user->role = $validated['role'];
-            $user->status = 0;
+            $user->status = 1;
+            if ($user->role === 'student') {
+                $user->status = 0;
+            }
             if (isset($validated['image'])) {
                 $fileName = time().'_'.$request->image->getClientOriginalName();
                 $filePath = $request->file('image')->storeAs('avatars/', $fileName, 's3');
@@ -72,9 +75,8 @@ class RegisterController extends Controller
                 $student->group_id = $validated['group'];
                 $student->save();
             }
-            Auth::login($user);
             return redirect()
-                ->route('main_page');
+                ->route('login');
         }
         $groups = Group::all();
         return View::make('register', ['groups' => $groups]);

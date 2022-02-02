@@ -40,6 +40,9 @@ class HomePageController extends Controller
         }
 
         if ($user->role === 'head') {
+            if ($user->department == null) {
+                return view('home-head', ['empty' => true]);
+            }
             $department_groups = $user->department->groups;
             $subjects = array();
             $teachers = array();
