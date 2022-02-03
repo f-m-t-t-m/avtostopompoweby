@@ -118,7 +118,8 @@
         <div ><a class="Header__logo" href="/"> Кафедра</a>
         </div>
 
-        {% if (auth_check() or true) %}
+        <!-- Don't forget to return back -->
+        {% if (auth_check()) %}
             <div class="Header__menu">
                 {% if (auth_user().role == "student") %}
                         {% include 'components/site-nav.twig' with {
