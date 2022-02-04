@@ -62,6 +62,8 @@ class CommentController extends Controller {
                 }
                 $notification = new Notification();
                 $notification->user_id = $user->id;
+                $notification->subject_id = $subject->id;
+                $notification->section_id = $section->id;
                 $notification->text = sprintf('Новое сообщение в разделе: %s предмета: %s',
                     $section->name, $subject->name);
                 $notification->save();

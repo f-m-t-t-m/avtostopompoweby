@@ -19,6 +19,8 @@ class NotificationResource extends JsonResource
             'text' => $this->text,
             'read' => $this->read,
             'user_id' => $this->user_id,
+            'subject_id' => $this->subject_id,
+            'section_id' => $this->section_id
         ];
     }
 }
