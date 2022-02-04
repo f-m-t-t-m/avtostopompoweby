@@ -15,7 +15,11 @@
                     <p class="PostSection__text">
                         {{ scope.section.text }}
                         {% if scope.section.file %}
-                            <p><a href="{{ scope.section.file }}" target="_blank"> это файл</a></p>
+                            <br>
+                            <a href="{{ scope.section.file }}" target="_blank">
+                                <img src="/images/file-image.jpg" alt="" class="Comment__file--image">
+                                Открыть
+                            </a>
                         {% endif %}
                     </p>
                 </div>
